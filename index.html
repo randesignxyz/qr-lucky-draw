@@ -1,0 +1,3457 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Vital Modern Scan &amp; Win</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Kantumruy+Pro:wght@400;500;600;700;800&family=Kaushan+Script&family=Lilita+One&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@400;500;600;700;800;900&family=Pacifico&family=Satisfy&family=Yellowtail&display=swap" rel="stylesheet">
+<style>:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 16px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans:
+    -apple-system-body, ui-sans-serif, -apple-system, system-ui, "Segoe UI",
+    Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 8px);
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E");
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html > body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  font-size: var(--font-size-base);
+  line-height: calc(var(--font-size-base) * 1.625);
+  font-weight: var(--font-weight-normal);
+}
+
+.cursor-interaction {
+  cursor: var(--cursor-interaction, pointer);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: var(--cursor-interaction, pointer);
+  text-decoration: none;
+  text-underline-offset: 2px;
+  font-weight: inherit;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+.table {
+  font-family: var(--font-sans);
+}
+
+h1 {
+  font-size: calc(var(--font-size-base) * 1.5);
+  line-height: 1.3333333333;
+}
+
+h2 {
+  font-size: calc(var(--font-size-base) * 1.25);
+  line-height: 1.4;
+}
+h3 {
+  font-size: calc(var(--font-size-base) * 1.125);
+  line-height: 1.5555555556;
+}
+h4 {
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+h5,
+h6 {
+  font-size: var(--font-size-base);
+  line-height: calc(var(--font-size-base) * 1.625);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong,
+th {
+  font-weight: 600;
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+pre,
+pre code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: calc(var(--font-size-base) * 0.875);
+  line-height: calc(var(--font-size-base) * 1.625);
+  font-family: var(--font-sans);
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+.table :is(th, td):not(:last-child) {
+  padding-inline-end: calc(var(--font-size-base) * 1.5);
+}
+
+.table-responsive > .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead :is(th, td) {
+  border-bottom-color: var(--border-strong, var(--input));
+  padding-block: calc(var(--font-size-base) / 2);
+  line-height: var(--font-size-base);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+.table tbody :is(th, td) {
+  padding-block: calc(var(--font-size-base) * 0.625);
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 8px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align="right"]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align="center"]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+.widget {
+  min-width: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  box-shadow: 0 0 0 0.5px var(--border-strong, var(--border));
+  color: var(--foreground);
+  background: var(--background);
+}
+
+#widget > :not(.card, .widget, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  border: 1px solid var(--border);
+  corner-shape: var(--corner-shape);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-sans);
+  padding: 5px 12px;
+  border-color: color-mix(
+    in oklab,
+    light-dark(var(--primary-foreground), var(--foreground)) 5%,
+    transparent
+  );
+  border-radius: var(--radius-2xl);
+  color: light-dark(var(--primary-foreground), var(--foreground));
+  background: light-dark(var(--foreground), var(--popover));
+  box-shadow: 0 8px 18px rgb(15 23 42 / 20%);
+  letter-spacing: -0.15px;
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  color: color-mix(in srgb, var(--foreground) 40%, var(--muted-foreground));
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  font-family: var(--font-sans);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 1;
+}
+
+small,
+.text-small {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls > .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls > .form-label > :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+/* Match inline alignment without overriding a containing flex or grid layout. */
+.btn,
+.nav-link,
+.form-control,
+.form-select,
+.form-range,
+.form-check {
+  vertical-align: middle;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  corner-shape: var(--corner-shape);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: inherit;
+  font-family: var(--font-sans);
+  height: fit-content;
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  padding-inline: var(--control-spacing, 12px);
+  border-color: transparent;
+  border-radius: var(--radius-full);
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 18px;
+}
+
+.btn {
+  border-color: var(--border);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: var(--cursor-interaction, pointer);
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: light-dark(
+    color-mix(in srgb, var(--foreground) 5.5%, transparent),
+    color-mix(in srgb, var(--foreground) 8%, transparent)
+  );
+}
+
+.nav-link:not(:disabled):not([aria-disabled="true"]):hover {
+  background: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.btn-primary {
+  border-color: var(--border);
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: border-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: border-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--muted-foreground);
+  background: light-dark(
+    color-mix(in srgb, var(--foreground) 5.5%, transparent),
+    color-mix(in srgb, var(--foreground) 8%, transparent)
+  );
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+/* Shared preview chrome; product styles stay inside each variant. */
+.viz-dotted-background {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--foreground) 14%, transparent) 0.8px,
+    transparent 0.8px
+  );
+  background-position: center;
+  background-size: 16px 16px;
+}
+
+.viz-carousel {
+  position: relative;
+  min-width: 0;
+}
+
+.viz-carousel:has(> .viz-carousel-controls) {
+  min-height: calc(60px + var(--viz-carousel-picker-height, 0px));
+  padding-bottom: 60px;
+}
+
+.viz-carousel > [data-variant][hidden] {
+  display: none !important;
+}
+
+.viz-carousel > [data-variant] {
+  isolation: isolate;
+}
+
+.viz-carousel-controls {
+  --viz-carousel-hover: light-dark(
+    color-mix(in srgb, var(--foreground) 5.4%, transparent),
+    color-mix(in srgb, var(--foreground) 7.8%, transparent)
+  );
+  position: absolute;
+  z-index: 2;
+  bottom: 8px;
+  left: 50%;
+  display: flex;
+  width: max-content;
+  /* Leave room for the host's design-controls launcher at the trailing edge. */
+  max-width: calc(100% - 96px);
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans);
+  /* Match the settings dropdown chrome independently of the content font size. */
+  font-size: 13px;
+  font-weight: var(--font-weight-normal);
+  line-height: 18px;
+  transform: translateX(-50%);
+  user-select: none;
+}
+
+/* Keep authored mockup button styles out of the shared carousel chrome. */
+.viz-carousel-controls button,
+.viz-carousel-picker > summary {
+  display: flex !important;
+  height: auto !important;
+  min-height: 30px;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px;
+  padding: 0 6px !important;
+  -webkit-app-region: no-drag;
+  border: 0 !important;
+  border-radius: 14px !important;
+  color: inherit !important;
+  background: transparent !important;
+  font: inherit !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.viz-carousel-controls > button,
+.viz-carousel-picker > summary {
+  position: relative;
+  isolation: isolate;
+}
+
+.viz-carousel-controls > button {
+  --icon-size: 16px;
+  width: 30px !important;
+  padding: 0 !important;
+}
+
+.viz-carousel-picker > summary {
+  padding-inline: 12px !important;
+}
+
+.viz-carousel-controls .viz-carousel-caret {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  margin: 0;
+  color: inherit;
+  transform: rotate(180deg);
+}
+
+.viz-carousel-controls > button > svg,
+.viz-carousel-controls .viz-carousel-caret,
+.viz-carousel-count {
+  opacity: 0.5;
+}
+
+.viz-carousel-controls > button::before,
+.viz-carousel-picker > summary::before {
+  position: absolute;
+  z-index: -1;
+  inset: 3px;
+  border-radius: 12px;
+  content: "";
+  pointer-events: none;
+}
+
+.viz-carousel-controls > button:hover::before,
+.viz-carousel-picker > summary:hover::before {
+  background: var(--viz-carousel-hover);
+}
+
+.viz-carousel-controls > button,
+.viz-carousel-controls [data-lucide],
+.viz-carousel-controls .lucide {
+  flex-shrink: 0;
+}
+
+.viz-carousel-picker {
+  min-width: 0;
+}
+
+.viz-carousel-picker > summary {
+  min-width: 0;
+  list-style: none;
+}
+
+.viz-carousel-picker > summary::-webkit-details-marker {
+  display: none;
+}
+
+.viz-carousel-count {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.viz-carousel-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.viz-carousel-options {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 4px);
+  left: 0;
+  display: flex;
+  max-height: 240px;
+  flex-direction: column;
+  gap: 2px;
+  overflow: auto;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  box-shadow: 0 4px 12px light-dark(rgb(0 0 0 / 6%), rgb(0 0 0 / 25%));
+}
+
+.viz-carousel-options > button {
+  border-radius: max(0px, calc(var(--radius-lg) - 5px)) !important;
+  width: 100% !important;
+  min-height: 28px;
+  justify-content: flex-start !important;
+  padding: 4px 8px !important;
+  font-size: var(--font-size-small) !important;
+  text-align: start;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.viz-carousel-options > [aria-current="true"],
+.viz-carousel-options > button:hover {
+  background: var(--viz-carousel-hover) !important;
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  padding-inline: calc(4px + var(--control-spacing, 12px) / 2);
+  border-color: var(--input);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--popover) 96%, transparent);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.4285714286;
+}
+.form-control:is(
+  [type="file"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="week"],
+  [type="color"]
+) {
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  line-height: 18px;
+}
+.form-control:is(
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="week"]
+) {
+  padding-inline: var(--control-spacing, 12px);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type="file"] {
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+  padding: 0;
+}
+
+.form-control[type="file"]::file-selector-button {
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+  min-height: calc(10px + 2 * var(--control-spacing, 12px));
+  padding-inline: var(--control-spacing, 12px);
+  margin-inline-end: var(--control-spacing, 12px);
+}
+
+.form-control[type="file"]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type="color"] {
+  width: 40px;
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  resize: vertical;
+  min-height: 96px;
+  padding: 8px 10px;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: none;
+}
+.form-control:disabled {
+  color: var(--muted-foreground);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  opacity: 1;
+}
+.form-control[aria-invalid="true"] {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--red) 20%, transparent);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: fit-content;
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  margin: 0;
+  /* The secondary icon role is 14px at compact density and 16px at web density. */
+  --icon-size: calc(10px + var(--control-spacing, 12px) / 2);
+  /* Settings dropdowns retain a 12px inset and a 4px text-to-chevron gap. */
+  padding: 0 calc(16px + var(--icon-size)) 0 12px;
+  outline: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent calc(50% - 0.6px),
+      var(--muted-foreground) calc(50% - 0.6px) calc(50% + 0.6px),
+      transparent calc(50% + 0.6px)
+    ),
+    linear-gradient(
+      135deg,
+      transparent calc(50% - 0.6px),
+      var(--muted-foreground) calc(50% - 0.6px) calc(50% + 0.6px),
+      transparent calc(50% + 0.6px)
+    );
+  background-position:
+    calc(100% - 12px - var(--icon-size) / 2) 50%,
+    calc(100% - 12px - var(--icon-size) * 0.18) 50%;
+  background-repeat: no-repeat;
+  background-size: calc(var(--icon-size) * 0.32) calc(var(--icon-size) * 0.32);
+  cursor: var(--cursor-interaction, default);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 18px;
+}
+
+.form-select:not(:disabled):hover {
+  background-color: light-dark(
+    color-mix(in srgb, var(--foreground) 5.5%, transparent),
+    color-mix(in srgb, var(--foreground) 8%, transparent)
+  );
+}
+
+.form-select:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+.form-select:disabled {
+  opacity: 0.4;
+}
+
+.form-check {
+  display: flex;
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"] {
+  corner-shape: round;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  width: calc(10px + var(--control-spacing, 12px) / 2);
+  height: calc(10px + var(--control-spacing, 12px) / 2);
+  border-color: var(--border-strong, var(--input));
+  border-radius: calc(var(--radius-sm) / 2);
+  background-color: transparent;
+  color: var(--foreground);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type="checkbox"]:is(:checked, :indeterminate) {
+  border-color: var(--border-strong, var(--input));
+  background-color: color-mix(in srgb, var(--popover) 96%, transparent);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type="checkbox"]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: "";
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+  background-color: var(--foreground);
+}
+.form-check:not(.form-switch)
+  .form-check-input[type="checkbox"]:indeterminate::before {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 65%;
+  height: 6.65%;
+  margin: auto;
+  border-radius: var(--radius-full);
+  background: var(--foreground);
+  mask: none;
+  content: "";
+}
+
+.form-check-input[type="radio"] {
+  border-radius: var(--radius-full);
+  width: 16px;
+  height: 16px;
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--input);
+}
+
+.form-check-input[type="radio"]:checked {
+  border: 0;
+  background: radial-gradient(
+    circle,
+    var(--primary-foreground) 0 3px,
+    var(--foreground) 3px
+  );
+  box-shadow: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.form-check:not(.form-switch) .form-check-input[type="checkbox"]:focus-visible {
+  border-color: var(--ring);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+.form-check:not(.form-switch) .form-check-input[type="radio"]:disabled,
+.form-check:not(.form-switch)
+  .form-check-input[type="radio"]:disabled
+  + .form-check-label {
+  opacity: 0.5;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  content: "";
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+  border-color: #fff;
+  background: #fff;
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--blue);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+  outline: none;
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  accent-color: var(--primary);
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  outline: none;
+  border-radius: var(--radius-full);
+  color: var(--foreground);
+  background: transparent;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  background: var(--form-range-track, var(--border));
+  height: 2px;
+  border-radius: var(--radius-full);
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  margin-top: -9px;
+  border-color: transparent;
+  background: currentColor;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Outline the native track and thumb, preserving the larger input hit area. */
+.form-range:focus-visible::-webkit-slider-runnable-track {
+  outline: 2px auto Highlight;
+  outline-color: -webkit-focus-ring-color;
+}
+
+.form-range::-moz-range-track {
+  background: var(--form-range-track, var(--border));
+  height: 2px;
+  border-radius: var(--radius-full);
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  border-color: transparent;
+  background: currentColor;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  outline: 2px solid Highlight;
+  outline-offset: 2px;
+}
+
+.form-range:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .is-selected
+) {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--blue);
+}
+
+.btn.viz-tile:is([aria-pressed="true"], [aria-selected="true"], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.viz-carousel-controls :is(button, summary):focus-visible {
+  outline: 2px solid var(--ring) !important;
+  outline-offset: 2px !important;
+}
+
+/* Web recipes are the default, including on renderers without inline style queries. */
+@supports (border-radius: if(style(--corner-shape: round): 1px; else: 2px)) {
+  /* Match the host's proportional text-sm scale at every text preference. */
+  .tooltip,
+  .viz-badge,
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    font-size: if(
+      style(--corner-shape: round): round(
+          nearest,
+          calc(var(--font-size-base) * 14 / 16),
+          1px
+        );
+        else: round(nearest, calc(var(--font-size-base) * 13 / 14), 1px)
+    );
+  }
+
+  .btn,
+  .nav-link,
+  .form-select {
+    border-radius: if(
+      style(--corner-shape: round): var(--radius-full); else: var(--radius-lg)
+    );
+  }
+
+  .form-check:not(.form-switch) .form-check-input[type="checkbox"] {
+    border-radius: if(
+      style(--corner-shape: round): calc(var(--radius-sm) / 2);
+        else: calc(var(--radius-lg) * 0.4)
+    );
+  }
+
+  .tooltip {
+    font-weight: if(
+      style(--corner-shape: round): 600; else: var(--font-weight-normal)
+    );
+  }
+}
+
+@media (pointer: coarse) {
+  .viz-carousel:has(> .viz-carousel-controls) {
+    min-height: calc(76px + var(--viz-carousel-picker-height, 0px));
+    padding-bottom: 76px;
+  }
+
+  .btn,
+  .nav-link,
+  .viz-carousel-controls button,
+  .viz-carousel-picker > summary,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, calc(var(--font-size-base) * 14 / 16));
+    font-size: max(
+      16px,
+      round(nearest, calc(var(--font-size-base) * 14 / 16), 1px)
+    );
+  }
+  .form-control:is(
+    [type="file"],
+    [type="date"],
+    [type="datetime-local"],
+    [type="month"],
+    [type="week"],
+    [type="time"],
+    [type="color"]
+  ) {
+    height: 44px;
+    min-height: 44px;
+    font-size: max(16px, calc(var(--font-size-base) * 14 / 16));
+    font-size: max(
+      16px,
+      round(nearest, calc(var(--font-size-base) * 14 / 16), 1px)
+    );
+  }
+
+  .form-control[type="file"]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type="color"] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type="date"],
+    [type="datetime-local"],
+    [type="month"],
+    [type="time"],
+    [type="week"]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: "";
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget > svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html>body{padding:0}</style>
+</head>
+<body>
+<script>
+  window.openai = { setWidgetState: async () => {} };
+</script>
+<style>
+#vital-flow{padding:24px 10px;font-family:Arial,sans-serif}#vital-flow *{box-sizing:border-box}#vital-flow .review{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:0 auto 22px;max-width:570px}#vital-flow .review button{font:12px Arial;padding:10px 12px;min-height:44px;background:light-dark(#eef3fa,#24354c);color:light-dark(#203952,#dce9fa);border:0;border-radius:10px}#vital-flow .review button[aria-pressed=true]{background:#114e9f;color:#fff}
+#vital-flow .phone{--blue:#114e9f;--surface:light-dark(#fff,#12253d);--ink:light-dark(#173252,#edf5ff);--muted:light-dark(#546b85,#bdcde0);--soft:light-dark(#edf5ff,#203b58);--line:light-dark(#d8e4f3,#3d5671);width:390px;max-width:100%;margin:auto;border-radius:28px;border:1px solid var(--line);background:var(--surface);color:var(--ink);overflow:hidden;font-size:15px;line-height:1.5;box-shadow:0 16px 44px #123b6415;min-height:auto}
+#vital-flow .browser{padding:12px 20px;background:var(--soft);font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}#vital-flow .brand{background:var(--blue);padding:14px 22px;display:flex;align-items:center;justify-content:space-between;color:#fff}#vital-flow .brand img{width:113px;height:64px;object-fit:contain}#vital-flow .brand span{font-size:12px;letter-spacing:1px}#vital-flow main{padding:26px 24px}#vital-flow h1{font-size:30px;line-height:1.15;font-weight:500;letter-spacing:-.7px;margin:8px 0 14px}#vital-flow h2{font-size:21px;font-weight:500;margin:10px 0}#vital-flow p{color:var(--muted);margin:10px 0 20px}#vital-flow .eyebrow{font-size:11px;letter-spacing:1.5px;color:var(--muted)}#vital-flow button,#vital-flow input,#vital-flow select{font:inherit}#vital-flow .primary,#vital-flow .secondary{min-height:54px;width:100%;border:0;border-radius:15px;padding:14px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:500}#vital-flow .primary{background:var(--blue);color:#fff}#vital-flow .secondary{background:var(--soft);color:var(--ink);margin-top:12px}#vital-flow .small{font-size:12px;text-align:center;color:var(--muted);margin:14px 0}#vital-flow label{display:block;font-size:14px;margin:20px 0 8px}#vital-flow input{background:var(--surface);color:var(--ink);padding:14px;width:100%;border:1px solid var(--line);border-radius:12px;font-size:16px}#vital-flow .camera{background:linear-gradient(145deg,#314c68,#14283d);height:244px;border-radius:22px;display:grid;place-items:center;margin:20px 0;color:#fff}#vital-flow .frame{width:175px;height:175px;border:3px solid #fff;border-radius:16px;display:grid;place-items:center}#vital-flow .frame svg{width:64px;height:64px}#vital-flow .center{text-align:center}#vital-flow .emblem{background:var(--soft);color:var(--blue);border-radius:26px;width:100px;height:100px;display:grid;place-items:center;margin:18px auto 26px}#vital-flow .emblem svg{width:48px;height:48px}#vital-flow .reward{background:var(--soft);border-radius:20px;padding:22px;margin:22px 0}#vital-flow .reward small{color:var(--muted)}#vital-flow .celebrate{position:relative}#vital-flow .celebrate:before{content:'✦  ·  ✧  ·  ✦';color:#d59118;display:block;font-size:26px;letter-spacing:10px;text-align:center}#vital-flow .footer{padding:12px 18px;background:var(--soft);color:var(--muted);font-size:11px;text-align:center}#vital-flow .wheel-area{position:relative;width:270px;max-width:100%;margin:30px auto 24px;padding-top:10px}#vital-flow .pointer{position:absolute;z-index:2;top:-3px;left:calc(50% - 12px);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:25px solid #eeac35}#vital-flow .wheel{width:100%;aspect-ratio:1;border-radius:50%;background:conic-gradient(from -45deg,#114e9f 0 90deg,#e3f0ff 90deg 180deg,#114e9f 180deg 270deg,#e3f0ff 270deg);border:7px solid #acccef;position:relative;transition:transform 1.8s cubic-bezier(.15,.7,.1,1)}#vital-flow .wheel span{position:absolute;width:92px;text-align:center;font-size:12px;color:#fff;line-height:1.3}#vital-flow .wheel .w1{top:30px;left:calc(50% - 46px)}#vital-flow .wheel .w2{right:0;top:calc(50% - 14px);color:#153b67}#vital-flow .wheel .w3{bottom:28px;left:calc(50% - 46px)}#vital-flow .wheel .w4{left:0;top:calc(50% - 14px);color:#153b67}#vital-flow .hub{position:absolute;top:calc(50% - 24px);left:calc(50% - 24px);width:48px;height:48px;display:grid;place-items:center;background:#fff;color:#114e9f;border-radius:50%}#vital-flow .prize-list{font-size:12px;text-align:center;color:var(--muted);margin:16px 0}#vital-flow .err{color:light-dark(#a72b32,#ffaaa8);font-size:13px;margin:12px 0}#vital-flow details{margin-top:18px;font-size:12px;color:var(--muted)}#vital-flow summary{min-height:44px;display:flex;align-items:center}#vital-flow .notice{margin:14px 0;font-size:12px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){#vital-flow .wheel{transition:none}}
+#vital-flow .phone{--red:#cf2638;--red-ink:light-dark(#b82032,#ff9aa5)}
+#vital-flow .brand{position:relative;padding-bottom:18px}
+#vital-flow .brand:after{content:'';position:absolute;bottom:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#cf2638 0 10%,#49b5ea 10% 100%)}
+#vital-flow .brand img{background:#fff;width:128px;height:61px;border-radius:10px;padding:7px}
+#vital-flow .brand span{background:var(--red);padding:7px 10px;border-radius:18px;font-size:11px;letter-spacing:.7px}
+#vital-flow .eyebrow{display:inline-flex;align-items:center;gap:7px}
+#vital-flow .eyebrow:before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
+#vital-flow .pointer{border-top-color:var(--red)}
+#vital-flow [data-spin],#vital-flow main[data-step="win"] .primary{background:var(--red);color:#fff}
+#vital-flow .celebrate:before{color:var(--red-ink)}
+#vital-flow .celebrate .emblem{background:light-dark(#fff0f2,#422735);color:var(--red-ink)}
+#vital-flow .reward{position:relative;overflow:hidden}
+#vital-flow .reward:before{content:'';position:absolute;top:0;left:0;width:36px;height:4px;background:var(--red)}
+#vital-flow .hub{box-shadow:0 0 0 3px var(--red)}
+#vital-flow .phone .primary:disabled{opacity:.7}
+#vital-flow .phone{--blue:#114e9f;--soft:light-dark(#e9f3ff,#1b3551);font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;border-radius:34px;box-shadow:0 28px 70px #07356826; background:var(--surface)}
+#vital-flow .browser{background:var(--surface);padding:13px 22px;font-size:11px}
+#vital-flow .brand{background:radial-gradient(ellipse at 100% 0%,#368fe1 0,transparent 60%),linear-gradient(135deg,#0b387c,#145bb6);min-height:116px;position:relative;padding:22px 24px 32px;isolation:isolate;overflow:hidden}
+#vital-flow .brand:before{content:'';position:absolute;width:170px;height:170px;right:-42px;bottom:-92px;border:1px solid #ffffff26;border-radius:50%;box-shadow:0 0 0 20px #ffffff09,0 0 0 40px #ffffff06;z-index:-1}
+#vital-flow .brand:after{height:3px;background:linear-gradient(90deg,#cf2638 0 10%,#77d7ff 10% 100%)}
+#vital-flow .brand img{width:132px;height:64px;border-radius:16px;box-shadow:0 8px 24px #042c6c35}
+#vital-flow .brand span{background:#ffffff17;border:1px solid #ffffff35;padding:8px 10px;border-radius:30px;letter-spacing:1px;font-size:10px;display:flex;align-items:center;gap:6px}
+#vital-flow .brand span:before{content:'';width:6px;height:6px;border-radius:50%;background:#ff6474}
+#vital-flow main{position:relative;padding:28px 24px 30px;background:radial-gradient(ellipse at 100% 0,light-dark(#eaf5ff,#203851),transparent 65%)}
+#vital-flow h1{font-size:33px;line-height:1.1;letter-spacing:-1.2px;margin:17px 0 14px;font-weight:500}
+#vital-flow p{font-size:14px;line-height:1.6}
+#vital-flow .eyebrow{font-size:10px;letter-spacing:1.2px;border-radius:30px;background:var(--soft);padding:7px 10px;color:var(--ink)}
+#vital-flow .primary{border-radius:18px;background:linear-gradient(120deg,#0f4a99,#1c70cc);box-shadow:0 8px 20px #114e9f24;min-height:56px;transition:transform .15s,box-shadow .15s}
+#vital-flow [data-spin],#vital-flow main[data-step="win"] .primary{background:linear-gradient(120deg,#c82337,#e43c4e);box-shadow:0 8px 22px #ce27382b}
+#vital-flow .primary:active{transform:translateY(1px);box-shadow:none}
+#vital-flow .secondary{background:var(--surface);border:1px solid var(--line);border-radius:18px;font-size:14px}
+#vital-flow .camera{height:258px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 70%,#40637f,#0a2037 80%);box-shadow:inset 0 0 45px #08182c70;border:5px solid light-dark(#fff,#2c4660);border-radius:26px}
+#vital-flow .camera:before{content:'';width:94px;height:198px;border:1px solid #a6d7ed80;border-radius:32px 32px 20px 20px;position:absolute;background:linear-gradient(100deg,#abd9f225,#dff9ff75,#78b7db30);top:30px}
+#vital-flow .frame{position:relative;width:180px;height:180px;border:2px solid #a0deff;border-radius:24px;box-shadow:0 0 0 30px #0a203735}
+#vital-flow .frame svg{width:63px;height:63px;padding:8px;background:#fff;color:#102c49;border-radius:7px;box-shadow:0 7px 20px #00132660}
+#vital-flow .camera:after{content:'VITAL · PROMOTIONAL BOTTLE';position:absolute;bottom:12px;color:#d0e8fa;font-size:9px;letter-spacing:1.5px}
+#vital-flow .wheel-area{width:270px;margin:32px auto 26px;border-radius:50%;filter:drop-shadow(0 15px 19px #10478825)}
+#vital-flow .wheel{border:8px solid #fff;outline:1px solid #c1dbf7;background:conic-gradient(from -45deg,#114e9f 0 90deg,#e1efff 90deg 180deg,#1d6ac1 180deg 270deg,#f3f8ff 270deg);box-shadow:0 0 0 7px #d0e4fb,inset 0 0 20px #18579720}
+#vital-flow .wheel:after{content:'';position:absolute;inset:10px;border-radius:50%;border:1px dashed #83afd790;pointer-events:none}
+#vital-flow .wheel span{font-size:12px;font-weight:500;z-index:1}
+#vital-flow .hub{width:52px;height:52px;left:calc(50% - 26px);top:calc(50% - 26px);box-shadow:0 4px 15px #0a377235,0 0 0 3px #cf2638;z-index:2}
+#vital-flow .pointer{top:-10px;filter:drop-shadow(0 3px 2px #7e18293b)}
+#vital-flow .emblem{border-radius:32px;background:linear-gradient(135deg,light-dark(#e8f3ff,#264564),light-dark(#fcfdff,#142c45));box-shadow:inset 0 0 0 1px var(--line),0 15px 24px #114e9f12;transform:rotate(-7deg)}
+#vital-flow .emblem svg{transform:rotate(7deg);stroke-width:1.5}
+#vital-flow .celebrate .emblem{background:linear-gradient(135deg,light-dark(#ffe9ed,#4b283a),light-dark(#fff8f8,#2f2335));box-shadow:inset 0 0 0 1px light-dark(#f8cbd2,#714052),0 12px 30px #ce273812}
+#vital-flow .celebrate:before{font-size:24px;letter-spacing:14px}
+#vital-flow .reward{padding:24px;border-radius:24px;background:linear-gradient(135deg,var(--soft),var(--surface));border:1px solid var(--line);box-shadow:0 10px 22px #13487808;text-align:center}
+#vital-flow .reward:before{width:36px;height:4px;left:calc(50% - 18px);border-radius:0 0 5px 5px}
+#vital-flow .reward h2{font-size:24px;letter-spacing:-.6px}
+#vital-flow .reward small{font-size:10px;letter-spacing:1.5px}
+#vital-flow input{border-radius:16px;min-height:55px;background:var(--surface);box-shadow:0 3px 7px #12447704}
+#vital-flow input:focus-visible{outline:3px solid #4d9ce2;outline-offset:2px}
+#vital-flow label{font-size:13px;font-weight:500}
+#vital-flow .footer{background:var(--surface);border-top:1px solid var(--line);font-size:10px;padding:15px}
+#vital-flow .prize-list{padding:10px 14px;background:var(--soft);border-radius:12px;font-size:11px}
+#vital-flow .review button{border-radius:20px;font-size:11px}
+#vital-flow details{border-top:1px solid var(--line);padding-top:10px}
+#vital-flow select{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:12px}
+@media(prefers-reduced-motion:reduce){#vital-flow .primary{transition:none}}
+/* iPhone 12 Pro Max Frame - Actual Screen: 428px x 926px */
+#vital-flow .iphone-12-promax{position:relative;width:452px;max-width:calc(100vw - 24px);height:950px;max-height:950px;margin:20px auto 32px;padding:12px;background:linear-gradient(145deg,#36373c,#18191b 45%,#2e3034);border-radius:64px;box-shadow:0 0 0 1px #4e5058,0 0 0 3px #131416,0 0 0 4px #2b2c30,0 35px 85px rgba(0,0,0,.45),0 15px 30px rgba(0,0,0,.25);box-sizing:border-box}
+#vital-flow .iphone-silent-switch{position:absolute;left:-4px;top:118px;width:5px;height:32px;background:linear-gradient(to right,#46484e,#1e1f22);border-radius:3px 0 0 3px}
+#vital-flow .iphone-volume-up{position:absolute;left:-4px;top:172px;width:5px;height:58px;background:linear-gradient(to right,#46484e,#1e1f22);border-radius:3px 0 0 3px}
+#vital-flow .iphone-volume-down{position:absolute;left:-4px;top:242px;width:5px;height:58px;background:linear-gradient(to right,#46484e,#1e1f22);border-radius:3px 0 0 3px}
+#vital-flow .iphone-power-button{position:absolute;right:-4px;top:188px;width:5px;height:92px;background:linear-gradient(to left,#46484e,#1e1f22);border-radius:0 3px 3px 0}
+#vital-flow .phone{width:100%!important;max-width:100%!important;height:926px!important;max-height:926px!important;min-height:926px!important;border-radius:52px!important;border:none!important;margin:0!important;overflow:hidden!important;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)!important;display:flex!important;flex-direction:column!important;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",Inter,sans-serif;background:var(--surface);position:relative}
+#vital-flow .iphone-status-bar{display:flex;align-items:center;justify-content:space-between;height:44px;padding:0 24px;position:relative;z-index:20;background:var(--surface);color:var(--ink);user-select:none;flex-shrink:0}
+#vital-flow .iphone-time{font-size:14px;font-weight:600;letter-spacing:-.2px;width:54px;padding-left:4px}
+#vital-flow .iphone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:30px;background:#000;border-bottom-left-radius:20px;border-bottom-right-radius:20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:30}
+#vital-flow .iphone-speaker{width:46px;height:4px;background:#181818;border-radius:4px;border:1px solid #282828}
+#vital-flow .iphone-camera{width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#22446a,#08111e 70%);box-shadow:inset 0 0 2px rgba(255,255,255,.3)}
+#vital-flow .iphone-status-icons{display:flex;align-items:center;gap:6px;padding-right:2px}
+#vital-flow .iphone-icon{display:block}
+#vital-flow .browser{background:var(--surface);padding:8px 14px 10px;display:flex;justify-content:center;align-items:center;gap:6px;font-size:11px;color:var(--muted);border-bottom:1px solid var(--line);flex-shrink:0}
+#vital-flow .browser span{background:var(--soft);padding:4px 14px;border-radius:10px;color:var(--ink);letter-spacing:.3px;display:inline-flex;align-items:center;gap:6px}
+#vital-flow main{flex:1;min-height:0;display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#vital-flow main::-webkit-scrollbar{display:none}
+#vital-flow .iphone-home-indicator{padding:10px 0 14px;display:flex;justify-content:center;align-items:center;background:var(--surface);margin-top:auto;flex-shrink:0;position:relative;z-index:10;box-shadow:0 -1px 4px rgba(0,0,0,.03)}
+#vital-flow .iphone-home-indicator span{width:138px;height:5px;background:light-dark(rgba(0,0,0,.75),rgba(255,255,255,.75));border-radius:100px}
+@media(max-width:480px){#vital-flow .iphone-12-promax{width:100%;max-width:100%;height:auto;max-height:none;margin:0 auto;padding:8px;border-radius:44px;box-shadow:0 12px 32px rgba(0,0,0,.25)}#vital-flow .phone{height:auto!important;max-height:none!important;min-height:0!important;border-radius:36px!important}#vital-flow .iphone-silent-switch,#vital-flow .iphone-volume-up,#vital-flow .iphone-volume-down,#vital-flow .iphone-power-button{display:none}}
+#vital-flow .brand{background:linear-gradient(135deg,#0b387c 0%,#114e9f 55%,#1664c0 100%)!important;color:#ffffff!important;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 16px 16px!important;min-height:80px!important;position:relative;box-shadow:0 4px 20px rgba(11,56,124,.25);border-bottom:none!important}
+#vital-flow .brand:before{display:none!important}
+#vital-flow .brand:after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#cf2638 0 16%,#38bdf8 16% 100%)!important}
+#vital-flow .brand img{width:110px;height:48px;object-fit:contain;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;border-radius:0!important;box-shadow:none!important;background:transparent!important;filter:drop-shadow(0 2px 6px rgba(0,0,0,.22))}
+#vital-flow .app-back-btn{position:relative;z-index:2;background:rgba(255,255,255,.16)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3)!important;border-radius:18px;color:#ffffff!important;height:36px;padding:0 12px 0 8px;display:inline-flex;align-items:center;gap:4px;cursor:pointer;transition:all .18s cubic-bezier(.4,0,.2,1);box-shadow:0 2px 8px rgba(0,0,0,.12);flex-shrink:0;user-select:none;text-decoration:none;font:inherit}
+#vital-flow .app-back-btn:hover{background:rgba(255,255,255,.26)!important;border-color:rgba(255,255,255,.5)!important;color:#ffffff!important;transform:translateX(-2px);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+#vital-flow .app-back-btn:active{transform:scale(.94);background:rgba(255,255,255,.12)!important}
+#vital-flow .app-back-btn svg{flex-shrink:0;display:block;stroke:#ffffff!important}
+#vital-flow .app-back-btn:hover svg{stroke:#ffffff!important}
+#vital-flow .app-back-btn .back-label{background:none!important;border:none!important;padding:0!important;color:#ffffff!important;font-size:13px!important;font-weight:600!important;letter-spacing:normal!important;box-shadow:none!important;display:inline!important}
+#vital-flow .app-back-btn:hover .back-label{color:#ffffff!important}
+#vital-flow .app-back-btn .back-label:before{display:none!important}
+#vital-flow .app-lang-btn{position:relative;z-index:2;background:#ffffff!important;border:1.5px solid #dce4f0!important;border-radius:9999px!important;color:#0c4a9e!important;height:35px!important;padding:0 14px 0 10px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:7px!important;cursor:pointer;transition:all .2s cubic-bezier(.4,0,.2,1);box-shadow:0 2px 8px rgba(11,56,124,.12)!important;flex-shrink:0;user-select:none;text-decoration:none;line-height:1!important}
+#vital-flow .app-lang-btn:hover{background:#f8fafc!important;border-color:#cbd5e1!important;color:#08387a!important;transform:translateY(-1px);box-shadow:0 4px 12px rgba(11,56,124,.18)!important}
+#vital-flow .app-lang-btn:active{transform:scale(.95);background:#f1f5f9!important;box-shadow:0 1px 4px rgba(11,56,124,.1)!important}
+#vital-flow .app-lang-btn svg{flex-shrink:0;display:block;stroke:#0c4a9e!important;width:18px!important;height:18px!important;transition:stroke .2s ease}
+#vital-flow .app-lang-btn:hover svg{stroke:#08387a!important}
+#vital-flow .app-lang-btn #txtV1Lang{color:#0c4a9e!important;font-weight:800!important;font-size:13.5px!important;line-height:1!important;display:inline-block;letter-spacing:-.2px;font-family:'Outfit','Kantumruy Pro',-apple-system,sans-serif!important}
+#vital-flow .app-lang-btn:hover #txtV1Lang{color:#08387a!important}
+html[lang="km"], [lang="km"]{font-family:'Kantumruy Pro','Outfit',-apple-system,sans-serif!important}
+html[lang="km"] .win-title-script{font-family:'Kantumruy Pro','Outfit',sans-serif!important;font-size:34px!important;font-weight:800!important;letter-spacing:.5px!important}
+html[lang="km"] .win-title-stroke{-webkit-text-stroke:7px #07224d!important}
+#vital-flow .camera{background:linear-gradient(160deg,#1c334d 0%,#0b1c2d 100%)!important;height:260px!important;border-radius:24px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:14px!important;margin:18px 0!important;position:relative!important;overflow:hidden!important;border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 1px rgba(255,255,255,.15),0 12px 30px rgba(11,28,45,.25)!important}
+#vital-flow .frame{width:160px!important;height:160px!important;border:2.5px solid rgba(255,255,255,.85)!important;border-radius:18px!important;display:grid!important;place-items:center!important;position:relative!important;overflow:hidden!important;background:rgba(255,255,255,.04)!important;backdrop-filter:blur(4px);box-shadow:0 0 24px rgba(0,0,0,.35),inset 0 0 16px rgba(17,78,159,.25)!important;transition:all .35s cubic-bezier(.4,0,.2,1)!important}
+#vital-flow .frame.detected{border-color:#10b981!important;background:rgba(16,185,129,.1)!important;box-shadow:0 0 32px rgba(16,185,129,.55),inset 0 0 20px rgba(16,185,129,.3)!important;transform:scale(1.04)}
+#vital-flow .frame.detected .scan-laser,#vital-flow .frame.detected .scan-beam{display:none!important}
+#vital-flow .frame svg{width:72px!important;height:72px!important;stroke:#ffffff!important;opacity:.92!important;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))!important;transition:all .3s ease!important}
+#vital-flow .frame.detected svg{stroke:#10b981!important;transform:scale(1.08)}
+#vital-flow .scan-laser{position:absolute;left:0;right:0;height:2.5px;background:linear-gradient(90deg,transparent 0%,#38bdf8 20%,#ffffff 50%,#38bdf8 80%,transparent 100%);box-shadow:0 0 12px #38bdf8,0 0 4px #ffffff;border-radius:2px;z-index:2;animation:scanLaserMove 1.8s ease-in-out infinite alternate}
+#vital-flow .scan-beam{position:absolute;left:0;right:0;top:0;height:40px;background:linear-gradient(180deg,rgba(56,189,248,0.25) 0%,transparent 100%);pointer-events:none;z-index:1;animation:scanBeamMove 1.8s ease-in-out infinite alternate}
+@keyframes scanLaserMove{0%{top:8px}100%{top:calc(100% - 10px)}}
+@keyframes scanBeamMove{0%{top:0}100%{top:calc(100% - 42px)}}
+#vital-flow .scan-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:20px;font-size:12px;font-weight:500;color:#e2e8f0;backdrop-filter:blur(6px);transition:all .3s ease}
+#vital-flow .scan-badge.detected{background:rgba(16,185,129,.2)!important;border-color:rgba(16,185,129,.55)!important;color:#34d399!important;font-weight:600}
+#vital-flow .scan-pulse-dot{width:7px;height:7px;border-radius:50%;background:#38bdf8;box-shadow:0 0 8px #38bdf8;animation:scanDotPulse 1.2s ease-in-out infinite alternate}
+@keyframes scanDotPulse{0%{opacity:.4;transform:scale(.85)}100%{opacity:1;transform:scale(1.2)}}
+#vital-flow .scan-badge.detected .scan-pulse-dot{background:#10b981;box-shadow:0 0 8px #10b981}
+#vital-flow .prize-showcase{position:relative;width:100%;max-width:350px;margin:0 auto 16px;border-radius:22px;overflow:hidden;background:#071c36;border:2.5px solid #38bdf8;box-shadow:0 18px 45px rgba(11,78,168,.4),0 0 24px rgba(56,189,248,.35);animation:prizePulse 3s infinite alternate ease-in-out}
+@keyframes prizePulse{0%{box-shadow:0 16px 36px rgba(11,78,168,.35),0 0 16px rgba(56,189,248,.3);border-color:#38bdf8}100%{box-shadow:0 24px 50px rgba(11,78,168,.55),0 0 32px rgba(56,189,248,.6);border-color:#60a5fa}}
+#vital-flow .prize-showcase img{width:100%;height:auto;display:block;object-fit:cover;border-radius:19px}
+#vital-flow .prize-badge-pill{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,#c82337,#e53e3e);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.2px;padding:5px 12px;border-radius:20px;box-shadow:0 4px 12px rgba(200,35,55,.5);z-index:2}
+#vital-flow .prize-adv-reward{background:linear-gradient(135deg,light-dark(#edf6ff,#18324f),light-dark(#f8fbff,#11263d))!important;border:1px solid light-dark(#c8e1ff,#2f547c)!important}
+
+/* Full Screen Modern Win Celebration Screen */
+#vital-flow .phone:has(main[data-step="win"]) .brand,
+#vital-flow .phone:has(main[data-step="win"]) .browser,
+#vital-flow .phone[data-active-screen="win"] .brand,
+#vital-flow .phone[data-active-screen="win"] .browser {
+  display: none !important;
+}
+#vital-flow .phone:has(main[data-step="win"]) .iphone-status-bar,
+#vital-flow .phone[data-active-screen="win"] .iphone-status-bar {
+  background: transparent !important;
+  color: #ffffff !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 50 !important;
+  pointer-events: none !important;
+}
+#vital-flow .phone:has(main[data-step="win"]) .iphone-status-icons svg,
+#vital-flow .phone[data-active-screen="win"] .iphone-status-icons svg {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
+#vital-flow .phone:has(main[data-step="win"]) .iphone-home-indicator,
+#vital-flow .phone[data-active-screen="win"] .iphone-home-indicator {
+  background: transparent !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 50 !important;
+  pointer-events: none !important;
+}
+#vital-flow .phone:has(main[data-step="win"]) .iphone-home-indicator span,
+#vital-flow .phone[data-active-screen="win"] .iphone-home-indicator span {
+  background: rgba(255, 255, 255, 0.65) !important;
+}
+
+#vital-flow main[data-step="win"]{
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 10 !important;
+  padding: 48px 20px 28px !important;
+  background: radial-gradient(circle at 50% 18%,#123563 0%,#06172d 55%,#020a14 100%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+#vital-flow main[data-step="win"]::-webkit-scrollbar{display:none}
+
+#vital-flow .win-float-back{
+  position: absolute;
+  top: 48px;
+  left: 16px;
+  z-index: 60;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(7, 26, 52, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .2s cubic-bezier(0.2, 0, 0.2, 1);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+#vital-flow .win-float-back:hover{
+  background: rgba(14, 46, 88, 0.92);
+  border-color: rgba(56, 189, 248, 0.7);
+  transform: scale(1.08);
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.35);
+}
+#vital-flow .win-float-back:active{
+  transform: scale(0.94);
+}
+#vital-flow .win-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:auto;z-index:5}
+
+#vital-flow .win-header{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  animation: winHeaderIn .65s cubic-bezier(.16, 1, .3, 1) both;
+  position: relative;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@keyframes winHeaderIn{
+  0%{opacity:0;transform:translateY(-16px) scale(.92)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+
+#vital-flow .win-title-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0 6px;
+  position: relative;
+}
+
+#vital-flow .win-confetti-wrap{
+  position: absolute;
+  inset: -14px -18px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+#vital-flow .confetti-chip{
+  position: absolute;
+  border-radius: 2px;
+  opacity: 0.92;
+  animation: confettiDrift 3.2s ease-in-out infinite alternate;
+}
+#vital-flow .chip-1{ width: 11px; height: 5px; background: #ef4444; top: -12px; left: 14%; transform: rotate(-25deg); animation-delay: 0s; }
+#vital-flow .chip-2{ width: 8px; height: 8px; background: #facc15; top: 6px; left: -4%; transform: rotate(45deg); animation-delay: 0.35s; }
+#vital-flow .chip-3{ width: 13px; height: 5.5px; background: #00b4d8; top: -14px; left: 46%; transform: rotate(15deg); animation-delay: 0.7s; }
+#vital-flow .chip-4{ width: 7px; height: 7px; background: #f472b6; top: -4px; right: 14%; transform: rotate(30deg); animation-delay: 0.25s; }
+#vital-flow .chip-5{ width: 12px; height: 6px; background: #3b82f6; top: -10px; right: 30%; transform: rotate(-15deg); animation-delay: 0.85s; }
+#vital-flow .chip-6{ width: 9px; height: 5px; background: #a855f7; bottom: 4px; left: 6%; transform: rotate(35deg); animation-delay: 0.5s; }
+#vital-flow .chip-7{ width: 11px; height: 5px; background: #facc15; bottom: 2px; right: 28%; transform: rotate(-20deg); animation-delay: 0.65s; }
+#vital-flow .chip-8{ width: 8px; height: 8px; background: #ef4444; bottom: 6px; right: 4%; transform: rotate(18deg); animation-delay: 0.4s; }
+#vital-flow .chip-9{ width: 7px; height: 7px; background: #06b6d4; top: 32%; left: -6%; transform: rotate(50deg); animation-delay: 0.95s; }
+#vital-flow .chip-10{ width: 11px; height: 5px; background: #f43f5e; top: 35%; right: -5%; transform: rotate(-40deg); animation-delay: 0.15s; }
+
+@keyframes confettiDrift{
+  0%{ transform: translateY(0) rotate(0deg) scale(1); }
+  50%{ transform: translateY(-5px) rotate(14deg) scale(1.08); }
+  100%{ transform: translateY(4px) rotate(-12deg) scale(0.96); }
+}
+
+#vital-flow .win-sticker-wrap{
+  position: relative;
+  display: inline-block;
+  transform: rotate(-2.8deg);
+  animation: joyfulPop 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) both, joyfulWiggle 4s infinite ease-in-out 1.2s;
+  z-index: 2;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5));
+}
+
+#vital-flow .win-title-script{
+  position: relative;
+  display: inline-block;
+  font-family: 'Lobster Two', 'Pacifico', cursive !important;
+  font-style: italic !important;
+  font-size: 43px !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.2px !important;
+  margin: 0 !important;
+  padding: 4px 10px !important;
+  text-transform: none !important;
+  white-space: nowrap;
+}
+
+#vital-flow .win-title-stroke{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  -webkit-text-stroke: 10px #ffffff;
+  paint-order: stroke fill;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 3px 0 rgba(17, 78, 159, 0.35)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3));
+}
+
+#vital-flow .win-title-fill{
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  background: linear-gradient(180deg, #38bdf8 0%, #00a4ea 32%, #0284c7 65%, #075985 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+@keyframes joyfulPop{
+  0%{transform: scale(0.65) translateY(-18px) rotate(-6deg); opacity: 0;}
+  60%{transform: scale(1.08) translateY(3px) rotate(-1deg); opacity: 1;}
+  85%{transform: scale(0.98) translateY(-1px) rotate(-3deg);}
+  100%{transform: scale(1) translateY(0) rotate(-2.5deg); opacity: 1;}
+}
+
+@keyframes joyfulWiggle{
+  0%, 100%{ transform: rotate(-2.5deg) scale(1); }
+  50%{ transform: rotate(-1deg) scale(1.025); }
+}
+
+#vital-flow .win-stage{
+  position: relative;
+  width: 100%;
+  max-width: 388px;
+  flex: 1;
+  margin: 6px auto 10px;
+  display: grid;
+  place-items: center;
+  min-height: 480px;
+  max-height: 540px;
+}
+#vital-flow .god-rays{position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%, -50%);background:conic-gradient(from 0deg,rgba(250,204,21,.18) 0deg 15deg,transparent 15deg 30deg,rgba(56,189,248,.18) 30deg 45deg,transparent 45deg 60deg,rgba(250,204,21,.18) 60deg 75deg,transparent 75deg 90deg,rgba(56,189,248,.18) 90deg 105deg,transparent 105deg 120deg,rgba(250,204,21,.18) 120deg 135deg,transparent 135deg 150deg,rgba(56,189,248,.18) 150deg 165deg,transparent 165deg 180deg,rgba(250,204,21,.18) 180deg 195deg,transparent 195deg 210deg,rgba(56,189,248,.18) 210deg 225deg,transparent 225deg 240deg,rgba(250,204,21,.18) 240deg 255deg,transparent 255deg 270deg,rgba(250,204,21,.18) 270deg 285deg,transparent 285deg 300deg,rgba(250,204,21,.18) 300deg 315deg,transparent 315deg 330deg,rgba(56,189,248,.18) 330deg 345deg,transparent 345deg 360deg);border-radius:50%;filter:blur(6px);pointer-events:none;z-index:1;animation:godRaysSpin 24s linear infinite;mask-image:radial-gradient(circle,rgba(0,0,0,1) 32%,transparent 70%);-webkit-mask-image:radial-gradient(circle,rgba(0,0,0,1) 32%,transparent 70%)}
+@keyframes godRaysSpin{0%{transform:translate(-50%, -50%) rotate(0deg)}100%{transform:translate(-50%, -50%) rotate(360deg)}}
+
+#vital-flow .win-gift-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);width:140px;height:140px;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;animation:giftBoxSequence .85s cubic-bezier(.2,0,.2,1) forwards}
+@keyframes giftBoxSequence{0%{transform:translate(-50%, -50%) scale(0) rotate(-15deg);opacity:0}25%{transform:translate(-50%, -50%) scale(1.1) rotate(6deg);opacity:1}40%{transform:translate(-50%, -50%) scale(1) rotate(0deg);opacity:1}65%{transform:translate(-50%, -50%) scale(1.15);opacity:.9;filter:brightness(1.5)}100%{transform:translate(-50%, -50%) scale(0.6);opacity:0;visibility:hidden}}
+#vital-flow .gift-box-base{position:relative;width:104px;height:84px;background:linear-gradient(145deg,#184c8a,#0b2d56);border-radius:14px;border:2px solid #38bdf8;box-shadow:0 14px 32px rgba(0,0,0,.6),0 0 24px rgba(56,189,248,.5);display:flex;justify-content:center}
+#vital-flow .gift-ribbon-v{position:absolute;top:0;bottom:0;width:22px;background:linear-gradient(180deg,#ff2a44,#c82337);box-shadow:0 0 8px rgba(255,42,68,.5)}
+#vital-flow .gift-box-lid{position:absolute;top:-20px;width:118px;height:28px;background:linear-gradient(145deg,#1f64b3,#0f396e);border-radius:8px;border:2px solid #60a5fa;box-shadow:0 6px 16px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:2;animation:lidFlyOff .85s cubic-bezier(.2,0,.2,1) forwards}
+@keyframes lidFlyOff{0%,40%{transform:translateY(0) rotate(0deg);opacity:1}65%{transform:translateY(-50px) rotate(-18deg) scale(1.1);opacity:1}100%{transform:translateY(-140px) rotate(-40deg) scale(1.25);opacity:0}}
+#vital-flow .gift-lid-bow{position:absolute;top:-16px;width:44px;height:22px}
+#vital-flow .gift-lid-bow:before,#vital-flow .gift-lid-bow:after{content:'';position:absolute;width:20px;height:18px;border:3px solid #ff2a44;border-radius:50% 50% 0 50%;top:0;background:rgba(255,42,68,.3)}
+#vital-flow .gift-lid-bow:before{left:2px;transform:rotate(-25deg)}
+#vital-flow .gift-lid-bow:after{right:2px;transform:rotate(25deg) scaleX(-1);border-radius:50% 50% 0 50%}
+
+@property --prize-angle{
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotatePrizeBorder{
+  0%{--prize-angle: 0deg}
+  100%{--prize-angle: 360deg}
+}
+
+@keyframes prizeAuraPulse{
+  0%{
+    box-shadow: 0 24px 60px rgba(0,0,0,.75), 0 0 28px rgba(255,42,68,.45), 0 0 42px rgba(0,180,255,.35);
+  }
+  50%{
+    box-shadow: 0 28px 68px rgba(0,0,0,.8), 0 0 46px rgba(0,180,255,.55), 0 0 56px rgba(255,42,68,.45);
+  }
+  100%{
+    box-shadow: 0 24px 60px rgba(0,0,0,.75), 0 0 28px rgba(255,42,68,.45), 0 0 42px rgba(0,180,255,.35);
+  }
+}
+
+#vital-flow .win-prize-frame{
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  max-height: 524px;
+  border-radius: 30px;
+  padding: 3.5px;
+  background: conic-gradient(from var(--prize-angle, 0deg) at 50% 50%, #ff2a44 0%, #ff6b3d 20%, #00d2ff 48%, #0066ff 72%, #ff2a44 100%);
+  box-sizing: border-box;
+  display: flex;
+  animation: prizeErupt .75s cubic-bezier(0.18,0.89,0.32,1.28) 0.35s both, rotatePrizeBorder 4s linear infinite, prizeAuraPulse 3s ease-in-out infinite;
+  pointer-events: auto;
+}
+
+#vital-flow .win-prize-frame::before{
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 34px;
+  background: conic-gradient(from var(--prize-angle, 0deg) at 50% 50%, #ff2a44 0%, #ff6b3d 20%, #00d2ff 48%, #0066ff 72%, #ff2a44 100%);
+  filter: blur(14px);
+  opacity: 0.75;
+  z-index: -1;
+  pointer-events: none;
+  animation: rotatePrizeBorder 4s linear infinite;
+}
+
+#vital-flow .win-prize-fullscreen{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 26.5px;
+  background: #081a33;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+@keyframes prizeErupt{0%{transform:scale(0.1) translateY(80px);opacity:0;filter:blur(8px)}60%{transform:scale(1.05) translateY(-6px);opacity:1;filter:blur(0)}85%{transform:scale(0.98) translateY(2px)}100%{transform:scale(1) translateY(0);opacity:1}}
+
+#vital-flow .win-prize-media{
+  position: relative;
+  flex: 1;
+  min-height: 380px;
+  width: 100%;
+  overflow: hidden;
+  background: #030c17;
+}
+#vital-flow .win-prize-media img[src*="foldable"]{
+  object-position: center center !important;
+  object-fit: cover !important;
+}
+#vital-flow .win-prize-media img[src*="iphone"]{
+  object-position: center center !important;
+  object-fit: cover !important;
+}
+#vital-flow .win-prize-media img[src*="airpods"],
+#vital-flow .win-prize-media img[src*="apple-watch"]{
+  object-fit: contain !important;
+  padding: 24px !important;
+  background: radial-gradient(circle at 50% 50%, #0d274c 0%, #051427 100%) !important;
+}
+#vital-flow .win-prize-media img[src*="cash"]{
+  object-fit: contain !important;
+  padding: 24px !important;
+  background: radial-gradient(circle at 50% 50%, #ffffff 0%, #edf4fc 100%) !important;
+}
+#vital-flow .prize-img-box img[src*="airpods"],
+#vital-flow .prize-img-box img[src*="apple-watch"]{
+  object-fit: contain !important;
+  padding: 10px !important;
+  background: #06152a !important;
+}
+#vital-flow .prize-img-box img[src*="cash"]{
+  object-fit: contain !important;
+  padding: 10px !important;
+  background: #ffffff !important;
+}
+#vital-flow .reward img[src*="cash"]{
+  object-fit: contain !important;
+  background: #ffffff !important;
+  padding: 6px !important;
+}
+#vital-flow .win-prize-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+/* prize media rules */
+#vital-flow .win-prize-gradient-scrim{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 95px;
+  background: linear-gradient(to top, #081a33 0%, rgba(8,26,51,0.85) 50%, transparent 100%);
+  pointer-events: none;
+}
+#vital-flow .win-badge-pill{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: linear-gradient(135deg,#c82337,#ff2a44);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(200,35,55,.6);
+  z-index: 2;
+}
+#vital-flow .win-prize-meta{
+  padding: 14px 18px 16px;
+  background: #081a33;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+#vital-flow .win-reward-label{
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  color: #facc15;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+#vital-flow .win-prize-title{
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 2px 0 4px;
+  letter-spacing: -.3px;
+}
+#vital-flow .win-prize-sub{
+  font-size: 12.5px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+#vital-flow .win-actions{
+  width: 100%;
+  max-width: 388px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  animation: winActionsIn .5s ease .55s both;
+  pointer-events: auto;
+  position: relative;
+  z-index: 20;
+}
+@keyframes winActionsIn{0%{opacity:0;transform:translateY(16px)}100%{opacity:1;transform:translateY(0)}}
+#vital-flow .win-claim-btn{
+  width: 100%;
+  padding: 16px 22px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg,#e52d27 0%,#b31217 50%,#ff2a44 100%);
+  color: #ffffff!important;
+  font-size: 16.5px;
+  font-weight: 800;
+  letter-spacing: .5px;
+  cursor: pointer;
+  box-shadow: 0 8px 26px rgba(229,45,39,.55), inset 0 1px 0 rgba(255,255,255,.35);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform .2s ease,box-shadow .2s ease;
+}
+#vital-flow .win-claim-btn span{color:#ffffff!important}
+#vital-flow .win-claim-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(229,45,39,.7)}
+#vital-flow .win-claim-btn:after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:rotate(25deg);animation:btnSweep 3s infinite ease-in-out}
+@keyframes btnSweep{0%{left:-60%}35%,100%{left:140%}}
+#vital-flow .spin-top-section{background:linear-gradient(180deg,#153a66 0%,#194d8c 50%,#0e3260 100%);border-radius:0 0 26px 26px;padding:12px 0 14px;box-shadow:0 12px 28px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.15);position:relative;z-index:2;overflow:hidden}
+#vital-flow .spin-top-section:before{content:'';position:absolute;top:-30px;left:50%;transform:translateX(-50%);width:260px;height:120px;background:radial-gradient(ellipse at 50% 50%,rgba(56,189,248,.3) 0%,transparent 70%);pointer-events:none}
+#vital-flow .spin-top-badge{display:flex;align-items:center;justify-content:center;gap:6px;font-size:9.5px;font-weight:800;letter-spacing:1.3px;color:#93c5fd;text-transform:uppercase;margin-bottom:8px}
+#vital-flow .spin-top-badge svg{color:#facc15;fill:#facc15}
+#vital-flow .prize-carousel-viewport{position:relative;width:100%;overflow:hidden;height:228px;padding:4px 0 8px;box-sizing:border-box}
+#vital-flow .prize-carousel-track{display:flex;gap:12px;will-change:transform;transition:transform .35s cubic-bezier(.2,0,.2,1)}
+#vital-flow .prize-carousel-track.is-spinning{filter:drop-shadow(0 0 12px rgba(56,189,248,.35))}
+#vital-flow .prize-carousel-card{flex:0 0 252px;width:252px;height:210px;border-radius:18px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.16);padding:6px;text-align:center;backdrop-filter:blur(8px);transition:transform .35s cubic-bezier(.2,0,.2,1),opacity .35s ease,border-color .35s ease,box-shadow .35s ease;cursor:pointer;position:relative;user-select:none;opacity:.55;transform:scale(.88);display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box}
+#vital-flow .prize-carousel-card.active{opacity:1;transform:scale(1.02);border-color:#38bdf8;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(56,189,248,.08));box-shadow:0 8px 26px rgba(0,0,0,.45),0 0 20px rgba(56,189,248,.32);animation:prizeSnap .45s cubic-bezier(.34,1.56,.64,1)}
+#vital-flow .prize-carousel-card.hero-prize.active{border-color:#facc15;background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(250,204,21,.12));box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 26px rgba(250,204,21,.4);animation:heroPrizeSnap .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes prizeSnap{0%{transform:scale(.92)}50%{transform:scale(1.05)}100%{transform:scale(1.02)}}
+@keyframes heroPrizeSnap{0%{transform:scale(.92)}50%{transform:scale(1.07)}100%{transform:scale(1.02)}}
+#vital-flow .prize-img-box{width:100%;height:100%;border-radius:13px;overflow:hidden;background:#040d18;margin:0;border:1px solid rgba(255,255,255,.12);position:relative}
+#vital-flow .prize-img-box img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+#vital-flow .prize-carousel-card:hover .prize-img-box img{transform:scale(1.04)}
+#vital-flow .spin-bottom-section{flex:1;padding:4px 16px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:transparent;box-sizing:border-box}
+#vital-flow .spin-headings{text-align:center;margin:0}
+#vital-flow .spin-headings h2{font-size:21px;font-weight:800;letter-spacing:-.3px;margin:0;color:#ffffff;text-shadow:0 2px 12px rgba(56,189,248,.4)}
+#vital-flow .wheel-stage{position:relative;width:388px;height:388px;margin:0 auto;display:grid;place-items:center}
+#vital-flow .wheel-arrow{position:absolute;top:-14px;left:50%;transform:translateX(-50%);z-index:20;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45)) drop-shadow(0 0 12px rgba(56,189,248,.5))}
+#vital-flow .wheel-bezel{position:relative;width:388px;height:388px;border-radius:50%;padding:8px;background:linear-gradient(145deg,#ffffff 0%,#e1efff 35%,#0e4b97 100%);box-shadow:0 0 0 3.5px #114e9f,0 0 0 7px #ffffff,0 16px 40px rgba(17,78,159,.45),0 0 30px rgba(56,189,248,.35);box-sizing:border-box}
+#vital-flow .wheel-plate{width:100%;height:100%;border-radius:50%;position:relative;overflow:hidden;transition:transform 3.8s cubic-bezier(0.12, 0.9, 0.18, 1);box-shadow:inset 0 0 14px rgba(17,78,159,.35)}
+#vital-flow .wheel-plate svg{width:100%;height:100%;display:block}
+#vital-flow .wheel-center-btn{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);width:92px;height:92px;border-radius:50%;border:3.5px solid #ffffff !important;background:linear-gradient(135deg,#cf2638 0%,#e5394b 26%,#165ec2 74%,#114e9f 100%) !important;background-size:250% 250% !important;animation:flatGradientShift 6.5s ease-in-out infinite alternate;color:#ffffff;display:grid;place-items:center;cursor:pointer;z-index:25;padding:0;box-shadow:0 4px 14px rgba(17,78,159,.25) !important;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s ease;user-select:none;touch-action:manipulation;pointer-events:auto !important}
+#vital-flow .wheel-center-btn:hover{transform:translate(-50%, -50%) scale(1.05);box-shadow:0 6px 18px rgba(17,78,159,.35) !important}
+#vital-flow .wheel-center-btn:active{transform:translate(-50%, -50%) scale(.95)}
+#vital-flow .wheel-center-btn:disabled{cursor:not-allowed;opacity:.9}
+#vital-flow .wheel-center-btn span{font-size:20px;font-weight:900;letter-spacing:2px;color:#ffffff;text-transform:uppercase;pointer-events:none;line-height:1;margin-left:2px}
+#vital-flow .wheel-center-btn.spinning{animation:flatGradientSpinning 1.2s ease-in-out infinite alternate}
+@keyframes flatGradientShift{0%{background-position:0% 20%}50%{background-position:100% 80%}100%{background-position:0% 20%}}
+@keyframes flatGradientSpinning{0%{background-position:0% 20%;transform:translate(-50%, -50%) scale(1.02)}100%{background-position:100% 80%;transform:translate(-50%, -50%) scale(.98)}}
+
+/* ==========================================================================
+   Spin Screen Layout & Visual Overhaul (Inside Srcdoc)
+   ========================================================================== */
+#vital-flow .phone:has(main[data-step="spin"]) .iphone-status-bar,
+#vital-flow .phone[data-active-screen="spin"] .iphone-status-bar {
+  background: #08162b !important;
+}
+#vital-flow .phone:has(main[data-step="spin"]) .iphone-time,
+#vital-flow .phone[data-active-screen="spin"] .iphone-time {
+  color: #ffffff !important;
+}
+#vital-flow .phone:has(main[data-step="spin"]) .iphone-status-icons svg,
+#vital-flow .phone[data-active-screen="spin"] .iphone-status-icons svg {
+  fill: #ffffff !important;
+}
+#vital-flow .phone:has(main[data-step="spin"]) .browser,
+#vital-flow .phone[data-active-screen="spin"] .browser {
+  display: none !important;
+}
+#vital-flow .phone:has(main[data-step="spin"]) .brand,
+#vital-flow .phone[data-active-screen="spin"] .brand {
+  background: #08162b !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.18) !important;
+  padding: 10px 18px !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,.35) !important;
+}
+#vital-flow .phone:has(main[data-step="spin"]) .brand:after,
+#vital-flow .phone[data-active-screen="spin"] .brand:after {
+  display: none !important;
+}
+#vital-flow .phone:has(main[data-step="spin"]) .brand .app-back-btn,
+#vital-flow .phone[data-active-screen="spin"] .brand .app-back-btn {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+#vital-flow main[data-step="spin"] {
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  background: linear-gradient(180deg, #0e3d77 0%, #114e9f 35%, #0b346b 75%, #072348 100%) !important;
+}
+#vital-flow main[data-step="spin"]::-webkit-scrollbar {
+  display: none !important;
+}
+
+#vital-flow .spin-top-section {
+  width: 100% !important;
+  padding: 8px 0 10px !important;
+  background: rgba(14, 38, 68, 0.38) !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.16) !important;
+  position: relative !important;
+  z-index: 2 !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25) !important;
+}
+
+#vital-flow .spin-top-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #93c5fd;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+#vital-flow .prize-carousel-viewport {
+  position: relative !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  padding: 4px 0 8px !important;
+  height: 228px !important;
+  box-sizing: border-box !important;
+}
+
+#vital-flow .prize-carousel-track {
+  display: flex !important;
+  gap: 12px !important;
+  will-change: transform !important;
+  transition: transform .35s cubic-bezier(.2,0,.2,1);
+}
+
+#vital-flow .prize-carousel-track.is-spinning {
+  transition: transform 3.8s cubic-bezier(0.12, 0.9, 0.18, 1) !important;
+  filter: drop-shadow(0 0 12px rgba(56,189,248,.35));
+}
+
+#vital-flow .prize-carousel-card {
+  flex: 0 0 252px !important;
+  width: 252px !important;
+  height: 210px !important;
+  box-sizing: border-box !important;
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.16) !important;
+  padding: 6px !important;
+  text-align: center !important;
+  backdrop-filter: blur(8px) !important;
+  transition: transform .35s cubic-bezier(.2,0,.2,1), opacity .35s ease, border-color .35s ease, box-shadow .35s ease !important;
+  cursor: pointer !important;
+  position: relative !important;
+  user-select: none !important;
+  opacity: 0.55 !important;
+  transform: scale(0.88) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+#vital-flow .prize-carousel-card.active {
+  opacity: 1 !important;
+  transform: scale(1.02) !important;
+  border-color: #38bdf8 !important;
+  background: linear-gradient(145deg, rgba(255,255,255,.16), rgba(56,189,248,.08)) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.45), 0 0 18px rgba(56,189,248,.32) !important;
+}
+
+#vital-flow .prize-carousel-card.hero-prize.active {
+  border-color: #facc15 !important;
+  background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(250,204,21,.12)) !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,.5), 0 0 22px rgba(250,204,21,.38) !important;
+}
+
+#vital-flow .prize-img-box {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 13px !important;
+  overflow: hidden !important;
+  background: #040d18 !important;
+  margin: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  position: relative !important;
+}
+
+#vital-flow .prize-img-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform .3s ease !important;
+}
+
+#vital-flow .spin-bottom-section {
+  flex: 1 !important;
+  width: 100% !important;
+  padding: 4px 16px 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 28px !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+}
+
+#vital-flow .spin-headings {
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+#vital-flow .spin-headings h2 {
+  font-size: 21px !important;
+  font-weight: 800 !important;
+  letter-spacing: -.3px !important;
+  margin: 0 !important;
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(56, 189, 248, 0.4);
+}
+
+#vital-flow .wheel-stage {
+  position: relative !important;
+  width: 388px !important;
+  height: 388px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  place-items: center !important;
+}
+
+#vital-flow .wheel-arrow {
+  position: absolute !important;
+  top: -14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 20 !important;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.45)) drop-shadow(0 0 12px rgba(56,189,248,.5)) !important;
+}
+
+#vital-flow .wheel-bezel {
+  position: relative !important;
+  width: 388px !important;
+  height: 388px !important;
+  border-radius: 50% !important;
+  padding: 8px !important;
+  background: linear-gradient(145deg, #ffffff 0%, #e1efff 35%, #0e4b97 100%) !important;
+  box-shadow: 0 0 0 3.5px #114e9f, 0 0 0 7px #ffffff, 0 16px 40px rgba(17,78,159,.45), 0 0 30px rgba(56,189,248,.35) !important;
+  box-sizing: border-box !important;
+}
+
+#vital-flow .phone:has(main[data-step="spin"]) .iphone-home-indicator,
+#vital-flow .phone[data-active-screen="spin"] .iphone-home-indicator {
+  background: #072348 !important;
+  box-shadow: none !important;
+}
+#vital-flow .phone:has(main[data-step="spin"]) .iphone-home-indicator span,
+#vital-flow .phone[data-active-screen="spin"] .iphone-home-indicator span {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+</style>
+<div id="vital-flow" class="viz-dotted-background">
+<header style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:452px;margin:12px auto 6px;padding:8px 14px;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border:1px solid rgba(226,232,240,0.8);border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,0.06);z-index:99;position:relative;">
+  <div style="display:flex;align-items:center;gap:8px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#114e9f;">
+    <span style="width:20px;height:20px;background:#114e9f;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:11px;">💧</span>
+    <span>Vital Scan &amp; Win</span>
+  </div>
+  <nav style="display:flex;gap:4px;background:#f1f5f9;padding:3px;border-radius:999px;border:1px solid #e2e8f0;">
+    <a href="index.html" style="text-decoration:none;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;background:#114e9f;color:#fff;">UI V1 (Classic)</a>
+    <a href="v2.html" style="text-decoration:none;font-size:12px;font-weight:600;padding:5px 12px;border-radius:999px;color:#64748b;">UI V2 (Minimal ✨)</a>
+  </nav>
+</header>
+<div class="iphone-12-promax"><div class="iphone-silent-switch"></div><div class="iphone-volume-up"></div><div class="iphone-volume-down"></div><div class="iphone-power-button"></div><article class="phone" aria-label="Vital mobile web prize flow"><div class="iphone-status-bar"><span class="iphone-time">9:41</span><div class="iphone-notch"><span class="iphone-speaker"></span><span class="iphone-camera"></span></div><div class="iphone-status-icons"><svg class="iphone-icon" width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="8" width="3" height="3" rx="0.5"/><rect x="4.5" y="5.5" width="3" height="5.5" rx="0.5"/><rect x="9" y="3" width="3" height="8" rx="0.5"/><rect x="13.5" y="0" width="3" height="11" rx="0.5"/></svg><svg class="iphone-icon" width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 8.8a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zm-3.5-2.5a5 5 0 0 1 7 0 .7.7 0 0 1-.1 1 .7.7 0 0 1-1-.1 3.6 3.6 0 0 0-4.8 0 .7.7 0 0 1-1 .1.7.7 0 0 1-.1-1zm-2.6-2.6a8.7 8.7 0 0 1 12.2 0 .7.7 0 0 1-.1 1 .7.7 0 0 1-1-.1 7.3 7.3 0 0 0-10 0 .7.7 0 0 1-1 .1.7.7 0 0 1-.1-1z"/></svg><svg class="iphone-icon" width="24" height="12" viewBox="0 0 25 12" fill="currentColor"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" fill="none" stroke="currentColor" stroke-width="1"/><rect x="2.5" y="2.5" width="15" height="7" rx="2"/><path d="M23 4v4a1.5 1.5 0 0 0 1.5-1.5v-1A1.5 1.5 0 0 0 23 4z"/></svg></div></div><div class="browser"><span><i data-lucide="globe" aria-hidden="true"></i>vital.com.kh/scan-win</span></div><header class="brand"><button type="button" class="app-back-btn cursor-interaction" id="app-back-btn" aria-label="Go back" title="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg><span class="back-label" id="txtV1Back">Back</span></button><img src="vital-logo-white.png" alt="Vital Premium Water" class="brand-logo-img"><button type="button" class="app-lang-btn cursor-interaction" id="app-lang-btn" aria-label="Change language" title="Switch to Khmer / ប្តូរជាភាសាខ្មែរ"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><line x1="2.5" y1="12" x2="21.5" y2="12"/><line x1="12" y1="2.5" x2="12" y2="21.5"/><ellipse cx="12" cy="12" rx="4.8" ry="9.5"/></svg><span id="txtV1Lang">ខ្មែរ</span></button></header><main></main><div class="iphone-home-indicator"><span></span></div></article></div>
+</div>
+<script>
+(() => {
+const root=document.getElementById('vital-flow'),main=root.querySelector('main');
+let timer=null,selected='win-foldable';
+const icon=n=>`<i data-lucide="${n}" aria-hidden="true"></i>`;
+const btn=(text,to,type='primary')=>`<button type="button" class="${type} cursor-interaction" data-screen="${to}">${text}</button>`;
+const allowed=['scan','manual','spin','win','lose','info','done'];
+let current=allowed.includes(window.openai?.widgetState?.privateContent?.screen)?window.openai.widgetState.privateContent.screen:'win';
+const backBtn=root.querySelector('#app-back-btn');
+const langBtn=root.querySelector('#app-lang-btn');
+const historyStack=[];
+const prevScreenMap={scan:null,manual:'scan',spin:'scan',win:'spin',lose:'spin',info:'win',done:'info'};
+
+let v1Lang = 'en';
+
+const v1Translations = {
+  en: {
+    langBtn: 'ខ្មែរ',
+    langTitle: 'Switch to Khmer / ប្តូរជាភាសាខ្មែរ',
+    back: 'Back',
+    backTitle: {
+      scan: 'First screen',
+      manual: 'Back to scan QR',
+      spin: 'Back to scan QR',
+      win: 'Back to wheel',
+      lose: 'Back to wheel',
+      info: 'Back to prize result',
+      done: 'Back to winner info'
+    },
+    scan: {
+      title: 'Scan your Vital QR',
+      desc: 'Place the promotional QR inside the frame.',
+      status: 'Scanning bottle QR…',
+      statusDetected: 'Promotional QR code verified!',
+      manualBtn: 'Can’t scan? Enter code'
+    },
+    manual: {
+      title: 'Enter bottle code',
+      desc: 'Find the code printed beside your bottle’s QR.',
+      labelCode: 'Bottle code',
+      hint: 'Try VT7K 8M2P in this preview.',
+      btnCheck: 'Check code',
+      btnBack: 'Back to scan',
+      errInvalid: 'Code not recognized. For this demo, enter VT7K 8M2P.'
+    },
+    spin: {
+      topBadge: 'LUCKY DRAW PRIZES',
+      title: 'Spin to Win',
+      centerBtn: 'SPIN'
+    },
+    win: {
+      titleStroke: 'Congratulations',
+      titleFill: 'Congratulations',
+      claimBtn: 'Claim Your Prize',
+      officialReward: 'OFFICIAL REWARD',
+      backToWheel: 'Back to wheel'
+    },
+    lose: {
+      title: 'No prize this time',
+      desc: 'Thanks for choosing Vital.<br>Another promotional bottle brings another chance.',
+      refreshTitle: 'Keep refreshed!',
+      refreshDesc: 'This bottle’s entry is complete.',
+      btnAnother: 'Scan another bottle',
+      small: 'Each code has one result.'
+    },
+    info: {
+      title: 'Let’s save<br>your prize.',
+      desc: 'Enter your details so we can contact you about your reward.',
+      labelName: 'Full name',
+      phName: 'Enter your full name',
+      labelPhone: 'Phone number',
+      phPhone: 'Enter your phone number',
+      notice: 'Your details will be used to manage your prize claim.',
+      btnSubmit: 'Submit claim',
+      demo: 'Demo only. Details are not sent or saved.',
+      errValidation: 'Enter your name and a phone number with 8–15 digits.'
+    },
+    done: {
+      title: 'Claim received!',
+      desc: 'You’re one step closer to your reward.',
+      yourPrize: 'YOUR PRIZE',
+      sampleRef: 'Sample reference:',
+      btnAnother: 'Scan another bottle',
+      previewNotice: 'Preview confirmation · no real claim was submitted'
+    }
+  },
+  km: {
+    langBtn: 'English',
+    langTitle: 'Switch to English / ប្តូរជាភាសាអង់គ្លេស',
+    back: 'ត្រឡប់ក្រោយ',
+    backTitle: {
+      scan: 'អេក្រង់ដំបូង',
+      manual: 'ត្រឡប់ទៅស្កេន QR',
+      spin: 'ត្រឡប់ទៅស្កេន QR',
+      win: 'ត្រឡប់ទៅកងបង្វិល',
+      lose: 'ត្រឡប់ទៅកងបង្វិល',
+      info: 'ត្រឡប់ទៅលទ្ធផលរង្វាន់',
+      done: 'ត្រឡប់ទៅព័ត៌មានអ្នកឈ្នះ'
+    },
+    scan: {
+      title: 'ស្កេន QR វីតាល់របស់អ្នក',
+      desc: 'សូមដាក់ QR ប្រូម៉ូសិននៅចំកណ្តាលស៊ុម។',
+      status: 'កំពុងស្កេន QR កូដ…',
+      statusDetected: 'បានផ្ទៀងផ្ទាត់ QR ប្រូម៉ូសិនជោគជ័យ!',
+      manualBtn: 'ស្កេនមិនបាន? បញ្ចូលលេខកូដ'
+    },
+    manual: {
+      title: 'បញ្ចូលលេខកូដដប',
+      desc: 'ស្វែងរកលេខកូដដែលបានបោះពុម្ពក្បែរ QR ដបរបស់អ្នក។',
+      labelCode: 'លេខកូដដប',
+      hint: 'សាកល្បង VT7K 8M2P ក្នុងការសាកល្បងនេះ។',
+      btnCheck: 'ពិនិត្យលេខកូដ',
+      btnBack: 'ត្រឡប់ទៅស្កេនវិញ',
+      errInvalid: 'កូដមិនត្រឹមត្រូវ។ សម្រាប់ការសាកល្បងនេះ សូមបញ្ចូល VT7K 8M2P។'
+    },
+    spin: {
+      topBadge: 'រង្វាន់ចាប់ឆ្នោតសំណាង',
+      title: 'បង្វិលដើម្បីឈ្នះរង្វាន់',
+      centerBtn: 'បង្វិល'
+    },
+    win: {
+      titleStroke: 'អបអរសាទរ',
+      titleFill: 'អបអរសាទរ',
+      claimBtn: 'ទទួលយករង្វាន់របស់អ្នក',
+      officialReward: 'រង្វាន់ផ្លូវការ',
+      backToWheel: 'ត្រឡប់ទៅកងបង្វិល'
+    },
+    lose: {
+      title: 'មិនមានរង្វាន់ទេលើកនេះ',
+      desc: 'សូមអរគុណសម្រាប់ការជ្រើសរើសវីតាល់។<br>ដបប្រូម៉ូសិនបន្ទាប់នាំមកនូវឱកាសថ្មី។',
+      refreshTitle: 'បន្តស្រស់ស្រាយ!',
+      refreshDesc: 'ការចូលរួមរបស់ដបនេះត្រូវបានបញ្ចប់។',
+      btnAnother: 'ស្កេនដបមួយទៀត',
+      small: 'កូដនីមួយៗមានលទ្ធផលតែមួយ។'
+    },
+    info: {
+      title: 'រក្សាទុករង្វាន់<br>របស់អ្នក',
+      desc: 'សូមបញ្ចូលព័ត៌មានទំនាក់ទំនង ដើម្បីក្រុមការងារវីតាល់អាចទាក់ទងប្រគល់រង្វាន់។',
+      labelName: 'ឈ្មោះពេញ',
+      phName: 'បញ្ចូលឈ្មោះពេញរបស់អ្នក',
+      labelPhone: 'លេខទូរស័ព្ទ',
+      phPhone: 'បញ្ចូលលេខទូរស័ព្ទរបស់អ្នក',
+      notice: 'ព័ត៌មានរបស់អ្នកនឹងត្រូវប្រើប្រាស់ដើម្បីគ្រប់គ្រងការទាមទាររង្វាន់។',
+      btnSubmit: 'ដាក់ស្នើទាមទាររង្វាន់',
+      demo: 'សម្រាប់ការសាកល្បងប៉ុណ្ណោះ។ ព័ត៌មានមិនត្រូវបានបញ្ជូន ឬរក្សាទុកឡើយ។',
+      errValidation: 'សូមបញ្ចូលឈ្មោះ និងលេខទូរស័ព្ទដែលមានពី ៨ ដល់ ១៥ ខ្ទង់។'
+    },
+    done: {
+      title: 'បានទទួលការទាមទាររង្វាន់!',
+      desc: 'អ្នកកាន់តែខិតជិតទទួលបានរង្វាន់របស់អ្នកហើយ។',
+      yourPrize: 'រង្វាន់របស់អ្នក',
+      sampleRef: 'លេខយោងគំរូ:',
+      btnAnother: 'ស្កេនដបមួយទៀត',
+      previewNotice: 'ការបញ្ជាក់គំរូ · មិនមានការទាមទារពិតប្រាកដត្រូវបានដាក់ស្នើទេ'
+    }
+  }
+};
+
+const prizesData={
+  'win-foldable':{badge:'GRAND PRIZE',badgeKm:'រង្វាន់ធំ',name:'Foldable Smartphone',nameKm:'ទូរស័ព្ទបត់ Foldable',sub:'Next-Gen Ultra Flagship Device',subKm:'ឧបករណ៍ទំនើបជំនាន់ចុងក្រោយ',img:'prize-foldable.png',claimText:'Claim Your Prize',ref:'VTL-FLD-8899',handover:'Our official Vital team will verify your winning bottle and contact you for the Foldable Smartphone handover ceremony.',handoverKm:'ក្រុមការងារផ្លូវការវីតាល់នឹងផ្ទៀងផ្ទាត់ដបឈ្នះរបស់អ្នក ហើយទាក់ទងមកអ្នកសម្រាប់ពិធីប្រគល់ទូរស័ព្ទបត់។'},
+  'win-airpods':{badge:'EXCLUSIVE AUDIO',badgeKm:'កាសពិសេស',name:'Apple AirPods Max',nameKm:'Apple AirPods Max',sub:'High-Fidelity Wireless Over-Ear Headphones',subKm:'កាសឥតខ្សែសំឡេងកម្រិតខ្ពស់',img:'prize-airpods-max.png',claimText:'Claim Your Prize',ref:'VTL-APM-3320',handover:'Your Apple AirPods Max will be packaged and delivered to your registered phone and address.',handoverKm:'កាស Apple AirPods Max របស់អ្នកនឹងត្រូវរៀបចំវេចខ្ចប់ និងដឹកជញ្ជូនជូនតាមលេខទូរស័ព្ទ និងអាសយដ្ឋានដែលបានចុះឈ្មោះ។'},
+  'win-voucher':{badge:'INSTANT CASH REWARD',badgeKm:'រង្វាន់ប្រាក់សុទ្ធ',name:'$5 Cash Voucher',nameKm:'ប័ណ្ណប្រាក់សុទ្ធ $5',sub:'Redeemable at 1,500+ participating retail partners',subKm:'អាចប្រើប្រាស់បាននៅដៃគូចែកចាយជាង ១,៥០០+ កន្លែង',img:'prize-cash5.png',claimText:'Claim Your Prize',ref:'VTL-VCH-5520',handover:'Your $5 digital voucher QR and redemption code will be sent to your verified mobile number.',handoverKm:'QR ប័ណ្ណទឹកប្រាក់ $5 និងកូដប្តូររង្វាន់នឹងត្រូវផ្ញើជូនតាមលេខទូរស័ព្ទដែលបានបញ្ជាក់របស់អ្នក។'},
+  'win-watch':{badge:'SMART WEARABLE',badgeKm:'ឧបករណ៍វៃឆ្លាត',name:'Apple Watch Series',nameKm:'Apple Watch Series',sub:'Advanced Health, Fitness & Connected Smartwatch',subKm:'នាឡិកាវៃឆ្លាតតាមដានសុខភាព និងលំហាត់ប្រាណ',img:'prize-apple-watch.png',claimText:'Claim Your Prize',ref:'VTL-WAT-7711',handover:'Your Apple Watch will be delivered to your registered phone and delivery address.',handoverKm:'Apple Watch របស់អ្នកនឹងត្រូវដឹកជញ្ជូនជូនតាមលេខទូរស័ព្ទ និងអាសយដ្ឋានដែលបានចុះឈ្មោះ។'},
+  'win-cash1':{badge:'INSTANT REWARD',badgeKm:'រង្វាន់ភ្លាមៗ',name:'$1 Cash Voucher',nameKm:'ប័ណ្ណប្រាក់សុទ្ធ $1',sub:'Direct mobile top-up or partner store voucher',subKm:'បញ្ចូលកាតទូរស័ព្ទភ្លាមៗ ឬទិញទំនិញនៅហាងដៃគូ',img:'prize-cash1.png',claimText:'Claim Your Prize',ref:'VTL-CSH-1088',handover:'Your $1 digital reward code will be sent directly to your phone via SMS.',handoverKm:'កូដរង្វាន់ឌីជីថល $1 របស់អ្នកនឹងត្រូវផ្ញើផ្ទាល់តាមសារ SMS ទៅកាន់លេខទូរស័ព្ទរបស់អ្នក។'},
+  'win-watercase':{badge:'VITAL REFRESH PACK',badgeKm:'កញ្ចប់វីតាល់',name:'1 Case of Vital Water (24x500ml)',nameKm:'ទឹកពិសាបរិសុទ្ធ វីតាល់ ១កេស (២៤ដប)',sub:'Natural premium mineral water 24 bottles',subKm:'ទឹកពិសាបរិសុទ្ធធម្មជាតិ ២៤ដប ចំណុះ ៥០០មល',img:'prize-watercase.jpg',claimText:'Claim Your Prize',ref:'VTL-CAS-1205',handover:'Your 24-pack Vital mineral water case will be ready for pickup or direct delivery.',handoverKm:'ទឹកពិសាបរិសុទ្ធវីតាល់ ២៤ដប របស់អ្នកនឹងត្រូវរៀបចំរួចរាល់សម្រាប់ការមកយក ឬដឹកជញ្ជូនជូន។'},
+  'win-iphone':{badge:'PREMIUM FLAGSHIP',badgeKm:'រង្វាន់ធំពិសេស',name:'iPhone 16 Pro',nameKm:'iPhone 16 Pro',sub:'Titanium Design with Super Retina XDR Display',subKm:'រចនាបថទីតានីញ៉ូមទំនើប អេក្រង់ Super Retina XDR',img:'prize-iphone16pro.png',claimText:'Claim Your Prize',ref:'VTL-IPH-1699',handover:'Our official Vital team will verify your winning bottle and contact you for the iPhone 16 Pro handover.',handoverKm:'ក្រុមការងារផ្លូវការវីតាល់នឹងផ្ទៀងផ្ទាត់ដបឈ្នះរបស់អ្នក ហើយទាក់ទងមកអ្នកសម្រាប់ការប្រគល់ iPhone 16 Pro។'},
+  'win-gift':{badge:'SPECIAL GIFT PACK',badgeKm:'កាដូពិសេស',name:'Vital Premium Gift Pack',nameKm:'កញ្ចប់កាដូវីតាល់ពិសេស',sub:'Eco bottle, tote bag & 1-month Vital pack',subKm:'ដបទឹកអេកូ កាបូបយួរ និងកញ្ចប់ទឹកវីតាល់ ១ខែ',img:'prize-giftpack.jpg',claimText:'Claim Your Prize',ref:'VTL-GFT-1042',handover:'Our Vital team will deliver your premium gift pack to your registered address or local hub.',handoverKm:'ក្រុមការងារវីតាល់នឹងដឹកជញ្ជូនកញ្ចប់កាដូពិសេសរបស់អ្នកទៅកាន់អាសយដ្ឋាន ឬសាខាដែលនៅជិតលោកអ្នក។'},
+  'win-tumbler':{badge:'EXCLUSIVE MERCH',badgeKm:'វត្ថុអនុស្សាវរីយ៍',name:'Vital Stainless Tumbler',nameKm:'កែវទឹកអ៊ីណុក វីតាល់',sub:'Double-wall vacuum insulated 750ml tumbler',subKm:'កែវអ៊ីណុក ២ជាន់ រក្សាកម្តៅ & ត្រជាក់ ចំណុះ ៧៥០មល',img:'prize-tumbler.jpg',claimText:'Claim Your Prize',ref:'VTL-TMB-3011',handover:'Your premium Vital tumbler will be delivered to your registered phone and address.',handoverKm:'កែវទឹកអ៊ីណុកវីតាល់របស់អ្នកនឹងត្រូវដឹកជញ្ជូនជូនតាមលេខទូរស័ព្ទ និងអាសយដ្ឋានដែលបានចុះឈ្មោះ។'}
+};
+let currentPrize='win-foldable';
+
+const wheelItems = [
+  { id: 'win-foldable', name: 'Foldable Smartphone', nameKm: 'ទូរស័ព្ទបត់ Foldable', pill: 'Grand Prize', sub: 'Next-Gen Ultra Flagship', img: 'prize-foldable.png', hero: true, deg: 1800 },
+  { id: 'win-airpods', name: 'AirPods Max', nameKm: 'AirPods Max', pill: 'Hi-Fi Audio', sub: 'Wireless Over-Ear Headphones', img: 'prize-airpods-max.png', hero: false, deg: 1770 },
+  { id: 'win-voucher', name: '$5 Cash Voucher', nameKm: 'ប័ណ្ណប្រាក់ $5', pill: 'Cash Reward', sub: '1,500+ Partner Stores', img: 'prize-cash5.png', hero: false, deg: 1740 },
+  { id: 'lose-1', name: 'Try Again', nameKm: 'សាកល្បងម្តងទៀត', pill: 'Next Bottle', sub: 'Keep Refreshed With Vital', img: 'prize-tryagain.jpg', hero: false, deg: 1710, isLose: true },
+  { id: 'win-watch', name: 'Apple Watch', nameKm: 'Apple Watch', pill: 'Smartwatch', sub: 'Health & Fitness Tracker', img: 'prize-apple-watch.png', hero: false, deg: 1680 },
+  { id: 'win-cash1', name: '$1 Cash Voucher', nameKm: 'ប័ណ្ណប្រាក់ $1', pill: 'Instant Reward', sub: 'Mobile Top-Up / Store Voucher', img: 'prize-cash1.png', hero: false, deg: 1650 },
+  { id: 'lose', name: 'No Prize', nameKm: 'គ្មានរង្វាន់', pill: 'Next Bottle', sub: 'Another Sip Another Chance', img: 'prize-tryagain.jpg', hero: false, deg: 1620, isLose: true },
+  { id: 'win-watercase', name: 'Vital Water Case', nameKm: 'ទឹក ១កេស', pill: 'Refresh Pack', sub: '24 Bottles x 500ml Pack', img: 'prize-watercase.jpg', hero: false, deg: 1590 },
+  { id: 'win-iphone', name: 'iPhone 16 Pro', nameKm: 'iPhone 16 Pro', pill: 'Flagship Tech', sub: 'Titanium Apple Flagship', img: 'prize-iphone16pro.png', hero: false, deg: 1560 },
+  { id: 'lose-2', name: 'Try Again', nameKm: 'សាកល្បងម្តងទៀត', pill: 'Next Bottle', sub: 'Keep Refreshed With Vital', img: 'prize-tryagain.jpg', hero: false, deg: 1530, isLose: true },
+  { id: 'win-gift', name: 'Vital Gift Pack', nameKm: 'កាដូវីតាល់', pill: 'Special Reward', sub: 'Eco Bottle & Gift Box Set', img: 'prize-giftpack.jpg', hero: false, deg: 1500 },
+  { id: 'win-tumbler', name: 'Vital Tumbler', nameKm: 'កែវអ៊ីណុក', pill: 'Exclusive Merch', sub: 'Stainless Vacuum Insulated', img: 'prize-tumbler.jpg', hero: false, deg: 1470 }
+];
+
+let currentCardIndex = 24;
+
+function updateBackButton(screen){
+  if(!backBtn)return;
+  const t = v1Translations[v1Lang];
+  if(screen==='scan'){backBtn.style.visibility='hidden';backBtn.style.pointerEvents='none';}
+  else{backBtn.style.visibility='visible';backBtn.style.pointerEvents='auto';}
+  const title = (t.backTitle && t.backTitle[screen]) || t.back;
+  backBtn.setAttribute('title', title);
+  backBtn.setAttribute('aria-label', title);
+  const lbl = backBtn.querySelector('.back-label');
+  if(lbl) lbl.textContent = t.back;
+}
+
+function centerCarouselCard(targetIndex, smooth = true, isSpinning = false) {
+  const viewport = main.querySelector('.prize-carousel-viewport');
+  const track = main.querySelector('#prize-carousel-track');
+  if(!viewport || !track) return;
+  const cards = track.querySelectorAll('.prize-carousel-card');
+  if(!cards || cards.length === 0) return;
+  
+  currentCardIndex = Math.max(0, Math.min(targetIndex, cards.length - 1));
+  const cardW = 252;
+  const gap = 12;
+  const pitch = cardW + gap;
+  const vpWidth = viewport.offsetWidth || 428;
+  const centerOffset = (vpWidth - cardW) / 2;
+  const x = centerOffset - (currentCardIndex * pitch);
+  
+  if(isSpinning) {
+    track.classList.add('is-spinning');
+    track.style.setProperty('transition', 'transform 3.8s cubic-bezier(0.12, 0.9, 0.18, 1)', 'important');
+    cards.forEach(c => c.classList.remove('active'));
+    
+    setTimeout(() => {
+      track.classList.remove('is-spinning');
+      track.style.removeProperty('transition');
+      const winningCard = cards[currentCardIndex];
+      if(winningCard) winningCard.classList.add('active');
+    }, 3800);
+  } else if(smooth) {
+    track.style.transition = 'transform 0.35s cubic-bezier(0.2, 0, 0.2, 1)';
+    cards.forEach((c, idx) => {
+      c.classList.toggle('active', idx === currentCardIndex);
+    });
+  } else {
+    track.style.transition = 'none';
+    cards.forEach((c, idx) => {
+      c.classList.toggle('active', idx === currentCardIndex);
+    });
+  }
+  track.style.transform = 'translateX(' + x + 'px)';
+}
+
+function syncOutcomeToCurrentCard() {
+  const track = main.querySelector('#prize-carousel-track');
+  if(!track) return;
+  const cards = track.querySelectorAll('.prize-carousel-card');
+  const card = cards[currentCardIndex];
+  if(card) {
+    const prizeId = card.dataset.prizeId;
+    if(prizeId) {
+      selected = prizeId;
+    }
+  }
+}
+
+let activeFireworksCleanup = null;
+function launchFireworks(canvas) {
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width = canvas.width = canvas.offsetWidth || 428;
+  let height = canvas.height = canvas.offsetHeight || 926;
+  let particles = [];
+  let confetti = [];
+  let active = true;
+  const colors = ['#facc15', '#ff2a44', '#00d2ff', '#38bdf8', '#10b981', '#c084fc', '#ffffff'];
+
+  function createBurst(x, y, count = 48) {
+    const baseColor = colors[Math.floor(Math.random() * colors.length)];
+    for(let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 / count) * i + (Math.random() * 0.18);
+      const speed = Math.random() * 4.8 + 2.2;
+      particles.push({
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        alpha: 1,
+        decay: Math.random() * 0.016 + 0.014,
+        color: Math.random() > 0.35 ? baseColor : colors[Math.floor(Math.random() * colors.length)],
+        size: Math.random() * 3.4 + 1.6,
+        gravity: 0.07
+      });
+    }
+  }
+
+  function createConfetti(count = 75) {
+    for(let i = 0; i < count; i++) {
+      confetti.push({
+        x: Math.random() * width,
+        y: -10 - Math.random() * 80,
+        vx: (Math.random() - 0.5) * 2.2,
+        vy: Math.random() * 2.2 + 1.8,
+        rot: Math.random() * 360,
+        vRot: (Math.random() - 0.5) * 7,
+        w: Math.random() * 9 + 6,
+        h: Math.random() * 5 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+  }
+
+  for(let i = 0; i < 4; i++) {
+    setTimeout(() => {
+      if(!active) return;
+      createBurst(width * 0.2 + Math.random() * (width * 0.6), height * 0.16 + Math.random() * (height * 0.22), 52);
+    }, i * 280);
+  }
+  createConfetti(85);
+
+  const onPointerDown = e => {
+    if(e.target.closest('button')) return;
+    const rect = canvas.getBoundingClientRect();
+    createBurst(e.clientX - rect.left, e.clientY - rect.top, 42);
+  };
+  main.addEventListener('pointerdown', onPointerDown);
+
+  function loop() {
+    if(!active) return;
+    ctx.clearRect(0, 0, width, height);
+
+    for(let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += p.gravity;
+      p.vx *= 0.98;
+      p.alpha -= p.decay;
+      if(p.alpha <= 0) {
+        particles.splice(i, 1);
+        continue;
+      }
+      ctx.save();
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = 8;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    for(let i = confetti.length - 1; i >= 0; i--) {
+      const c = confetti[i];
+      c.x += c.vx;
+      c.y += c.vy;
+      c.rot += c.vRot;
+      if(c.y > height + 20) {
+        c.y = -10;
+        c.x = Math.random() * width;
+      }
+      ctx.save();
+      ctx.translate(c.x, c.y);
+      ctx.rotate((c.rot * Math.PI) / 180);
+      ctx.fillStyle = c.color;
+      ctx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h);
+      ctx.restore();
+    }
+
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  return () => {
+    active = false;
+    main.removeEventListener('pointerdown', onPointerDown);
+  };
+}
+
+function render(screen,isBack=false){
+  clearTimeout(timer);
+  if(activeFireworksCleanup) { activeFireworksCleanup(); activeFireworksCleanup = null; }
+  current=screen;main.dataset.step=screen;updateBackButton(screen);
+  const phoneArticle = root.querySelector('.phone');
+  if(phoneArticle) phoneArticle.dataset.activeScreen = screen;
+  root.querySelectorAll('.review button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.screen===screen)));
+  
+  const t = v1Translations[v1Lang];
+  const isKm = (v1Lang === 'km');
+  const pRaw = prizesData[currentPrize]||prizesData['win-foldable'];
+  const p = {
+    ...pRaw,
+    name: isKm ? (pRaw.nameKm || pRaw.name) : pRaw.name,
+    sub: isKm ? (pRaw.subKm || pRaw.sub) : pRaw.sub,
+    badge: isKm ? (pRaw.badgeKm || pRaw.badge) : pRaw.badge,
+    handover: isKm ? (pRaw.handoverKm || pRaw.handover) : pRaw.handover
+  };
+
+  let content='';
+  if(screen==='scan')content=`<h1>${t.scan.title}</h1><p>${t.scan.desc}</p><div class="camera"><div class="frame" id="scanner-frame"><div class="scan-beam"></div><div class="scan-laser"></div>${icon('qr-code')}</div><div class="scan-badge" id="scan-badge"><span class="scan-pulse-dot"></span><span class="scan-status-text">${t.scan.status}</span></div></div>${btn(t.scan.manualBtn,'manual','secondary')}`;
+  if(screen==='manual')content=`<h1>${t.manual.title}</h1><p>${t.manual.desc}</p><form data-form="code"><label for="bottle-code">${t.manual.labelCode}</label><input id="bottle-code" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Example: VT7K 8M2P" required><p class="small">${t.manual.hint}</p><div class="err" role="alert"></div><button class="primary cursor-interaction">${t.manual.btnCheck}</button></form>${btn(t.manual.btnBack,'scan','secondary')}`;
+  if(screen==='spin'){
+    let cardsHtml = '';
+    for(let lap = 0; lap < 10; lap++) {
+      for(let i = 0; i < wheelItems.length; i++) {
+        const item = wheelItems[i];
+        const cardIdx = lap * 12 + i;
+        const isHero = item.hero ? ' hero-prize' : '';
+        const itemName = isKm ? (item.nameKm || item.name) : item.name;
+        cardsHtml += `<div class="prize-carousel-card${isHero} cursor-interaction" data-card-idx="${cardIdx}" data-prize-id="${item.id}" data-item-idx="${i}" title="${itemName}"><div class="prize-img-box"><img src="${item.img}" alt="${itemName}" onerror="this.onerror=null;this.src='prize-foldable.png';"></div></div>`;
+      }
+    }
+    
+    currentCardIndex = 24 + ((wheelItems.findIndex(w => w.id === selected) + 12) % 12);
+    
+    content=`<section class="spin-top-section" aria-label="Available prizes"><div class="spin-top-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>${t.spin.topBadge}</span></div><div class="prize-carousel-viewport"><div class="prize-carousel-track" id="prize-carousel-track">${cardsHtml}</div></div></section><section class="spin-bottom-section"><div class="spin-headings"><h2>${t.spin.title}</h2></div><div class="wheel-stage"><div class="wheel-arrow"><svg width="34" height="44" viewBox="0 0 34 44" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ptrDropGrad" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="25%" stop-color="#38bdf8"/><stop offset="65%" stop-color="#0284c7"/><stop offset="100%" stop-color="#075985"/></linearGradient><linearGradient id="ptrHighlight" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0.15"/></linearGradient></defs><ellipse cx="17" cy="8" rx="15" ry="4.5" fill="none" stroke="#38bdf8" stroke-width="1.2" opacity="0.45"/><ellipse cx="17" cy="8" rx="10" ry="3" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.65"/><path d="M 17 42 C 13.5 32, 5 24, 5 14.5 C 5 7.8, 10.4 2, 17 2 C 23.6 2, 29 7.8, 29 14.5 C 29 24, 20.5 32, 17 42 Z" fill="url(#ptrDropGrad)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/><path d="M 9.5 13.5 C 9.5 8.5, 12.8 5, 16.5 4.5 C 13 6.8, 11 10.5, 11.5 15.5 C 11.7 17.5, 10.5 17, 9.5 13.5 Z" fill="url(#ptrHighlight)"/><ellipse cx="17" cy="18.5" rx="6.5" ry="9" fill="#38bdf8" opacity="0.32"/><path d="M 13.5 23 Q 13.5 25 15.5 25 Q 13.5 25 13.5 27 Q 13.5 25 11.5 25 Q 13.5 25 13.5 23 Z" fill="#ffffff" opacity="0.95"/><circle cx="13.5" cy="25" r="1.3" fill="#ffffff"/></svg></div><div class="wheel-bezel"><div class="wheel-plate" id="wheel-plate" role="img" aria-label="Lucky draw 12-segment wheel"><svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="slBlueHero" cx="50%" cy="20%" r="85%"><stop offset="0%" stop-color="#1e6dd0"/><stop offset="55%" stop-color="#114e9f"/><stop offset="100%" stop-color="#0a326c"/></radialGradient><radialGradient id="slBlue1" cx="50%" cy="20%" r="85%"><stop offset="0%" stop-color="#2575dc"/><stop offset="55%" stop-color="#1355ac"/><stop offset="100%" stop-color="#0d3c7c"/></radialGradient><radialGradient id="slBlue2" cx="50%" cy="20%" r="85%"><stop offset="0%" stop-color="#1c6bc9"/><stop offset="55%" stop-color="#0e4b97"/><stop offset="100%" stop-color="#093670"/></radialGradient><radialGradient id="slWhite1" cx="50%" cy="20%" r="85%"><stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#f0f7ff"/><stop offset="100%" stop-color="#d6e8fb"/></radialGradient><radialGradient id="slWhite2" cx="50%" cy="20%" r="85%"><stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#edf5fd"/><stop offset="100%" stop-color="#d0e4f7"/></radialGradient></defs><circle cx="130" cy="130" r="128" fill="#ffffff" stroke="#114e9f" stroke-width="2.5"/><g transform="rotate(0, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slBlueHero)" stroke="#ffffff" stroke-width="1.3"/><text x="130" y="25" text-anchor="middle" font-size="7.8px" font-weight="900" letter-spacing="0.6" fill="#fde047">FOLDABLE</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="9px" font-weight="900" letter-spacing="0.8" fill="#ffffff">PHONE</text></g><g transform="rotate(30, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slWhite1)" stroke="rgba(17,78,159,0.22)" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="8px" font-weight="900" letter-spacing="0.6" fill="#114e9f">AIRPODS</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="8.5px" font-weight="900" letter-spacing="0.6" fill="#09356d">MAX</text></g><g transform="rotate(60, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slBlue1)" stroke="#ffffff" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="12px" font-weight="900" letter-spacing="0.4" fill="#38bdf8">$5</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="8.5px" font-weight="900" letter-spacing="0.8" fill="#ffffff">VOUCHER</text></g><g transform="rotate(90, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slWhite2)" stroke="rgba(17,78,159,0.22)" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="8.5px" font-weight="900" letter-spacing="0.6" fill="#4b6b94">TRY</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="8.5px" font-weight="900" letter-spacing="0.8" fill="#1e3a5f">AGAIN</text></g><g transform="rotate(120, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slBlue2)" stroke="#ffffff" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="8.5px" font-weight="900" letter-spacing="0.6" fill="#7dd3fc">APPLE</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="8.5px" font-weight="900" letter-spacing="0.8" fill="#ffffff">WATCH</text></g><g transform="rotate(150, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slWhite1)" stroke="rgba(17,78,159,0.22)" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="12px" font-weight="900" letter-spacing="0.4" fill="#0284c7">$20</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="9px" font-weight="900" letter-spacing="0.8" fill="#09356d">CASH</text></g><g transform="rotate(180, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slBlue1)" stroke="#ffffff" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="8.5px" font-weight="900" letter-spacing="0.6" fill="#bae6fd">NO</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="8.5px" font-weight="900" letter-spacing="0.8" fill="#ffffff">PRIZE</text></g><g transform="rotate(210, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slWhite2)" stroke="rgba(17,78,159,0.22)" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="8.5px" font-weight="900" letter-spacing="0.6" fill="#114e9f">WATER</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="9px" font-weight="900" letter-spacing="0.8" fill="#09356d">CASE</text></g><g transform="rotate(240, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slBlue2)" stroke="#ffffff" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="8px" font-weight="900" letter-spacing="0.6" fill="#7dd3fc">IPHONE</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="8.5px" font-weight="900" letter-spacing="0.8" fill="#ffffff">16 PRO</text></g><g transform="rotate(270, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slWhite1)" stroke="rgba(17,78,159,0.22)" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="8.5px" font-weight="900" letter-spacing="0.6" fill="#4b6b94">TRY</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="8.5px" font-weight="900" letter-spacing="0.8" fill="#1e3a5f">AGAIN</text></g><g transform="rotate(300, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slBlue1)" stroke="#ffffff" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="12px" font-weight="900" letter-spacing="0.4" fill="#38bdf8">$50</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="8.5px" font-weight="900" letter-spacing="0.8" fill="#ffffff">VOUCHER</text></g><g transform="rotate(330, 130, 130)"><path d="M 130 130 L 96.87 6.36 A 128 128 0 0 1 163.13 6.36 Z" fill="url(#slWhite2)" stroke="rgba(17,78,159,0.22)" stroke-width="1.2"/><text x="130" y="25" text-anchor="middle" font-size="8.5px" font-weight="900" letter-spacing="0.6" fill="#114e9f">VITAL</text><text x="130" y="59" text-anchor="middle" transform="rotate(90, 130, 59)" font-size="8px" font-weight="900" letter-spacing="0.6" fill="#09356d">TUMBLER</text></g><g fill="#38bdf8" stroke="#ffffff" stroke-width="0.8"><circle cx="162.1" cy="10.2" r="2.2"/><circle cx="217.7" cy="42.3" r="2.2"/><circle cx="249.8" cy="97.9" r="2.2"/><circle cx="249.8" cy="162.1" r="2.2"/><circle cx="217.7" cy="217.7" r="2.2"/><circle cx="162.1" cy="249.8" r="2.2"/><circle cx="97.9" cy="249.8" r="2.2"/><circle cx="42.3" cy="217.7" r="2.2"/><circle cx="10.2" cy="162.1" r="2.2"/><circle cx="10.2" cy="97.9" r="2.2"/><circle cx="42.3" cy="42.3" r="2.2"/><circle cx="97.9" cy="10.2" r="2.2"/></g><circle cx="130" cy="130" r="41" fill="#ffffff" stroke="#114e9f" stroke-width="2.5"/></svg></div></div><button type="button" class="wheel-center-btn cursor-interaction" data-spin aria-label="Spin the wheel"><span>${t.spin.centerBtn}</span></button></div></section>`;
+  }
+  if(screen==='win'){
+    content=`<canvas class="win-canvas" id="win-fireworks"></canvas><button type="button" class="win-float-back cursor-interaction" id="win-back-btn" title="${t.win.backToWheel}" aria-label="${t.win.backToWheel}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button><div class="win-header"><div class="win-title-wrap"><div class="win-confetti-wrap" aria-hidden="true"><span class="confetti-chip chip-1"></span><span class="confetti-chip chip-2"></span><span class="confetti-chip chip-3"></span><span class="confetti-chip chip-4"></span><span class="confetti-chip chip-5"></span><span class="confetti-chip chip-6"></span><span class="confetti-chip chip-7"></span><span class="confetti-chip chip-8"></span><span class="confetti-chip chip-9"></span><span class="confetti-chip chip-10"></span></div><div class="win-sticker-wrap"><h1 class="win-title-script"><span class="win-title-stroke" aria-hidden="true">${t.win.titleStroke}</span><span class="win-title-fill">${t.win.titleFill}</span></h1></div></div></div><div class="win-stage"><div class="god-rays"></div><div class="win-gift-wrap" id="win-gift-wrap"><div class="gift-box-lid"><div class="gift-lid-bow"></div></div><div class="gift-box-base"><div class="gift-ribbon-v"></div></div></div><div class="win-prize-frame" id="win-prize-frame"><div class="win-prize-fullscreen" id="win-prize-card"><div class="win-prize-media"><span class="win-badge-pill">${p.badge}</span><img src="${p.img}" alt="${p.name}" onerror="this.onerror=null;this.src='prize-foldable.png';"><div class="win-prize-gradient-scrim"></div></div><div class="win-prize-meta"><span class="win-reward-label">${t.win.officialReward}</span><div class="win-prize-title">${p.name}</div><div class="win-prize-sub">${p.sub}</div></div></div></div></div><div class="win-actions"><button type="button" class="win-claim-btn cursor-interaction" data-screen="info"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg><span>${t.win.claimBtn}</span></button></div>`;
+  }
+  if(screen==='lose')content=`<div class="center"><div class="emblem">${icon('droplet')}</div><h1>${t.lose.title}</h1><p>${t.lose.desc}</p><div class="reward"><h2>${t.lose.refreshTitle}</h2><p>${t.lose.refreshDesc}</p></div>${btn(t.lose.btnAnother,'scan')}<p class="small">${t.lose.small}</p></div>`;
+  if(screen==='info')content=`<h1>${t.info.title}</h1><p>${t.info.desc}</p><div class="reward" style="display:flex;align-items:center;gap:14px;text-align:left;padding:16px"><img src="${p.img}" alt="${p.name}" style="width:68px;height:68px;object-fit:cover;border-radius:14px;border:2px solid #38bdf8;flex-shrink:0" onerror="this.onerror=null;this.src='prize-foldable.png';"><div><small style="color:var(--muted);font-size:10px;letter-spacing:1.2px;display:block">${p.badge}</small><h2 style="font-size:17px;margin:2px 0">${p.name}</h2><span style="font-size:12px;color:var(--muted)">${p.sub}</span></div></div><form data-form="info"><label for="winner-name">${t.info.labelName}</label><input id="winner-name" name="name" autocomplete="name" placeholder="${t.info.phName}" required maxlength="80"><label for="winner-phone">${t.info.labelPhone}</label><input id="winner-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="${t.info.phPhone}" required><div class="err" role="alert"></div><p class="notice">${t.info.notice}</p><button class="primary cursor-interaction">${t.info.btnSubmit}</button><p class="small">${t.info.demo}</p></form>`;
+  if(screen==='done')content=`<div class="center"><div class="emblem">${icon('circle-check')}</div><h1>${t.done.title}</h1><p>${t.done.desc}</p><div class="reward" style="padding:18px"><img src="${p.img}" alt="${p.name}" style="width:100%;max-height:180px;object-fit:cover;border-radius:14px;margin-bottom:12px;border:1.5px solid #38bdf8" onerror="this.onerror=null;this.src='prize-foldable.png';"><small>${t.done.yourPrize}</small><h2>${p.name}</h2><p>${t.done.sampleRef} ${p.ref}</p></div><p>${p.handover}</p>${btn(t.done.btnAnother,'scan')}<p class="small">${t.done.previewNotice}</p></div>`;
+  main.innerHTML=content;if(globalThis.lucide)lucide.createIcons();
+
+  if(screen==='win'){
+    requestAnimationFrame(() => {
+      const cvs = main.querySelector('#win-fireworks');
+      if(cvs) {
+        activeFireworksCleanup = launchFireworks(cvs);
+      }
+      setTimeout(() => {
+        const gift = main.querySelector('#win-gift-wrap');
+        if(gift) gift.style.display = 'none';
+      }, 850);
+    });
+  }
+  
+  if(screen==='spin'){
+    requestAnimationFrame(() => {
+      centerCarouselCard(currentCardIndex, false);
+      
+      const vp = main.querySelector('.prize-carousel-viewport');
+      if(vp) {
+        let touchStart = 0;
+        vp.addEventListener('touchstart', e => {
+          touchStart = e.touches[0].clientX;
+        }, { passive: true });
+        vp.addEventListener('touchend', e => {
+          const diff = e.changedTouches[0].clientX - touchStart;
+          if(diff < -35) {
+            centerCarouselCard(currentCardIndex + 1, true);
+            syncOutcomeToCurrentCard();
+          } else if(diff > 35) {
+            centerCarouselCard(currentCardIndex - 1, true);
+            syncOutcomeToCurrentCard();
+          }
+        }, { passive: true });
+      }
+    });
+  }
+  
+  if(screen==='scan'){
+    const frame=main.querySelector('#scanner-frame'),badge=main.querySelector('#scan-badge');
+    const triggerDetect=()=>{
+      clearTimeout(timer);
+      if(frame)frame.classList.add('detected');
+      if(badge){
+        badge.classList.add('detected');
+        badge.innerHTML=`<span class="scan-pulse-dot"></span><span>${t.scan.statusDetected}</span>`;
+      }
+      timer=setTimeout(()=>go('spin'),500);
+    };
+    const cam=main.querySelector('.camera');
+    if(cam){
+      cam.style.cursor='pointer';
+      cam.setAttribute('title',isKm?'ចុចដើម្បីស្កេន':'Tap to scan QR');
+      cam.addEventListener('click',triggerDetect);
+    }
+    const scanDuration=window.matchMedia('(prefers-reduced-motion:reduce)').matches?600:(isBack?3200:1800);
+    timer=setTimeout(triggerDetect,scanDuration);
+  }
+}
+
+function go(screen,isBack=false){if(!isBack&&screen!==current){historyStack.push(current);}render(screen,isBack);window.openai?.setWidgetState?.({modelContent:{brand:'Vital',flow:'Web scan, spin, result, winner details, confirmation',screen,branding:'Modern Vital blue with subtle red accents'},privateContent:{screen}})?.catch(()=>{});}
+function goBack(){let target=historyStack.pop();while(target===current&&historyStack.length>0){target=historyStack.pop();}if(!target||target===current){target=prevScreenMap[current]||'scan';}if(target&&target!==current){go(target,true);}}
+
+root.addEventListener('click',e=>{
+  const spin=e.target.closest('[data-spin]');
+  if(spin){
+    if(spin.disabled) return;
+    spin.disabled=true;
+    spin.classList.add('spinning');
+    
+    let itemIdx = wheelItems.findIndex(w => w.id === selected);
+    if(itemIdx < 0) itemIdx = 0;
+    const deg = 1800 - (itemIdx * 30);
+    
+    const plate=main.querySelector('#wheel-plate');
+    if(plate)plate.style.transform=`rotate(${deg}deg)`;
+    
+    const curMod = currentCardIndex % 12;
+    const stepDiff = ((itemIdx - curMod) + 12) % 12;
+    const targetCardIdx = currentCardIndex + 24 + stepDiff;
+    centerCarouselCard(targetCardIdx, true, true);
+    
+    const dur=window.matchMedia('(prefers-reduced-motion:reduce)').matches?100:4100;
+    timer=setTimeout(()=>{
+      if(selected==='lose'||selected==='lose-1'||selected==='lose-2'){
+        go('lose');
+      }else{
+        currentPrize=selected;
+        go('win');
+      }
+    },dur);
+    return;
+  }
+
+  const langBtnClicked=e.target.closest('#app-lang-btn');
+  if(langBtnClicked){
+    e.preventDefault();
+    v1Lang = (v1Lang === 'en') ? 'km' : 'en';
+    document.documentElement.lang = v1Lang;
+    const t = v1Translations[v1Lang];
+    const txtLang = langBtnClicked.querySelector('#txtV1Lang');
+    if(txtLang) txtLang.textContent = t.langBtn;
+    langBtnClicked.setAttribute('title', t.langTitle);
+    langBtnClicked.setAttribute('aria-label', t.langTitle);
+    updateBackButton(current);
+    render(current);
+    return;
+  }
+
+  const back=e.target.closest('#app-back-btn') || e.target.closest('#win-back-btn');
+  if(back){e.preventDefault();goBack();return;}
+
+  const card=e.target.closest('.prize-carousel-card');
+  if(card){
+    const cardIdx = parseInt(card.dataset.cardIdx, 10);
+    const prizeId = card.dataset.prizeId;
+    centerCarouselCard(cardIdx, true);
+    if(prizeId) selected = prizeId;
+    return;
+  }
+
+  const nav=e.target.closest('button[data-screen], a[data-screen]');
+  if(nav){const to=nav.dataset.screen;if(to===prevScreenMap[current]||(historyStack.length>0&&historyStack[historyStack.length-1]===to)){go(to,true);}else{go(to);}return;}
+});
+
+root.addEventListener('submit',e=>{
+  e.preventDefault();const form=e.target,err=form.querySelector('.err');
+  const t = v1Translations[v1Lang];
+  if(form.dataset.form==='code'){
+    const code=form.elements.code.value.replace(/[s-]/g,'').toUpperCase();
+    if(code!=='VT7K8M2P'){err.textContent=t.manual.errInvalid;return;}
+    go('spin');
+  }else{
+    const name=form.elements.name.value.trim(),phone=form.elements.phone.value.replace(/[s()+-]/g,'');
+    if(!name||!/^d{8,15}$/.test(phone)){err.textContent=t.info.errValidation;return;}
+    go('done');
+  }
+});
+
+window.addEventListener('openai:set_globals',e=>{
+  const screen=e.detail?.globals?.widgetState?.privateContent?.screen;
+  if(allowed.includes(screen)&&screen!==current)render(screen);
+});
+render(current);
+})();
+</script>
+
+<script src="https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js"></script>
+<script src="https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js"></script>
+<script>
+(() => {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set(["top", "right", "bottom", "left"]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (event) => {
+    for (const target of event.composedPath()) {
+      if (target?.nodeType === Node.ELEMENT_NODE) {
+        const trigger = target.closest("[data-tooltip]");
+        if (trigger) return trigger;
+      }
+    }
+    return null;
+  };
+  const containsTarget = (trigger, target) =>
+    target?.nodeType != null && trigger.contains(target);
+  const getContent = (trigger) =>
+    trigger.getAttribute("data-tooltip")?.trim() ?? "";
+  const getPlacement = (trigger) => {
+    const placement = trigger.getAttribute("data-tooltip-placement");
+    return tooltipPlacements.has(placement) ? placement : "top";
+  };
+  const getTooltip = () => {
+    if (tooltip == null) {
+      tooltip = document.createElement("div");
+      tooltip.id = tooltipId;
+      tooltip.className = "tooltip";
+      tooltip.setAttribute("role", "tooltip");
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) => {
+    const ids = new Set(
+      (trigger.getAttribute("aria-describedby") ?? "")
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute("aria-describedby");
+    } else {
+      trigger.setAttribute("aria-describedby", [...ids].join(" "));
+    }
+  };
+  const clearOpenTimeout = () => {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) => {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) => {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              "--tooltip-available-width",
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              "--tooltip-available-height",
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: "fixed",
+    })
+      .then(({ x, y }) => {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = "visible";
+      })
+      .catch(() => {
+        if (activeTrigger === trigger && request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) => {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = "hidden";
+    floating.style.transform = "translate(0, 0)";
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () => {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) => {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() < skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() => {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) => {
+    if (event.pointerType === "touch") {
+      return;
+    }
+    const trigger = getTrigger(event);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) => {
+    lastPointerWasTouch =
+      event.type === "pointerdown" && event.pointerType === "touch";
+  };
+  const handleTouchClick = (event) => {
+    const isTouch = event.pointerType === "touch" || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch && activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() => {
+      if (activeTrigger === trigger && !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) => {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) => {
+    const trigger = getTrigger(event);
+    if (trigger?.matches(":focus-visible")) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) => {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handlers = {
+    pointerover: handlePointerOpen,
+    pointerdown: handlePointer,
+    pointercancel: handlePointer,
+    click: handleTouchClick,
+    pointerout: handleLeave,
+    focusin: handleFocusIn,
+    focusout: handleLeave,
+    keydown: handleKeyDown,
+    contextmenu: handleContextMenu,
+  };
+  const roots = new Map();
+  const handledEvents = new WeakSet();
+  const handleEvent = (event) => {
+    if (handledEvents.has(event)) return;
+    handledEvents.add(event);
+    handlers[event.type](event);
+  };
+  const discoverRoots = (node) => {
+    if (node.shadowRoot) listen(node.shadowRoot);
+    for (const element of node.querySelectorAll("*")) {
+      if (element.shadowRoot) listen(element.shadowRoot);
+    }
+  };
+  const listen = (root) => {
+    if (roots.has(root)) return;
+    for (const type of Object.keys(handlers)) root.addEventListener(type, handleEvent);
+    const observer = new window.MutationObserver((records) => {
+      for (const { addedNodes } of records) {
+        for (const node of addedNodes) {
+          if (node.nodeType === Node.ELEMENT_NODE) discoverRoots(node);
+        }
+      }
+      for (const [root, cleanup] of roots) {
+        if (root.host && !root.host.isConnected) {
+          cleanup();
+          roots.delete(root);
+        }
+      }
+      if (activeTrigger && !activeTrigger.isConnected) closeTooltip(false);
+    });
+    observer.observe(root, { childList: true, subtree: true });
+    roots.set(root, () => {
+      observer.disconnect();
+      for (const type of Object.keys(handlers)) root.removeEventListener(type, handleEvent);
+    });
+    discoverRoots(root);
+  };
+  const destroy = () => {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    for (const cleanup of roots.values()) cleanup();
+    roots.clear();
+    tooltip = null;
+  };
+
+  // Events between children of one shadow root never reach the document.
+  listen(document);
+  window.addEventListener("pagehide", destroy, { once: true });
+})();
+</script>
+<script id="codex-visualization-tabs">
+(() => {
+  const selector = '.nav[role="tablist"] [role="tab"]';
+  const disabled = ':disabled,[aria-disabled="true"]';
+  const selectTab = (selected) => {
+    const panelId = selected.getAttribute("aria-controls");
+    for (const tab of selected.closest('[role="tablist"]').querySelectorAll('[role="tab"]')) {
+      const active = tab === selected;
+      tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", String(active));
+      const id = tab.getAttribute("aria-controls");
+      const panel = id && document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden && selected.id) {
+          panel.setAttribute("aria-labelledby", selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) => {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === "click") {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest('[role="tablist"]').querySelectorAll('[role="tab"]'),
+    ).filter((candidate) => !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === "Home") {
+      next = 0;
+    } else if (event.key === "End") {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll('.nav[role="tablist"]')) {
+    const selected =
+      list.querySelector('[role="tab"][aria-selected="true"]') ??
+      list.querySelector('[role="tab"].active') ??
+      list.querySelector('[role="tab"]');
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener("click", interact);
+  document.addEventListener("keydown", interact);
+  window.addEventListener("pagehide", () => {
+    document.removeEventListener("click", interact);
+    document.removeEventListener("keydown", interact);
+  }, { once: true });
+})();
+</script>
+<script id="codex-visualization-carousel">
+  (() => {
+    for (const root of document.querySelectorAll(".viz-carousel")) {
+      const panels = Array.from(
+        root.querySelectorAll(":scope > [data-variant]"),
+      );
+      if (panels.length === 0) {
+        continue;
+      }
+      root.setAttribute("role", "group");
+      panels.forEach((panel, index) => {
+        panel.hidden = index !== 0;
+        panel.setAttribute("role", "group");
+        if (!panel.hasAttribute("aria-label")) {
+          panel.setAttribute("aria-label", panel.dataset.variant);
+        }
+      });
+      root.dataset.activeVariant = panels[0].dataset.variant;
+      if (panels.length === 1) {
+        continue;
+      }
+
+      const controls = document.createElement("div");
+      controls.className = "viz-carousel-controls";
+      // Portable copy of the settings dropdown's legacy glyph; no 14px icon-package preset matches it.
+      // https://github.com/openai/openai/blob/master/codex/codex-apps/webview/src/icons/chevron.svg
+      controls.innerHTML = `
+      <button type="button" class="viz-carousel-previous cursor-interaction"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+      <details class="viz-carousel-picker">
+        <summary class="cursor-interaction">
+          <span class="viz-carousel-count tabular-nums"></span>
+          <span class="viz-carousel-name"></span>
+          <svg class="viz-carousel-caret" width="14" height="14" viewBox="0 0 20 21" fill="none" aria-hidden="true" focusable="false">
+            <path d="M15.2793 7.71101C15.539 7.45131 15.961 7.45131 16.2207 7.71101C16.4804 7.97071 16.4804 8.39272 16.2207 8.65242L10.4707 14.4024C10.211 14.6621 9.78902 14.6621 9.52932 14.4024L3.77932 8.65242L3.69436 8.54792C3.52385 8.28979 3.55205 7.93828 3.77932 7.71101C4.00659 7.48374 4.3581 7.45554 4.61623 7.62605L4.72073 7.71101L10 12.9903L15.2793 7.71101Z" fill="currentColor" stroke="currentColor" stroke-width="0.6" />
+          </svg>
+        </summary>
+        <div class="viz-carousel-options"></div>
+      </details>
+      <button type="button" class="viz-carousel-next cursor-interaction"><i data-lucide="chevron-right" aria-hidden="true"></i></button>`;
+      const previous = controls.querySelector(".viz-carousel-previous");
+      const next = controls.querySelector(".viz-carousel-next");
+      const picker = controls.querySelector(".viz-carousel-picker");
+      const summary = picker.querySelector("summary");
+      const count = controls.querySelector(".viz-carousel-count");
+      const name = controls.querySelector(".viz-carousel-name");
+      const options = controls.querySelector(".viz-carousel-options");
+      const status = document.createElement("span");
+      status.className = "sr-only";
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "polite");
+      status.setAttribute("aria-atomic", "true");
+      previous.setAttribute(
+        "aria-label",
+        root.dataset.previousLabel ?? "Previous variant",
+      );
+      next.setAttribute("aria-label", root.dataset.nextLabel ?? "Next variant");
+
+      let active = 0;
+      let mousePointerId = null;
+      let summaryPointerHandled = false;
+      summary.addEventListener("pointerdown", (event) => {
+        summaryPointerHandled =
+          event.pointerType === "mouse" && event.button === 0 && !event.ctrlKey;
+        if (!summaryPointerHandled) {
+          return;
+        }
+        event.preventDefault();
+        summary.focus({ preventScroll: true });
+        picker.open = !picker.open;
+        mousePointerId = picker.open ? event.pointerId : null;
+      });
+      summary.addEventListener("click", (event) => {
+        if (summaryPointerHandled && event.detail > 0) {
+          event.preventDefault();
+        }
+      });
+      const choices = panels.map((panel, index) => {
+        const choice = document.createElement("button");
+        choice.type = "button";
+        choice.className = "cursor-interaction";
+        choice.textContent = panel.dataset.variant;
+        choice.addEventListener("click", () => {
+          select(index);
+          summary.focus();
+        });
+        choice.addEventListener("pointerup", (event) => {
+          if (
+            picker.open &&
+            event.pointerType === "mouse" &&
+            event.button === 0 &&
+            event.pointerId === mousePointerId
+          ) {
+            choice.click();
+          }
+        });
+        options.appendChild(choice);
+        return choice;
+      });
+      const select = (index) => {
+        const changed = active !== index;
+        active = index;
+        panels.forEach((panel, position) => {
+          panel.hidden = position !== active;
+          choices[position].setAttribute(
+            "aria-current",
+            String(position === active),
+          );
+        });
+        root.dataset.activeVariant = panels[active].dataset.variant;
+        count.textContent = `${active + 1} / ${panels.length}`;
+        name.textContent = panels[active].dataset.variant;
+        picker.open = false;
+        mousePointerId = null;
+        if (changed) {
+          status.textContent = `${count.textContent}: ${name.textContent}`;
+        }
+      };
+      previous.addEventListener("click", () =>
+        select((active + panels.length - 1) % panels.length),
+      );
+      next.addEventListener("click", () =>
+        select((active + 1) % panels.length),
+      );
+      picker.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && picker.open) {
+          event.preventDefault();
+          picker.open = false;
+          mousePointerId = null;
+          summary.focus();
+          return;
+        }
+        if (event.altKey || event.ctrlKey || event.metaKey) {
+          return;
+        }
+        const index = choices.indexOf(document.activeElement);
+        let nextIndex;
+        if (event.key === "ArrowDown") {
+          nextIndex = index < 0 ? active : (index + 1) % choices.length;
+        } else if (event.key === "ArrowUp") {
+          nextIndex = index < 0 ? active : (index + choices.length - 1) % choices.length;
+        } else if (picker.open && event.key === "Home") {
+          nextIndex = 0;
+        } else if (picker.open && event.key === "End") {
+          nextIndex = choices.length - 1;
+        } else {
+          return;
+        }
+        event.preventDefault();
+        picker.open = true;
+        choices[nextIndex].focus();
+      });
+      picker.addEventListener("focusout", (event) => {
+        if (!picker.contains(event.relatedTarget)) {
+          picker.open = false;
+          mousePointerId = null;
+        }
+      });
+      const dismiss = (event) => {
+        if (!summary.contains(event.target)) {
+          mousePointerId = null;
+        }
+        if (!picker.contains(event.target)) {
+          picker.open = false;
+        }
+      };
+      const endPointerSelection = () => {
+        mousePointerId = null;
+      };
+      const sizePicker = () => {
+        root.style.setProperty(
+          "--viz-carousel-picker-height",
+          `${picker.open ? options.offsetHeight : 0}px`,
+        );
+      };
+      picker.addEventListener("toggle", sizePicker);
+      window.addEventListener("resize", sizePicker);
+      document.addEventListener("pointerdown", dismiss);
+      document.addEventListener("pointerup", endPointerSelection);
+      document.addEventListener("pointercancel", endPointerSelection);
+      window.addEventListener("blur", endPointerSelection);
+      window.addEventListener(
+        "pagehide",
+        () => {
+          document.removeEventListener("pointerdown", dismiss);
+          document.removeEventListener("pointerup", endPointerSelection);
+          document.removeEventListener("pointercancel", endPointerSelection);
+          window.removeEventListener("blur", endPointerSelection);
+          window.removeEventListener("resize", sizePicker);
+        },
+        { once: true },
+      );
+      root.append(controls, status);
+      select(0);
+    }
+  })();
+</script>
+<script id="codex-visualization-lucide" async src="https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js"></script>
+<script>
+(() => {
+  const initialize = () => {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById("codex-visualization-lucide")
+    ?.addEventListener("load", initialize, { once: true });
+})();
+</script>
+
+</body>
+</html>

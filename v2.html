@@ -1,0 +1,2546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vital Lucky Draw 2026 — UI V2 (Clean & Minimal)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Great+Vibes&family=Kantumruy+Pro:wght@400;500;600;700;800&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root {
+  --vital-blue: #114e9f;
+  --vital-blue-dark: #0a346e;
+  --vital-blue-light: #eaf2fc;
+  --vital-blue-hover: #0d4289;
+  --vital-cyan: #0284c7;
+  --vital-cyan-light: #e0f2fe;
+  --vital-red: #cf2638;
+  --vital-red-light: #fee2e2;
+  --vital-gold: #f59e0b;
+  --vital-gold-light: #fef3c7;
+  --vital-green: #10b981;
+  --vital-green-light: #d1fae5;
+  
+  --bg-page: #f1f5f9;
+  --bg-phone: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-card: #ffffff;
+  
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --border-subtle: #e2e8f0;
+  --border-light: #f1f5f9;
+  
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(17, 78, 159, 0.12), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+  --shadow-float: 0 20px 35px -8px rgba(17, 78, 159, 0.18);
+  
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+  
+  --font-sans: 'Outfit', 'Kantumruy Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', 'Kantumruy Pro', sans-serif;
+  --font-joyful: 'Lobster Two', 'Kantumruy Pro', 'Pacifico', cursive;
+  --font-script: 'Great Vibes', cursive;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 12px 40px;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(17, 78, 159, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.05) 0%, transparent 40%),
+    radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
+  background-size: 100% 100%, 100% 100%, 24px 24px;
+}
+
+/* ─── Top Global Switcher Bar ────────────────────────────── */
+.version-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 440px;
+  margin-bottom: 12px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+}
+
+.version-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--vital-blue);
+  letter-spacing: -0.2px;
+}
+.version-brand-icon {
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, var(--vital-blue), #1e70d4);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+
+.version-pills {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-subtle);
+  padding: 3px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}
+.version-pill {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.version-pill:hover {
+  color: var(--text-main);
+}
+.version-pill.active {
+  background: #ffffff;
+  color: var(--vital-blue);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.version-pill.v2-pill.active {
+  background: var(--vital-blue);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(17, 78, 159, 0.35);
+}
+
+/* ─── Screen Nav Shortcuts (for prototype testing) ────────── */
+.screen-jumper {
+  display: flex;
+  gap: 6px;
+  max-width: 440px;
+  width: 100%;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.screen-jumper::-webkit-scrollbar { display: none; }
+.jump-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.jump-btn:hover {
+  background: #ffffff;
+  color: var(--vital-blue);
+  border-color: #cbd5e1;
+}
+.jump-btn.active {
+  background: var(--vital-blue);
+  color: #ffffff;
+  border-color: var(--vital-blue);
+}
+
+/* ─── iPhone 12 Pro Max Container ────────────────────────── */
+.device-wrapper {
+  position: relative;
+  width: 440px;
+  max-width: 100%;
+  height: 920px;
+  max-height: calc(100vh - 110px);
+  min-height: 740px;
+  background: #1e2024;
+  border-radius: 54px;
+  padding: 10px;
+  box-shadow: 
+    0 0 0 1px #3a3d45,
+    0 0 0 3px #151618,
+    0 25px 60px -10px rgba(15, 23, 42, 0.35),
+    0 12px 24px -5px rgba(0, 0, 0, 0.2);
+}
+
+.device-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-phone);
+  border-radius: 44px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* iPhone Notch & Status Bar */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  user-select: none;
+  z-index: 50;
+  background: transparent;
+}
+.notch {
+  width: 130px;
+  height: 26px;
+  background: #111214;
+  border-radius: 0 0 16px 16px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.notch-camera {
+  width: 9px;
+  height: 9px;
+  background: #061122;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.notch-speaker {
+  width: 42px;
+  height: 4px;
+  background: #25282f;
+  border-radius: 3px;
+}
+
+/* Home Indicator */
+.home-bar {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 134px;
+  height: 5px;
+  background: #0f172a;
+  border-radius: 4px;
+  opacity: 0.35;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* ─── Mobile Header (Clean & Minimal) ─────────────────────── */
+.app-header {
+  padding: 6px 18px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-light);
+  background: #ffffff;
+  z-index: 20;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.header-logo-text {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--vital-blue);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.header-sub-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-subtle);
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.header-icon-btn:hover {
+  color: var(--vital-blue);
+  background: var(--vital-blue-light);
+  border-color: #cbd5e1;
+}
+
+.lang-toggle-btn {
+  height: 35px;
+  padding: 0 14px 0 10px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid #dce4f0;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0c4a9e;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(11, 56, 124, 0.08);
+}
+.lang-toggle-btn svg {
+  stroke: #0c4a9e;
+  flex-shrink: 0;
+}
+.lang-toggle-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #08387a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(11, 56, 124, 0.14);
+}
+.lang-toggle-btn:hover svg {
+  stroke: #08387a;
+}
+.lang-toggle-btn:active {
+  transform: scale(0.96);
+  background: #f1f5f9;
+}
+
+/* ─── Minimal 3-Step Flow Tracker ────────────────────────── */
+.stepper-wrap {
+  padding: 10px 18px 8px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-light);
+}
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-subtle);
+}
+.step-item.active {
+  color: var(--vital-blue);
+}
+.step-item.completed {
+  color: var(--vital-green);
+}
+.step-num {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+.step-item.active .step-num {
+  background: var(--vital-blue);
+  color: #fff;
+  border-color: var(--vital-blue);
+}
+.step-item.completed .step-num {
+  background: var(--vital-green-light);
+  color: var(--vital-green);
+  border-color: var(--vital-green);
+}
+.step-divider {
+  flex: 1;
+  height: 2px;
+  background: var(--border-light);
+  margin: 0 8px;
+  border-radius: 1px;
+}
+.step-divider.filled {
+  background: var(--vital-blue);
+}
+
+/* ─── Main Content Views Container ───────────────────────── */
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px 24px;
+}
+.app-main::-webkit-scrollbar { width: 4px; }
+.app-main::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 4px; }
+
+/* View transitions */
+.screen-view {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  animation: fadeInView 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.screen-view.active {
+  display: flex;
+}
+@keyframes fadeInView {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography Helpers */
+.title-xl {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+.title-lg {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+.desc-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* Common Buttons */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, var(--vital-blue) 0%, #0c3e80 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(17, 78, 159, 0.25);
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #165bba 0%, var(--vital-blue) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(17, 78, 159, 0.35);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 18px;
+  background: #ffffff;
+  color: var(--vital-blue);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.btn-secondary:hover {
+  background: var(--vital-blue-light);
+  border-color: #cbd5e1;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--vital-blue);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+.btn-ghost:hover {
+  background: var(--vital-blue-light);
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* SCREEN 1: FULL SCREEN CAMERA SCANNER                        */
+/* ─────────────────────────────────────────────────────────── */
+#screen-scan {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 88px 20px 32px;
+  margin: 0;
+  overflow: hidden;
+  z-index: 10;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.95) 75%, #020617 100%),
+    linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0a0f1d 100%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+#screen-scan.active {
+  display: flex;
+}
+
+/* Subtle camera viewfinder grid overlay */
+#screen-scan::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.scan-floating-header {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  margin-top: 4px;
+}
+.scan-fullscreen-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.4px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+
+/* Reticle in Full Screen */
+.scanner-reticle {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: grid;
+  place-items: center;
+  z-index: 5;
+  transition: transform 0.2s, filter 0.25s;
+}
+.scanner-reticle:hover {
+  transform: scale(1.02);
+}
+.bracket {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: #38bdf8;
+  border-style: solid;
+  pointer-events: none;
+}
+.bracket-tl { top: 0; left: 0; border-width: 4px 0 0 4px; border-radius: 14px 0 0 0; }
+.bracket-tr { top: 0; right: 0; border-width: 4px 4px 0 0; border-radius: 0 14px 0 0; }
+.bracket-bl { bottom: 0; left: 0; border-width: 0 0 4px 4px; border-radius: 0 0 0 14px; }
+.bracket-br { bottom: 0; right: 0; border-width: 0 4px 4px 0; border-radius: 0 0 14px 0; }
+
+.laser-beam {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #38bdf8, #ffffff, #38bdf8, transparent);
+  box-shadow: 0 0 18px 3px rgba(56, 189, 248, 0.95);
+  animation: laserScanFull 2.2s ease-in-out infinite alternate;
+}
+@keyframes laserScanFull {
+  0% { top: 12px; opacity: 0.85; }
+  100% { top: 225px; opacity: 1; }
+}
+
+.bottle-cap-graphic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2563eb, #114e9f);
+  border: 2.5px dashed rgba(255, 255, 255, 0.5);
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.bottle-cap-graphic:hover {
+  transform: scale(1.06);
+  box-shadow: 0 16px 36px rgba(56, 189, 248, 0.6);
+}
+
+.scan-floating-bottom {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.scan-status-pill {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: pulseDot 1.6s infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.scan-bottom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+.scan-ctrl-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.scan-ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.08);
+}
+.scan-shutter-ring {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  border: 3.5px solid rgba(255, 255, 255, 0.85);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.scan-shutter-ring:hover {
+  transform: scale(1.06);
+  border-color: #38bdf8;
+}
+.scan-shutter-dot {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s;
+}
+.scan-shutter-ring:hover .scan-shutter-dot {
+  background: #38bdf8;
+}
+
+/* Camera Mode & Win Mode Header & Status Bar */
+.device-screen.camera-mode .status-bar,
+.device-screen.win-mode .status-bar {
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+}
+.device-screen.camera-mode .status-bar svg,
+.device-screen.win-mode .status-bar svg {
+  fill: #ffffff;
+}
+.device-screen.camera-mode .status-bar .notch-camera,
+.device-screen.camera-mode .status-bar .notch-speaker,
+.device-screen.win-mode .status-bar .notch-camera,
+.device-screen.win-mode .status-bar .notch-speaker {
+  background: #0f172a;
+}
+.device-screen.camera-mode .app-header {
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  position: absolute;
+  top: 36px;
+  left: 0;
+  right: 0;
+  z-index: 30;
+}
+.device-screen.win-mode .app-header {
+  display: none !important;
+}
+.device-screen.camera-mode .header-logo-text,
+.device-screen.win-mode .header-logo-text {
+  color: #ffffff;
+}
+.device-screen.camera-mode .header-sub-tag,
+.device-screen.win-mode .header-sub-tag {
+  color: rgba(255, 255, 255, 0.7);
+}
+.device-screen.camera-mode .header-icon-btn,
+.device-screen.win-mode .header-icon-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+.device-screen.camera-mode .header-icon-btn:hover,
+.device-screen.win-mode .header-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #38bdf8;
+}
+.device-screen.camera-mode .lang-toggle-btn,
+.device-screen.win-mode .lang-toggle-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+.device-screen.camera-mode .lang-toggle-btn:hover,
+.device-screen.win-mode .lang-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #38bdf8;
+}
+.device-screen.camera-mode .home-bar,
+.device-screen.win-mode .home-bar {
+  background: #ffffff;
+  opacity: 0.55;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* SCREEN 2: FIGMA DESIGN 56-946 FLOWER PETAL WHEEL & CAROUSEL */
+/* ─────────────────────────────────────────────────────────── */
+.device-screen.spin-mode .app-header {
+  display: none !important;
+}
+.device-screen.spin-mode .status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  color: #0f172a;
+}
+.device-screen.spin-mode .status-bar svg {
+  fill: #0f172a;
+}
+
+#screen-spin {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 44px 0 10px;
+  background: #ffffff;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+#screen-spin.active {
+  display: flex;
+}
+
+/* Top Prize Cards Showcase Carousel */
+.figma-cards-track-wrap {
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 6px 0 4px;
+}
+.figma-cards-track-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.figma-cards-track {
+  display: flex;
+  gap: 14px;
+  padding: 0 calc(50% - 145px); /* Centers active 290px card in viewport */
+  width: max-content;
+}
+
+.figma-card {
+  width: 290px;
+  height: 345px;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.16);
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.figma-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px -8px rgba(0, 0, 0, 0.22);
+}
+
+/* Specific Card Themes */
+.figma-card.card-foldable {
+  background: #ff6f22;
+}
+.figma-card.card-airpods {
+  background: linear-gradient(145deg, #eee5de 0%, #dbcec3 100%);
+}
+.figma-card.card-watch {
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+}
+.figma-card.card-cash5 {
+  background: linear-gradient(145deg, #059669 0%, #047857 100%);
+}
+.figma-card.card-watercase {
+  background: linear-gradient(145deg, #114e9f 0%, #0284c7 100%);
+}
+.figma-card.card-cash1 {
+  background: linear-gradient(145deg, #0d9488 0%, #0f766e 100%);
+}
+.figma-card.card-iphone16 {
+  background: linear-gradient(145deg, #27272a 0%, #18181b 100%);
+}
+.figma-card.card-tumbler {
+  background: linear-gradient(145deg, #0284c7 0%, #0369a1 100%);
+}
+.figma-card.card-giftpack {
+  background: linear-gradient(145deg, #1d4ed8 0%, #1e40af 100%);
+}
+
+/* Card Header Badge */
+.card-badge-pill {
+  align-self: flex-start;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 4px 11px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  z-index: 5;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+.card-airpods .card-badge-pill {
+  background: rgba(56, 56, 56, 0.12);
+  border-color: rgba(56, 56, 56, 0.2);
+  color: #262626;
+}
+
+/* Card Center Media */
+.card-hero-media {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.card-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 85% center;
+  display: block;
+}
+.card-airpods .card-cover-img {
+  object-position: center;
+}
+.card-hero-media.contain-mode {
+  padding: 42px 24px 68px;
+  box-sizing: border-box;
+}
+.card-contain-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.35));
+}
+.card-contain-img.photo-mode {
+  max-width: 195px;
+  max-height: 195px;
+  border-radius: 18px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+}
+
+/* Card Bottom Info */
+.card-info-footer {
+  position: relative;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 8px 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.card-airpods .card-info-footer {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.card-prize-name {
+  font-family: var(--font-heading);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+  margin: 0;
+}
+.card-airpods .card-prize-name {
+  color: #171717;
+}
+.card-prize-sub {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+.card-airpods .card-prize-sub {
+  color: #525252;
+}
+
+/* Bottom Petal Flower Wheel Section */
+.figma-wheel-wrapper {
+  position: relative;
+  width: 370px;
+  height: 370px;
+  max-width: 90vw;
+  max-height: 90vw;
+  margin: 0 auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.figma-wheel-disc {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  transition: transform 4.8s cubic-bezier(0.12, 0.95, 0.22, 1);
+}
+
+/* Individual Slot Petals */
+.figma-slot {
+  position: absolute;
+  pointer-events: none;
+}
+.figma-slot img.slot-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Figma exact insets */
+.slot-01 { inset: 0 34.05% 57.89% 34.05%; }
+.slot-02 { inset: 4.23% 8.24% 55.07% 53.6%; }
+.slot-03 { inset: 26.5% 0 41.97% 57.71%; }
+.slot-04 { inset: 51.89% 1.51% 13.39% 56.27%; }
+.slot-05 { inset: 57.16% 19.54% 0.16% 50%; }
+.slot-06 { inset: 57.16% 50% 0.16% 19.54%; }
+.slot-07 { inset: 51.89% 56.27% 13.39% 1.51%; }
+.slot-08 { inset: 26.5% 57.71% 41.97% 0; }
+.slot-09 { inset: 4.23% 53.6% 55.07% 8.24%; }
+
+/* Slot Items (Badge Thumb + Name) */
+.figma-slot-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5px;
+  pointer-events: none;
+  z-index: 5;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.slot-item-thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2.5px 7px rgba(0, 0, 0, 0.22);
+  border: 1.5px solid #ffffff;
+  padding: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.slot-item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+.slot-item-thumb img.thumb-photo {
+  object-fit: cover;
+}
+
+.figma-slot-label {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #1e293b;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+  line-height: 1.1;
+  letter-spacing: -0.2px;
+}
+.figma-slot-label.hero-label {
+  font-size: 11.5px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+}
+
+/* Item Coordinates inside 370px circle */
+.item-01 { left: 50%; top: 16%; }
+.item-02 { left: 70%; top: 25%; }
+.item-03 { left: 80.6%; top: 45%; }
+.item-04 { left: 76.9%; top: 66%; }
+.item-05 { left: 60.6%; top: 79%; }
+.item-06 { left: 39.4%; top: 79%; }
+.item-07 { left: 23.1%; top: 66%; }
+.item-08 { left: 19.4%; top: 45%; }
+.item-09 { left: 30.0%; top: 25%; }
+
+/* Center Hub Button */
+.figma-wheel-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2.2px solid #999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  outline: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.figma-wheel-hub:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+}
+.figma-wheel-hub:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+.figma-hub-sub {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: #383838;
+  line-height: 1.1;
+}
+.figma-hub-main {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: #383838;
+  line-height: 1.1;
+  letter-spacing: 0.3px;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* SCREEN 3: FIGMA DESIGN 45-859 CELEBRATION SCREEN            */
+/* ─────────────────────────────────────────────────────────── */
+#screen-win {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 54px 18px 24px;
+  margin: 0;
+  overflow: hidden;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: 
+    radial-gradient(circle at 50% 36%, rgba(255, 255, 255, 0.18) 0%, rgba(147, 197, 253, 0.1) 40%, transparent 72%),
+    radial-gradient(circle at 50% 10%, rgba(56, 189, 248, 0.35) 0%, transparent 60%),
+    linear-gradient(180deg, #3aa0f7 0%, #4ea5f6 24%, #6e94f6 45%, #7a75ed 65%, #7452b4 85%, #5e4383 100%);
+  animation: fadeInView 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#screen-win.active {
+  display: flex;
+}
+
+/* Background Ripples matching Figma 45:860 */
+.figma-bg-ripples {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 520px;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.figma-ripple-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.figma-ripple-ring.ring-1 { width: 270px; height: 270px; border-color: rgba(255, 255, 255, 0.22); }
+.figma-ripple-ring.ring-2 { width: 390px; height: 390px; border-color: rgba(255, 255, 255, 0.15); }
+.figma-ripple-ring.ring-3 { width: 510px; height: 510px; border-color: rgba(255, 255, 255, 0.08); }
+
+/* Header: Cursive Congratulations & Subtitle */
+.figma-win-header {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.figma-win-title {
+  font-family: var(--font-script), 'Kantumruy Pro', cursive;
+  font-size: 58px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+  margin: 0;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+}
+
+.figma-win-sub {
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.35;
+  text-align: center;
+  margin-top: 6px;
+  max-width: 290px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+html[lang="km"] .figma-win-title {
+  font-family: 'Kantumruy Pro', var(--font-heading);
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: normal;
+}
+html[lang="km"] .figma-win-sub {
+  font-family: 'Kantumruy Pro', var(--font-sans);
+  font-size: 15px;
+}
+
+/* Center Hero Prize Card */
+.figma-prize-card {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 360px;
+  flex: 1;
+  max-height: 520px;
+  min-height: 380px;
+  margin: 10px 0 14px;
+  border-radius: 40px;
+  border: 5.5px solid #007deb;
+  box-shadow: 
+    0 0 26px rgba(0, 125, 235, 0.45),
+    0 16px 36px -8px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+.figma-prize-card:hover {
+  transform: translateY(-2px);
+}
+
+.figma-prize-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Bottom Action Section */
+.figma-bottom-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 5;
+  margin-bottom: 2px;
+}
+
+.figma-claim-btn {
+  width: 100%;
+  height: 56px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: #ff3b30;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 10px 24px -4px rgba(255, 59, 48, 0.55),
+    0 4px 10px rgba(255, 59, 48, 0.3);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.figma-claim-btn:hover {
+  background: #e63228;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -4px rgba(255, 59, 48, 0.65);
+}
+.figma-claim-btn:active {
+  transform: translateY(0);
+}
+
+.figma-spin-again-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  transition: all 0.2s;
+}
+.figma-spin-again-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* SCREEN 4: DIGITAL PASS / CLAIM FORM                        */
+/* ─────────────────────────────────────────────────────────── */
+.claim-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  margin-top: 12px;
+}
+
+.form-field {
+  margin-bottom: 14px;
+}
+.form-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-main);
+  background: var(--bg-subtle);
+  transition: all 0.2s;
+}
+.form-input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: var(--vital-blue);
+  box-shadow: 0 0 0 3px rgba(17, 78, 159, 0.12);
+}
+
+/* Digital Voucher Pass (Apple Wallet aesthetic) */
+.digital-ticket-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--border-subtle);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  margin: 14px 0 16px;
+}
+.ticket-head {
+  background: linear-gradient(135deg, var(--vital-blue) 0%, #0d3e7d 100%);
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ticket-brand {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+.ticket-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+.ticket-body {
+  padding: 18px 20px 14px;
+}
+.ticket-prize-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.ticket-prize-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  padding: 4px;
+}
+.ticket-notch-divider {
+  position: relative;
+  height: 18px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+.ticket-notch-divider::before,
+.ticket-notch-divider::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: var(--bg-phone);
+  border-radius: 50%;
+  border: 1.5px solid var(--border-subtle);
+}
+.ticket-notch-divider::before { left: -10px; border-left: none; }
+.ticket-notch-divider::after { right: -10px; border-right: none; }
+.ticket-notch-line {
+  width: 100%;
+  height: 1px;
+  border-top: 1.5px dashed var(--border-subtle);
+}
+.ticket-qr-area {
+  padding: 4px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.barcode-svg {
+  width: 160px;
+  height: 48px;
+  margin: 8px 0 4px;
+}
+
+/* Confetti Canvas for Screen 3 */
+.confetti-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 40;
+}
+</style>
+</head>
+<body>
+
+  <!-- ─── Top Global Switcher ──────────────────────────────── -->
+  <header class="version-bar">
+    <div class="version-brand">
+      <div class="version-brand-icon"><i data-lucide="droplet" style="width: 14px; height: 14px;"></i></div>
+      <span>Vital Scan &amp; Win</span>
+    </div>
+    <nav class="version-pills" aria-label="Version Switcher">
+      <a href="index.html" class="version-pill" title="Switch to UI V1">UI V1 <small>(Classic)</small></a>
+      <a href="v2.html" class="version-pill v2-pill active" title="Current view">UI V2 <small>(Minimal ✨)</small></a>
+    </nav>
+  </header>
+
+  <!-- Prototype Screen Jumper -->
+  <div class="screen-jumper">
+    <button type="button" class="jump-btn active" data-jump="scan" id="jumpBtnScan">1. Scan QR</button>
+    <button type="button" class="jump-btn" data-jump="spin" id="jumpBtnSpin">2. Spin Wheel</button>
+    <button type="button" class="jump-btn" data-jump="win" id="jumpBtnWin">3. Win Celebration</button>
+    <button type="button" class="jump-btn" data-jump="claim" id="jumpBtnClaim">4. Claim Pass</button>
+  </div>
+
+  <!-- ─── iPhone 12 Pro Max Frame ──────────────────────────── -->
+  <div class="device-wrapper">
+    <div class="device-screen">
+      
+      <!-- Top Status Bar -->
+      <div class="status-bar">
+        <span>9:41</span>
+        <div class="notch">
+          <div class="notch-camera"></div>
+          <div class="notch-speaker"></div>
+        </div>
+        <div style="display: flex; gap: 4px; align-items: center;">
+          <i data-lucide="signal" style="width: 13px; height: 13px;"></i>
+          <i data-lucide="wifi" style="width: 13px; height: 13px;"></i>
+          <i data-lucide="battery" style="width: 15px; height: 15px;"></i>
+        </div>
+      </div>
+
+      <!-- In-App Header -->
+      <header class="app-header">
+        <div class="header-brand">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" fill="#114e9f"/>
+            <path d="M12 6.5l3.5 3.5a5 5 0 1 1-7 0z" fill="#38bdf8" opacity="0.65"/>
+          </svg>
+          <div>
+            <div class="header-logo-text">Vital</div>
+            <div class="header-sub-tag" id="txtHeaderTag">PREMIUM MINERAL WATER</div>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="header-icon-btn" id="soundToggle" title="Sound effects" aria-label="Toggle Sound">
+            <i data-lucide="volume-2" style="width: 16px; height: 16px;"></i>
+          </button>
+          <button type="button" class="lang-toggle-btn" id="langToggleBtn" title="Change Language / ផ្លាស់ប្តូរភាសា" aria-label="Change Language">
+            <svg class="lang-globe-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9.5"/>
+              <line x1="2.5" y1="12" x2="21.5" y2="12"/>
+              <line x1="12" y1="2.5" x2="12" y2="21.5"/>
+              <ellipse cx="12" cy="12" rx="4.8" ry="9.5"/>
+            </svg>
+            <span id="langText">ខ្មែរ</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Canvas for celebration particles -->
+      <canvas class="confetti-canvas" id="v2Confetti"></canvas>
+
+      <!-- ─── Main Content Container ───────────────────────── -->
+      <main class="app-main" id="mainContainer">
+
+        <!-- ─────────────────────────────────────────────────── -->
+        <!-- SCREEN 1: FULL SCREEN CAMERA SCAN                   -->
+        <!-- ─────────────────────────────────────────────────── -->
+        <section class="screen-view active" id="screen-scan">
+          <!-- Top Floating Title -->
+          <div class="scan-floating-header">
+            <h1 class="scan-fullscreen-title" id="txtScanTitle">Scan your bottle</h1>
+          </div>
+
+          <!-- Center Camera Viewfinder Reticle -->
+          <div class="scanner-reticle" id="capTapTarget" role="button" tabindex="0" title="Tap bottle cap to scan">
+            <span class="bracket bracket-tl"></span>
+            <span class="bracket bracket-tr"></span>
+            <span class="bracket bracket-bl"></span>
+            <span class="bracket bracket-br"></span>
+            <div class="laser-beam"></div>
+
+            <div class="bottle-cap-graphic">
+              <i data-lucide="qr-code" style="width: 42px; height: 42px;"></i>
+            </div>
+          </div>
+
+          <!-- Bottom Floating Controls -->
+          <div class="scan-floating-bottom">
+            <div class="scan-status-pill">
+              <span class="pulse-dot"></span>
+              <span id="scanStatusText">Align QR code inside frame</span>
+            </div>
+
+            <div class="scan-bottom-controls">
+              <button type="button" class="scan-ctrl-btn" id="torchBtn" title="Flashlight" aria-label="Toggle flashlight">
+                <i data-lucide="zap" style="width: 18px; height: 18px;"></i>
+              </button>
+              <div class="scan-shutter-ring" id="shutterTap" title="Tap to scan">
+                <div class="scan-shutter-dot"></div>
+              </div>
+              <button type="button" class="scan-ctrl-btn" id="soundScanBtn" title="Sound" aria-label="Audio">
+                <i data-lucide="volume-2" style="width: 18px; height: 18px;"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────────── -->
+        <!-- SCREEN 2: FIGMA DESIGN 56-946 FLOWER PETAL WHEEL    -->
+        <!-- ─────────────────────────────────────────────────── -->
+        <section class="screen-view" id="screen-spin">
+          <!-- Top Prize Cards Carousel Track -->
+          <div class="figma-cards-track-wrap" id="cardsTrackWrap">
+            <div class="figma-cards-track" id="cardsTrack">
+              <!-- Card 01: Foldable Smartphone -->
+              <div class="figma-card card-foldable" id="cardPrize01" data-index="0">
+                <span class="card-badge-pill" id="cardBadge01">GRAND PRIZE</span>
+                <div class="card-hero-media">
+                  <img src="figma-spin-prize1-card.png" alt="Foldable Smartphone" class="card-cover-img">
+                </div>
+                <div class="card-info-footer">
+                  <p class="card-prize-name" id="cardTitle01">Foldable Smartphone</p>
+                  <p class="card-prize-sub" id="cardSub01">Next-Gen Ultra Flagship</p>
+                </div>
+              </div>
+
+              <!-- Card 02: AirPods Max -->
+              <div class="figma-card card-airpods" id="cardPrize02" data-index="1">
+                <span class="card-badge-pill" id="cardBadge02">PREMIUM AUDIO</span>
+                <div class="card-hero-media">
+                  <img src="figma-spin-prize2-card.png" alt="AirPods Max" class="card-cover-img">
+                </div>
+                <div class="card-info-footer">
+                  <p class="card-prize-name" id="cardTitle02">AirPods Max</p>
+                  <p class="card-prize-sub" id="cardSub02">High-Fidelity Wireless Audio</p>
+                </div>
+              </div>
+
+              <!-- Card 03: Apple Watch Series -->
+              <div class="figma-card card-watch" id="cardPrize03" data-index="2">
+                <span class="card-badge-pill" id="cardBadge03">SMART WEARABLE</span>
+                <div class="card-hero-media contain-mode">
+                  <img src="prize-apple-watch.png" alt="Apple Watch Series" class="card-contain-img">
+                </div>
+                <div class="card-info-footer">
+                  <p class="card-prize-name" id="cardTitle03">Apple Watch Series</p>
+                  <p class="card-prize-sub" id="cardSub03">Fitness & Health Tracker</p>
+                </div>
+              </div>
+
+              <!-- Card 04: $5 Cash Voucher -->
+              <div class="figma-card card-cash5" id="cardPrize04" data-index="3">
+                <span class="card-badge-pill" id="cardBadge04">INSTANT CASH</span>
+                <div class="card-hero-media contain-mode">
+                  <img src="prize-cash5.png" alt="$5 Cash Voucher" class="card-contain-img">
+                </div>
+                <div class="card-info-footer">
+                  <p class="card-prize-name" id="cardTitle04">$5 Cash Voucher</p>
+                  <p class="card-prize-sub" id="cardSub04">1,500+ Partner Stores</p>
+                </div>
+              </div>
+
+              <!-- Card 05: Vital Water Case -->
+              <div class="figma-card card-watercase" id="cardPrize05" data-index="4">
+                <span class="card-badge-pill" id="cardBadge05">VITAL PACK</span>
+                <div class="card-hero-media contain-mode">
+                  <img src="prize-watercase.jpg" alt="Vital Water Case" class="card-contain-img photo-mode">
+                </div>
+                <div class="card-info-footer">
+                  <p class="card-prize-name" id="cardTitle05">Vital Water Case</p>
+                  <p class="card-prize-sub" id="cardSub05">24 Bottles x 500ml Pack</p>
+                </div>
+              </div>
+
+              <!-- Card 06: $1 Cash Voucher -->
+              <div class="figma-card card-cash1" id="cardPrize06" data-index="5">
+                <span class="card-badge-pill" id="cardBadge06">CASH REWARD</span>
+                <div class="card-hero-media contain-mode">
+                  <img src="prize-cash1.png" alt="$1 Cash Voucher" class="card-contain-img">
+                </div>
+                <div class="card-info-footer">
+                  <p class="card-prize-name" id="cardTitle06">$1 Cash Voucher</p>
+                  <p class="card-prize-sub" id="cardSub06">Direct Mobile Top-Up</p>
+                </div>
+              </div>
+
+              <!-- Card 07: iPhone 16 Pro -->
+              <div class="figma-card card-iphone16" id="cardPrize07" data-index="6">
+                <span class="card-badge-pill" id="cardBadge07">PREMIUM FLAGSHIP</span>
+                <div class="card-hero-media contain-mode">
+                  <img src="prize-iphone16pro.png" alt="iPhone 16 Pro" class="card-contain-img">
+                </div>
+                <div class="card-info-footer">
+                  <p class="card-prize-name" id="cardTitle07">iPhone 16 Pro</p>
+                  <p class="card-prize-sub" id="cardSub07">Titanium Design Flagship</p>
+                </div>
+              </div>
+
+              <!-- Card 08: Vital Stainless Tumbler -->
+              <div class="figma-card card-tumbler" id="cardPrize08" data-index="7">
+                <span class="card-badge-pill" id="cardBadge08">EXCLUSIVE MERCH</span>
+                <div class="card-hero-media contain-mode">
+                  <img src="prize-tumbler.jpg" alt="Vital Stainless Tumbler" class="card-contain-img photo-mode">
+                </div>
+                <div class="card-info-footer">
+                  <p class="card-prize-name" id="cardTitle08">Vital Tumbler</p>
+                  <p class="card-prize-sub" id="cardSub08">Stainless Vacuum Insulated</p>
+                </div>
+              </div>
+
+              <!-- Card 09: Vital Premium Gift Pack -->
+              <div class="figma-card card-giftpack" id="cardPrize09" data-index="8">
+                <span class="card-badge-pill" id="cardBadge09">SPECIAL GIFT</span>
+                <div class="card-hero-media contain-mode">
+                  <img src="prize-giftpack.jpg" alt="Vital Gift Pack" class="card-contain-img photo-mode">
+                </div>
+                <div class="card-info-footer">
+                  <p class="card-prize-name" id="cardTitle09">Vital Gift Pack</p>
+                  <p class="card-prize-sub" id="cardSub09">Eco Bottle & Gift Box Set</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom 9-Petal Flower Wheel Section -->
+          <div class="figma-wheel-wrapper">
+            <div class="figma-wheel-disc" id="wheelDisc">
+              <!-- Slot 01 (Top - Foldable Smartphone) -->
+              <div class="figma-slot slot-01">
+                <img src="figma-slot-01.png" alt="Foldable Smartphone" class="slot-bg">
+              </div>
+              <div class="figma-slot-item item-01">
+                <span class="figma-slot-label hero-label" id="lblSlot01">Foldable Phone</span>
+              </div>
+
+              <!-- Slot 02 (AirPods Max) -->
+              <div class="figma-slot slot-02">
+                <img src="figma-slot-02.png" alt="AirPods Max" class="slot-bg">
+              </div>
+              <div class="figma-slot-item item-02">
+                <span class="figma-slot-label" id="lblSlot02">AirPods Max</span>
+              </div>
+
+              <!-- Slot 03 (Apple Watch Series) -->
+              <div class="figma-slot slot-03">
+                <img src="figma-slot-03.svg" alt="Apple Watch" class="slot-bg">
+              </div>
+              <div class="figma-slot-item item-03">
+                <div class="slot-item-thumb">
+                  <img src="prize-apple-watch.png" alt="Apple Watch">
+                </div>
+                <span class="figma-slot-label" id="lblSlot03">Apple Watch</span>
+              </div>
+
+              <!-- Slot 04 ($5 Cash Voucher) -->
+              <div class="figma-slot slot-04">
+                <img src="figma-slot-04.svg" alt="$5 Cash" class="slot-bg">
+              </div>
+              <div class="figma-slot-item item-04">
+                <div class="slot-item-thumb">
+                  <img src="prize-cash5.png" alt="$5 Cash Voucher">
+                </div>
+                <span class="figma-slot-label" id="lblSlot04">$5 Cash</span>
+              </div>
+
+              <!-- Slot 05 (Vital Water 24-Pack) -->
+              <div class="figma-slot slot-05">
+                <img src="figma-slot-05.svg" alt="Water Case" class="slot-bg">
+              </div>
+              <div class="figma-slot-item item-05">
+                <div class="slot-item-thumb">
+                  <img src="prize-watercase.jpg" alt="Vital Water Case" class="thumb-photo">
+                </div>
+                <span class="figma-slot-label" id="lblSlot05">Water Case</span>
+              </div>
+
+              <!-- Slot 06 ($1 Cash Voucher) -->
+              <div class="figma-slot slot-06">
+                <img src="figma-slot-06.svg" alt="$1 Cash" class="slot-bg">
+              </div>
+              <div class="figma-slot-item item-06">
+                <div class="slot-item-thumb">
+                  <img src="prize-cash1.png" alt="$1 Cash Voucher">
+                </div>
+                <span class="figma-slot-label" id="lblSlot06">$1 Cash</span>
+              </div>
+
+              <!-- Slot 07 (iPhone 16 Pro) -->
+              <div class="figma-slot slot-07">
+                <img src="figma-slot-07.svg" alt="iPhone 16 Pro" class="slot-bg">
+              </div>
+              <div class="figma-slot-item item-07">
+                <div class="slot-item-thumb">
+                  <img src="prize-iphone16pro.png" alt="iPhone 16 Pro">
+                </div>
+                <span class="figma-slot-label" id="lblSlot07">iPhone 16 Pro</span>
+              </div>
+
+              <!-- Slot 08 (Vital Stainless Tumbler) -->
+              <div class="figma-slot slot-08">
+                <img src="figma-slot-08.svg" alt="Vital Tumbler" class="slot-bg">
+              </div>
+              <div class="figma-slot-item item-08">
+                <div class="slot-item-thumb">
+                  <img src="prize-tumbler.jpg" alt="Vital Stainless Tumbler" class="thumb-photo">
+                </div>
+                <span class="figma-slot-label" id="lblSlot08">Vital Tumbler</span>
+              </div>
+
+              <!-- Slot 09 (Vital Gift Pack) -->
+              <div class="figma-slot slot-09">
+                <img src="figma-slot-09.svg" alt="Vital Gift Pack" class="slot-bg">
+              </div>
+              <div class="figma-slot-item item-09">
+                <div class="slot-item-thumb">
+                  <img src="prize-giftpack.jpg" alt="Vital Gift Pack" class="thumb-photo">
+                </div>
+                <span class="figma-slot-label" id="lblSlot09">Gift Pack</span>
+              </div>
+            </div>
+
+            <!-- Center Interactive Hub Button -->
+            <button type="button" class="figma-wheel-hub" id="btnSpinCenter" aria-label="Tab to SPIN">
+              <span class="figma-hub-sub" id="txtSpinSub">Tab to</span>
+              <span class="figma-hub-main" id="txtSpinMain">SPIN</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────────── -->
+        <!-- SCREEN 3: WIN CELEBRATION (FIGMA DESIGN 45-859)     -->
+        <!-- ─────────────────────────────────────────────────── -->
+        <section class="screen-view" id="screen-win">
+          <!-- Background Concentric Ripples -->
+          <div class="figma-bg-ripples" aria-hidden="true">
+            <div class="figma-ripple-ring ring-1"></div>
+            <div class="figma-ripple-ring ring-2"></div>
+            <div class="figma-ripple-ring ring-3"></div>
+          </div>
+
+          <!-- Top Header: Cursive Congratulations & Subtitle -->
+          <div class="figma-win-header">
+            <h1 class="figma-win-title" id="txtWinCongrat">Congratulations!</h1>
+            <p class="figma-win-sub" id="txtWinSub">You unlocked an exclusive<br>reward from Vital.</p>
+          </div>
+
+          <!-- Hero Prize Card with Glowing Blue Border & iPhone Fold Mockup -->
+          <div class="figma-prize-card">
+            <img src="prize-iphone-fold.png" alt="Apple iPhone Fold" class="figma-prize-img" id="winPrizeImg">
+          </div>
+
+          <!-- Bottom Action: Red Pill Claim Button -->
+          <div class="figma-bottom-actions">
+            <button type="button" class="figma-claim-btn" id="btnGoToClaim">
+              <span id="txtClaimBtn">Claim Your Prize</span>
+            </button>
+            <button type="button" class="figma-spin-again-btn" id="btnBackToSpin">
+              <i data-lucide="rotate-ccw" style="width: 14px; height: 14px;"></i>
+              <span id="txtSpinAgainBtn">Spin again with another cap</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────────── -->
+        <!-- SCREEN 4: CLAIM FORM & DIGITAL PASS                -->
+        <!-- ─────────────────────────────────────────────────── -->
+        <section class="screen-view" id="screen-claim">
+          
+          <!-- State A: Claim Form -->
+          <div id="claimFormWrap">
+            <h2 class="title-lg" id="txtClaimTitle">Save Your Prize</h2>
+            <p class="desc-text" id="txtClaimDesc">Enter your contact info so the official Vital team can reach you to deliver your reward.</p>
+
+            <form class="claim-card" id="claimForm">
+              <div class="form-field">
+                <label for="claimName" id="txtLabelName">Full Name</label>
+                <input type="text" class="form-input" id="claimName" placeholder="Enter full name" value="Sokha Chan" required>
+              </div>
+
+              <div class="form-field">
+                <label for="claimPhone" id="txtLabelPhone">Phone Number</label>
+                <input type="tel" class="form-input" id="claimPhone" placeholder="012 345 678" value="012 889 977" required>
+              </div>
+
+              <div class="form-field">
+                <label for="claimLocation" id="txtLabelLocation">City / Province</label>
+                <select class="form-input" id="claimLocation">
+                  <option value="Phnom Penh" selected>Phnom Penh</option>
+                  <option value="Siem Reap">Siem Reap</option>
+                  <option value="Battambang">Battambang</option>
+                  <option value="Sihanoukville">Sihanoukville</option>
+                  <option value="Other">Other Province</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn-primary" style="margin-top: 8px;">
+                <i data-lucide="check" style="width: 16px; height: 16px;"></i>
+                <span id="txtConfirmBtn">Confirm &amp; Generate Pass</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- State B: Apple Wallet Digital Ticket Pass -->
+          <div id="digitalTicketWrap" style="display: none;">
+            <div style="text-align: center;">
+              <div class="win-badge-pill" style="background: var(--vital-blue-light); color: var(--vital-blue);">
+                <i data-lucide="check-circle-2" style="width: 14px; height: 14px;"></i>
+                <span id="txtTicketBadgeTop">CLAIM CONFIRMED</span>
+              </div>
+              <h2 class="title-lg" id="txtTicketTitle" style="margin-top: 4px;">Digital Claim Pass</h2>
+              <p class="desc-text" id="txtTicketSub">Present this digital voucher to receive your prize.</p>
+            </div>
+
+            <div class="digital-ticket-card">
+              <div class="ticket-head">
+                <div class="ticket-brand">VITAL WATER</div>
+                <div class="ticket-badge" id="txtTicketEventBadge">LUCKY DRAW 2026</div>
+              </div>
+
+              <div class="ticket-body">
+                <div class="ticket-prize-row">
+                  <img src="prize-foldable.png" alt="Prize" class="ticket-prize-img" id="ticketPrizeImg">
+                  <div>
+                    <span id="txtTicketVerifiedTag" style="font-size: 11px; font-weight: 700; color: var(--vital-blue); text-transform: uppercase;">VERIFIED WINNER</span>
+                    <h3 style="font-size: 16px; font-weight: 700; color: var(--text-main);" id="ticketPrizeName">Foldable Smartphone</h3>
+                    <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;" id="ticketWinnerName">Holder: Sokha Chan</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ticket Perforated Divider -->
+              <div class="ticket-notch-divider">
+                <div class="ticket-notch-line"></div>
+              </div>
+
+              <div class="ticket-qr-area">
+                <svg class="barcode-svg" viewBox="0 0 160 48" fill="#0f172a" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Clean Barcode Simulation -->
+                  <rect x="0" y="0" width="3" height="40"/>
+                  <rect x="5" y="0" width="1.5" height="40"/>
+                  <rect x="9" y="0" width="4" height="40"/>
+                  <rect x="16" y="0" width="2" height="40"/>
+                  <rect x="20" y="0" width="5" height="40"/>
+                  <rect x="28" y="0" width="2" height="40"/>
+                  <rect x="33" y="0" width="3" height="40"/>
+                  <rect x="39" y="0" width="1" height="40"/>
+                  <rect x="43" y="0" width="4" height="40"/>
+                  <rect x="50" y="0" width="2" height="40"/>
+                  <rect x="55" y="0" width="3" height="40"/>
+                  <rect x="61" y="0" width="5" height="40"/>
+                  <rect x="69" y="0" width="1.5" height="40"/>
+                  <rect x="73" y="0" width="3" height="40"/>
+                  <rect x="79" y="0" width="4" height="40"/>
+                  <rect x="86" y="0" width="2" height="40"/>
+                  <rect x="91" y="0" width="5" height="40"/>
+                  <rect x="99" y="0" width="2" height="40"/>
+                  <rect x="104" y="0" width="3" height="40"/>
+                  <rect x="110" y="0" width="1" height="40"/>
+                  <rect x="114" y="0" width="4" height="40"/>
+                  <rect x="121" y="0" width="2" height="40"/>
+                  <rect x="126" y="0" width="3" height="40"/>
+                  <rect x="132" y="0" width="5" height="40"/>
+                  <rect x="140" y="0" width="2" height="40"/>
+                  <rect x="145" y="0" width="4" height="40"/>
+                  <rect x="152" y="0" width="2" height="40"/>
+                  <rect x="156" y="0" width="3" height="40"/>
+                </svg>
+                <div style="font-family: monospace; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; color: var(--text-main);" id="ticketRefCode">VTL-8899-7721</div>
+                <div id="txtTicketInstruction" style="font-size: 11px; color: var(--text-subtle); margin-top: 4px;">Show this pass at any Vital partner center</div>
+              </div>
+            </div>
+
+            <button type="button" class="btn-primary" id="btnRestartScan">
+              <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i>
+              <span id="txtRestartBtn">Scan Another Bottle</span>
+            </button>
+          </div>
+
+        </section>
+
+      </main>
+
+      <!-- Bottom Home Indicator -->
+      <div class="home-bar"></div>
+    </div>
+  </div>
+
+  <script>
+    // ─── Prizes Configuration ──────────────────────────────────
+    const PRIZES = [
+      { id: 'foldable', name: 'Foldable Smartphone', nameKm: 'ទូរស័ព្ទបត់ Foldable', sub: 'Next-Gen Ultra Flagship', subKm: 'ឧបករណ៍ទំនើបជំនាន់ចុងក្រោយ', badge: 'GRAND PRIZE', badgeKm: 'រង្វាន់ធំ', img: 'prize-iphone-fold.png', slotName: 'Foldable Phone', slotNameKm: 'ទូរស័ព្ទបត់', color: '#ff6f22', isHero: true },
+      { id: 'airpods', name: 'AirPods Max', nameKm: 'AirPods Max', sub: 'High-Fidelity Wireless Audio', subKm: 'កាសសំឡេងកម្រិតខ្ពស់', badge: 'PREMIUM AUDIO', badgeKm: 'កាសពិសេស', img: 'prize-airpods-max.png', slotName: 'AirPods Max', slotNameKm: 'AirPods Max', color: '#e2d7cd' },
+      { id: 'watch', name: 'Apple Watch Series', nameKm: 'Apple Watch', sub: 'Fitness & Health Tracker', subKm: 'នាឡិកាវៃឆ្លាតតាមដានសុខភាព', badge: 'SMART WEARABLE', badgeKm: 'ឧបករណ៍វៃឆ្លាត', img: 'prize-apple-watch.png', slotName: 'Apple Watch', slotNameKm: 'Apple Watch', color: '#1e293b' },
+      { id: 'cash5', name: '$5 Cash Voucher', nameKm: 'ប្រាក់សុទ្ធ $5', sub: '1,500+ Partner Stores', subKm: 'បញ្ចូលកាតទូរស័ព្ទ ឬទិញទំនិញ', badge: 'INSTANT CASH', badgeKm: 'ប្រាក់សុទ្ធ', img: 'prize-cash5.png', slotName: '$5 Cash', slotNameKm: 'ប្រាក់ $5', color: '#059669' },
+      { id: 'watercase', name: 'Vital Water Case', nameKm: 'ទឹកវីតាល់ ១កេស', sub: '24 Bottles x 500ml Pack', subKm: 'ទឹកពិសាបរិសុទ្ធធម្មជាតិ ២៤ដប', badge: 'VITAL PACK', badgeKm: 'កញ្ចប់វីតាល់', img: 'prize-watercase.jpg', slotName: 'Water Case', slotNameKm: 'ទឹក ១កេស', color: '#114e9f' },
+      { id: 'cash1', name: '$1 Cash Voucher', nameKm: 'ប្រាក់សុទ្ធ $1', sub: 'Direct Mobile Top-Up', subKm: 'បញ្ចូលកាតទូរស័ព្ទភ្លាមៗ', badge: 'CASH REWARD', badgeKm: 'រង្វាន់ប្រាក់សុទ្ធ', img: 'prize-cash1.png', slotName: '$1 Cash', slotNameKm: 'ប្រាក់ $1', color: '#0d9488' },
+      { id: 'iphone', name: 'iPhone 16 Pro', nameKm: 'iPhone 16 Pro', sub: 'Titanium Design Flagship', subKm: 'រចនាបថទីតានីញ៉ូមទំនើប', badge: 'PREMIUM FLAGSHIP', badgeKm: 'រង្វាន់ធំ', img: 'prize-iphone16pro.png', slotName: 'iPhone 16 Pro', slotNameKm: 'iPhone 16', color: '#27272a', isHero: true },
+      { id: 'tumbler', name: 'Vital Stainless Tumbler', nameKm: 'កែវទឹកអ៊ីណុក', sub: 'Stainless Vacuum Insulated', subKm: 'កែវរក្សាកម្តៅ & ត្រជាក់', badge: 'EXCLUSIVE MERCH', badgeKm: 'វត្ថុអនុស្សាវរីយ៍', img: 'prize-tumbler.jpg', slotName: 'Vital Tumbler', slotNameKm: 'កែវអ៊ីណុក', color: '#0284c7' },
+      { id: 'giftpack', name: 'Vital Premium Gift Pack', nameKm: 'កញ្ចប់កាដូវីតាល់', sub: 'Eco Bottle & Gift Box Set', subKm: 'ដបអេកូ & ប្រអប់កាដូវីតាល់', badge: 'SPECIAL GIFT', badgeKm: 'កាដូពិសេស', img: 'prize-giftpack.jpg', slotName: 'Gift Pack', slotNameKm: 'កាដូវីតាល់', color: '#1d4ed8' }
+    ];
+
+    let currentPrize = PRIZES[0];
+    let isSpinning = false;
+    let wheelRotation = 0;
+    let currentLang = 'en';
+
+    // ─── Multi-Language Dictionaries (English ↔ Khmer) ─────────
+    const TRANSLATIONS = {
+      en: {
+        langBtn: 'ខ្មែរ',
+        brandTag: 'PREMIUM MINERAL WATER',
+        jumpScan: '1. Scan QR',
+        jumpSpin: '2. Spin Wheel',
+        jumpWin: '3. Win Celebration',
+        jumpClaim: '4. Claim Pass',
+        scanTitle: 'Scan your bottle',
+        scanStatus: 'Align QR code inside frame',
+        scanSuccess: 'QR Code Verified! Opening wheel...',
+        spinTitle: 'Spin to Win',
+        spinDesc: 'Every promotional bottle guarantees a prize chance!',
+        spinCredit: '1 Spin',
+        spinCenterBtn: 'SPIN',
+        spinBottomBtn: 'Tap to Spin Wheel',
+        prizePhone: 'Foldable Phone',
+        prizeAirpods: 'AirPods Max',
+        prizeWatch: 'Apple Watch',
+        prizeCash: '$5 Cash',
+        prizeWater: 'Water Case',
+        winBadge: 'OFFICIAL PRIZE WINNER',
+        winCongrat: 'Congratulations!',
+        winSub: 'You unlocked an exclusive reward from Vital.',
+        winCodeLabel: 'VERIFICATION ID',
+        claimBtn: 'Claim Your Prize',
+        spinAgainBtn: 'Spin again with another cap',
+        claimTitle: 'Save Your Prize',
+        claimDesc: 'Enter your contact info so the official Vital team can reach you to deliver your reward.',
+        labelName: 'Full Name',
+        placeholderName: 'Enter full name',
+        labelPhone: 'Phone Number',
+        labelLocation: 'City / Province',
+        confirmBtn: 'Confirm & Generate Pass',
+        ticketBadgeTop: 'CLAIM CONFIRMED',
+        ticketTitle: 'Digital Claim Pass',
+        ticketSub: 'Present this digital voucher to receive your prize.',
+        ticketEventBadge: 'LUCKY DRAW 2026',
+        ticketVerifiedTag: 'VERIFIED WINNER',
+        ticketHolderPrefix: 'Holder: ',
+        ticketInstruction: 'Show this pass at any Vital partner center',
+        restartBtn: 'Scan Another Bottle',
+        provinces: ['Phnom Penh', 'Siem Reap', 'Battambang', 'Sihanoukville', 'Other Province']
+      },
+      km: {
+        langBtn: 'English',
+        brandTag: 'ទឹកពិសាបរិសុទ្ធ គុណភាពខ្ពស់',
+        jumpScan: '១. ស្កេន QR',
+        jumpSpin: '២. បង្វិលកង',
+        jumpWin: '៣. ឈ្នះរង្វាន់',
+        jumpClaim: '៤. ប័ណ្ណរង្វាន់',
+        scanTitle: 'ស្កេនគម្របដបរបស់អ្នក',
+        scanStatus: 'តម្រង់ QR កូដក្នុងស៊ុម',
+        scanSuccess: 'ផ្ទៀងផ្ទាត់ QR កូដជោគជ័យ! កំពុងបើកកងបង្វិល...',
+        spinTitle: 'បង្វិលដើម្បីឈ្នះរង្វាន់',
+        spinDesc: 'រាល់ដបដែលមានប្រូម៉ូសិន ធានាឱកាសឈ្នះរង្វាន់!',
+        spinCredit: '១ លើក',
+        spinCenterBtn: 'បង្វិល',
+        spinBottomBtn: 'ចុចដើម្បីបង្វិលកង',
+        prizePhone: 'ទូរស័ព្ទបត់',
+        prizeAirpods: 'AirPods Max',
+        prizeWatch: 'Apple Watch',
+        prizeCash: 'ប្រាក់សុទ្ធ $5',
+        prizeWater: 'ទឹកវីតាល់ ១កេស',
+        winBadge: 'អ្នកឈ្នះរង្វាន់ផ្លូវការ',
+        winCongrat: 'អបអរសាទរ!',
+        winSub: 'អ្នកបានឈ្នះរង្វាន់ពិសេសពី វីតាល់!',
+        winCodeLabel: 'លេខកូដបញ្ជាក់',
+        claimBtn: 'ទទួលយករង្វាន់របស់អ្នក',
+        spinAgainBtn: 'បង្វិលម្តងទៀតជាមួយគម្របថ្មី',
+        claimTitle: 'រក្សាទុករង្វាន់របស់អ្នក',
+        claimDesc: 'សូមបញ្ចូលព័ត៌មានទំនាក់ទំនង ដើម្បីក្រុមការងារវីតាល់អាចទាក់ទងប្រគល់រង្វាន់ជូនអ្នក។',
+        labelName: 'ឈ្មោះពេញ',
+        placeholderName: 'បញ្ចូលឈ្មោះពេញ',
+        labelPhone: 'លេខទូរស័ព្ទ',
+        labelLocation: 'រាជធានី / ខេត្ត',
+        confirmBtn: 'បញ្ជាក់ & បង្កើតប័ណ្ណរង្វាន់',
+        ticketBadgeTop: 'ការទាមទារបានបញ្ជាក់',
+        ticketTitle: 'ប័ណ្ណរង្វាន់ឌីជីថល',
+        ticketSub: 'បង្ហាញប័ណ្ណឌីជីថលនេះដើម្បីទទួលយករង្វាន់របស់អ្នក។',
+        ticketEventBadge: 'ចាប់រង្វាន់សំណាង ២០២៦',
+        ticketVerifiedTag: 'អ្នកឈ្នះរង្វាន់ផ្លូវការ',
+        ticketHolderPrefix: 'ម្ចាស់រង្វាន់: ',
+        ticketInstruction: 'បង្ហាញប័ណ្ណនេះនៅតាមសាខា ឬដៃគូចែកចាយវីតាល់',
+        restartBtn: 'ស្កេនដបមួយទៀត',
+        provinces: ['រាជធានីភ្នំពេញ', 'ខេត្តសៀមរាប', 'ខេត្តបាត់ដំបង', 'ខេត្តព្រះសីហនុ', 'ខេត្តផ្សេងៗ']
+      }
+    };
+
+    // ─── Render Clean SVG Wheel Disc ──────────────────────────
+    function buildWheelSvg() {
+      const svg = document.getElementById('wheelSvg');
+      if (!svg) return;
+      const count = PRIZES.length;
+      const angle = 360 / count;
+      const r = 160;
+      let html = '';
+
+      // Defs for subtle gradients
+      html += `
+        <defs>
+          <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+          </filter>
+        </defs>
+      `;
+
+      // Draw Segments
+      for (let i = 0; i < count; i++) {
+        const startA = (i * angle - 90) * Math.PI / 180;
+        const endA = ((i + 1) * angle - 90) * Math.PI / 180;
+
+        const x1 = r + r * Math.cos(startA);
+        const y1 = r + r * Math.sin(startA);
+        const x2 = r + r * Math.cos(endA);
+        const y2 = r + r * Math.sin(endA);
+
+        const fill = (i % 2 === 0) ? '#ffffff' : '#f0f7ff';
+        const strokeColor = '#dbeafe';
+
+        const path = `M ${r} ${r} L ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2} Z`;
+        html += `<path d="${path}" fill="${fill}" stroke="${strokeColor}" stroke-width="1.2" />`;
+
+        // Text & Labels
+        const midAngleDeg = i * angle + angle / 2;
+        const prize = PRIZES[i];
+        const textColor = (i % 2 === 0) ? '#114e9f' : '#0369a1';
+        const isKm = (currentLang === 'km');
+        const displayName = (isKm && prize.nameKm) ? prize.nameKm : prize.name.split(' ')[0];
+        const displayBadge = (isKm && prize.badgeKm) ? prize.badgeKm : prize.badge;
+
+        html += `
+          <g transform="rotate(${midAngleDeg}, ${r}, ${r})">
+            <text x="${r}" y="36" text-anchor="middle" font-family="var(--font-heading)" font-size="10" font-weight="700" fill="${textColor}" letter-spacing="0.2">
+              ${displayName}
+            </text>
+            <text x="${r}" y="52" text-anchor="middle" font-family="var(--font-sans)" font-size="7.5" font-weight="600" fill="#64748b" letter-spacing="0.4">
+              ${displayBadge}
+            </text>
+            <circle cx="${r}" cy="78" r="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+            <image href="${prize.img}" x="${r - 11}" y="67" width="22" height="22" preserveAspectRatio="xMidYMid meet" />
+          </g>
+        `;
+      }
+
+      // Outer bezel ring
+      html += `<circle cx="${r}" cy="${r}" r="157" fill="none" stroke="#114e9f" stroke-width="2.5" opacity="0.3"/>`;
+      svg.innerHTML = html;
+    }
+
+    // ─── Language Controller ──────────────────────────────────
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const t = TRANSLATIONS[lang];
+      if (!t) return;
+
+      document.documentElement.lang = lang;
+
+      // Update button text & title
+      const langText = document.getElementById('langText');
+      if (langText) langText.textContent = t.langBtn;
+      const langToggleBtn = document.getElementById('langToggleBtn');
+      if (langToggleBtn) {
+        langToggleBtn.title = (lang === 'en') ? 'Switch to Khmer / ប្តូរជាភាសាខ្មែរ' : 'Switch to English / Change to English';
+      }
+
+      // Header Tag
+      const headerTag = document.getElementById('txtHeaderTag');
+      if (headerTag) headerTag.textContent = t.brandTag;
+
+      // Screen Jumpers
+      const jScan = document.getElementById('jumpBtnScan');
+      if (jScan) jScan.textContent = t.jumpScan;
+      const jSpin = document.getElementById('jumpBtnSpin');
+      if (jSpin) jSpin.textContent = t.jumpSpin;
+      const jWin = document.getElementById('jumpBtnWin');
+      if (jWin) jWin.textContent = t.jumpWin;
+      const jClaim = document.getElementById('jumpBtnClaim');
+      if (jClaim) jClaim.textContent = t.jumpClaim;
+
+      // Screen 1: Scan
+      const scanTitle = document.getElementById('txtScanTitle');
+      if (scanTitle) scanTitle.textContent = t.scanTitle;
+      const scanStatus = document.getElementById('scanStatusText');
+      if (scanStatus) scanStatus.textContent = t.scanStatus;
+
+      // Screen 2: Figma Spin
+      const spinSub = document.getElementById('txtSpinSub');
+      if (spinSub) spinSub.textContent = (lang === 'km') ? 'ចុចដើម្បី' : 'Tab to';
+      const spinMain = document.getElementById('txtSpinMain');
+      if (spinMain) spinMain.textContent = (lang === 'km') ? 'បង្វិល' : 'SPIN';
+
+      // Update 9 Carousel Cards and 9 Wheel Slot Labels
+      const isKmLang = (lang === 'km');
+      PRIZES.forEach((p, idx) => {
+        const numStr = (idx + 1 < 10) ? `0${idx + 1}` : `${idx + 1}`;
+        
+        // Card Badge
+        const elCardBadge = document.getElementById(`cardBadge${numStr}`);
+        if (elCardBadge) elCardBadge.textContent = isKmLang ? (p.badgeKm || p.badge) : p.badge;
+
+        // Card Title
+        const elCardTitle = document.getElementById(`cardTitle${numStr}`);
+        if (elCardTitle) elCardTitle.textContent = isKmLang ? (p.nameKm || p.name) : p.name;
+
+        // Card Subtitle
+        const elCardSub = document.getElementById(`cardSub${numStr}`);
+        if (elCardSub) elCardSub.textContent = isKmLang ? (p.subKm || p.sub) : p.sub;
+
+        // Slot Label on Wheel
+        const elSlotLbl = document.getElementById(`lblSlot${numStr}`);
+        if (elSlotLbl) elSlotLbl.textContent = isKmLang ? (p.slotNameKm || p.slotName || p.nameKm) : (p.slotName || p.name);
+      });
+
+      // Screen 3: Win
+      const winBadge = document.getElementById('txtWinBadge');
+      if (winBadge) winBadge.textContent = t.winBadge;
+      const winCongrat = document.getElementById('txtWinCongrat');
+      if (winCongrat) winCongrat.textContent = t.winCongrat;
+      const winSub = document.getElementById('txtWinSub');
+      if (winSub) winSub.textContent = t.winSub;
+      const winCodeLabel = document.getElementById('txtWinCodeLabel');
+      if (winCodeLabel) winCodeLabel.textContent = t.winCodeLabel;
+      const claimBtn = document.getElementById('txtClaimBtn');
+      if (claimBtn) claimBtn.textContent = t.claimBtn;
+      const spinAgainBtn = document.getElementById('txtSpinAgainBtn');
+      if (spinAgainBtn) spinAgainBtn.textContent = t.spinAgainBtn;
+
+      // Prize card won details
+      const isKm = (lang === 'km');
+      const winTag = document.getElementById('winPrizeTag');
+      if (winTag) winTag.textContent = (isKm && currentPrize.badgeKm) ? currentPrize.badgeKm : currentPrize.badge;
+      const winName = document.getElementById('winPrizeName');
+      if (winName) winName.textContent = (isKm && currentPrize.nameKm) ? currentPrize.nameKm : currentPrize.name;
+      const winCardSub = document.getElementById('winPrizeSub');
+      if (winCardSub) winCardSub.textContent = (isKm && currentPrize.subKm) ? currentPrize.subKm : currentPrize.sub;
+
+      // Screen 4: Claim Form
+      const claimTitle = document.getElementById('txtClaimTitle');
+      if (claimTitle) claimTitle.textContent = t.claimTitle;
+      const claimDesc = document.getElementById('txtClaimDesc');
+      if (claimDesc) claimDesc.textContent = t.claimDesc;
+      const labelName = document.getElementById('txtLabelName');
+      if (labelName) labelName.textContent = t.labelName;
+      const claimInput = document.getElementById('claimName');
+      if (claimInput) claimInput.placeholder = t.placeholderName;
+      const labelPhone = document.getElementById('txtLabelPhone');
+      if (labelPhone) labelPhone.textContent = t.labelPhone;
+      const labelLocation = document.getElementById('txtLabelLocation');
+      if (labelLocation) labelLocation.textContent = t.labelLocation;
+      const confirmBtn = document.getElementById('txtConfirmBtn');
+      if (confirmBtn) confirmBtn.textContent = t.confirmBtn;
+
+      // Location Options
+      const locSelect = document.getElementById('claimLocation');
+      if (locSelect && t.provinces) {
+        for (let i = 0; i < t.provinces.length && i < locSelect.options.length; i++) {
+          locSelect.options[i].text = t.provinces[i];
+        }
+      }
+
+      // Ticket Pass
+      const ticketBadge = document.getElementById('txtTicketBadgeTop');
+      if (ticketBadge) ticketBadge.textContent = t.ticketBadgeTop;
+      const ticketTitle = document.getElementById('txtTicketTitle');
+      if (ticketTitle) ticketTitle.textContent = t.ticketTitle;
+      const ticketSub = document.getElementById('txtTicketSub');
+      if (ticketSub) ticketSub.textContent = t.ticketSub;
+      const ticketEvent = document.getElementById('txtTicketEventBadge');
+      if (ticketEvent) ticketEvent.textContent = t.ticketEventBadge;
+      const ticketVerified = document.getElementById('txtTicketVerifiedTag');
+      if (ticketVerified) ticketVerified.textContent = t.ticketVerifiedTag;
+      const ticketInstruction = document.getElementById('txtTicketInstruction');
+      if (ticketInstruction) ticketInstruction.textContent = t.ticketInstruction;
+      const restartBtn = document.getElementById('txtRestartBtn');
+      if (restartBtn) restartBtn.textContent = t.restartBtn;
+
+      const ticketPName = document.getElementById('ticketPrizeName');
+      if (ticketPName) ticketPName.textContent = (isKm && currentPrize.nameKm) ? currentPrize.nameKm : currentPrize.name;
+
+      const nameVal = document.getElementById('claimName')?.value.trim() || (isKm ? 'សុខា ចាន់' : 'Sokha Chan');
+      const ticketWinner = document.getElementById('ticketWinnerName');
+      if (ticketWinner) ticketWinner.textContent = `${t.ticketHolderPrefix}${nameVal}`;
+
+      // Refresh SVG Wheel Disc with translated labels
+      buildWheelSvg();
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // ─── Screen Switching Controller ──────────────────────────
+    const screens = {
+      scan: document.getElementById('screen-scan'),
+      spin: document.getElementById('screen-spin'),
+      win: document.getElementById('screen-win'),
+      claim: document.getElementById('screen-claim')
+    };
+
+    function showScreen(name) {
+      const deviceScreen = document.querySelector('.device-screen');
+      deviceScreen?.classList.toggle('camera-mode', name === 'scan');
+      deviceScreen?.classList.toggle('spin-mode', name === 'spin');
+      deviceScreen?.classList.toggle('win-mode', name === 'win');
+
+      Object.keys(screens).forEach(k => {
+        screens[k]?.classList.remove('active');
+      });
+      if (screens[name]) {
+        screens[name].classList.add('active');
+      }
+
+      // Update Jumper Buttons
+      document.querySelectorAll('.jump-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.jump === name);
+      });
+
+      // Fire celebratory confetti on win
+      if (name === 'win') {
+        triggerCleanConfetti();
+      }
+    }
+
+    // ─── Clean Confetti Generator ─────────────────────────────
+    function triggerCleanConfetti() {
+      const canvas = document.getElementById('v2Confetti');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+
+      const colors = ['#114e9f', '#0284c7', '#38bdf8', '#cf2638', '#f59e0b', '#10b981'];
+      const particles = [];
+
+      for (let i = 0; i < 45; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height * 0.35,
+          vx: (Math.random() - 0.5) * 8,
+          vy: Math.random() * -7 - 2,
+          size: Math.random() * 6 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          vrot: (Math.random() - 0.5) * 10,
+          opacity: 1
+        });
+      }
+
+      let frame = 0;
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let active = false;
+
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.22; // gravity
+          p.rotation += p.vrot;
+          if (frame > 25) p.opacity -= 0.015;
+
+          if (p.opacity > 0) {
+            active = true;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rotation * Math.PI / 180);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, p.opacity);
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+            ctx.restore();
+          }
+        });
+
+        frame++;
+        if (active && frame < 90) {
+          requestAnimationFrame(animate);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // ─── Spin Mechanics ───────────────────────────────────────
+    function spinWheel() {
+      if (isSpinning) return;
+      isSpinning = true;
+
+      const wheelDisc = document.getElementById('wheelDisc');
+      if (!wheelDisc) return;
+
+      // 9-petal wheel: Slot 01 is centered at 0 deg (12 o'clock)
+      const targetIndex = 0;
+      currentPrize = PRIZES[targetIndex];
+
+      const segmentAngle = 360 / 9; // 40 degrees per slice
+      const targetOffset = 360 - (targetIndex * segmentAngle);
+      
+      const extraLaps = 5 * 360; // 5 full revolutions
+      wheelRotation += extraLaps + (targetOffset - (wheelRotation % 360));
+
+      wheelDisc.style.transform = `rotate(${wheelRotation}deg)`;
+
+      // Smoothly scroll the top carousel to the winning prize card
+      const winCard = document.getElementById('cardPrize01');
+      if (winCard) {
+        winCard.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+
+      setTimeout(() => {
+        isSpinning = false;
+        
+        const isKm = currentLang === 'km';
+        // Populate Win Screen with won prize
+        const elTag = document.getElementById('winPrizeTag');
+        if (elTag) elTag.textContent = (isKm && currentPrize.badgeKm) ? currentPrize.badgeKm : currentPrize.badge;
+        const elImg = document.getElementById('winPrizeImg');
+        if (elImg) elImg.src = currentPrize.img;
+        const elName = document.getElementById('winPrizeName');
+        if (elName) elName.textContent = (isKm && currentPrize.nameKm) ? currentPrize.nameKm : currentPrize.name;
+        const elSub = document.getElementById('winPrizeSub');
+        if (elSub) elSub.textContent = (isKm && currentPrize.subKm) ? currentPrize.subKm : currentPrize.sub;
+        const elCode = document.getElementById('winPrizeCode');
+        if (elCode) elCode.textContent = `VTL-${currentPrize.id.toUpperCase()}-8899`;
+
+        // Update Ticket screen too
+        const elTicketImg = document.getElementById('ticketPrizeImg');
+        if (elTicketImg) elTicketImg.src = currentPrize.img;
+        const elTicketName = document.getElementById('ticketPrizeName');
+        if (elTicketName) elTicketName.textContent = (isKm && currentPrize.nameKm) ? currentPrize.nameKm : currentPrize.name;
+
+        // Transition to win screen
+        showScreen('win');
+      }, 5000);
+    }
+
+    // ─── Event Listeners & Interactions ───────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      buildWheelSvg();
+      lucide.createIcons();
+
+      // Carousel card click to center
+      document.querySelectorAll('.figma-card').forEach((card) => {
+        card.addEventListener('click', () => {
+          card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+      });
+
+      // Language Switcher Toggle
+      document.getElementById('langToggleBtn')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nextLang = (currentLang === 'en') ? 'km' : 'en';
+        applyLanguage(nextLang);
+      });
+
+      // Screen jumper buttons
+      document.querySelectorAll('.jump-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          showScreen(btn.dataset.jump);
+        });
+      });
+
+      // Scanner Simulation (Full Screen tap or shutter)
+      const triggerScanSuccess = () => {
+        const statusText = document.getElementById('scanStatusText');
+        const t = TRANSLATIONS[currentLang];
+        if (statusText) statusText.textContent = t.scanSuccess;
+        const reticle = document.querySelector('.scanner-reticle');
+        if (reticle) reticle.style.filter = 'drop-shadow(0 0 24px #10b981)';
+        setTimeout(() => {
+          if (reticle) reticle.style.filter = '';
+          if (statusText) statusText.textContent = t.scanStatus;
+          showScreen('spin');
+        }, 700);
+      };
+
+      document.getElementById('screen-scan')?.addEventListener('click', triggerScanSuccess);
+      document.getElementById('shutterTap')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerScanSuccess();
+      });
+      document.getElementById('capTapTarget')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerScanSuccess();
+      });
+      document.getElementById('torchBtn')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const btn = document.getElementById('torchBtn');
+        btn.classList.toggle('active');
+        const active = btn.classList.contains('active');
+        btn.style.background = active ? '#f59e0b' : 'rgba(255, 255, 255, 0.12)';
+        btn.style.color = active ? '#000000' : '#ffffff';
+      });
+      document.getElementById('soundScanBtn')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('soundToggle')?.click();
+      });
+      document.getElementById('soundToggle')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const btn = document.getElementById('soundToggle');
+        btn.classList.toggle('muted');
+        const isMuted = btn.classList.contains('muted');
+        btn.innerHTML = isMuted 
+          ? '<i data-lucide="volume-x" style="width: 16px; height: 16px;"></i>' 
+          : '<i data-lucide="volume-2" style="width: 16px; height: 16px;"></i>';
+        lucide.createIcons();
+      });
+
+      // Wheel Spin Buttons
+      document.getElementById('btnSpinCenter')?.addEventListener('click', spinWheel);
+      document.getElementById('btnSpinBottom')?.addEventListener('click', spinWheel);
+
+      // Win Screen Actions
+      document.getElementById('btnGoToClaim')?.addEventListener('click', () => {
+        showScreen('claim');
+      });
+      document.getElementById('btnBackToSpin')?.addEventListener('click', () => {
+        showScreen('spin');
+      });
+
+      // Claim Form Submit
+      document.getElementById('claimForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const t = TRANSLATIONS[currentLang];
+        const isKm = currentLang === 'km';
+        const nameVal = document.getElementById('claimName').value.trim() || (isKm ? 'សុខា ចាន់' : 'Sokha Chan');
+        document.getElementById('ticketWinnerName').textContent = `${t.ticketHolderPrefix}${nameVal}`;
+        document.getElementById('claimFormWrap').style.display = 'none';
+        document.getElementById('digitalTicketWrap').style.display = 'block';
+        triggerCleanConfetti();
+      });
+
+      // Restart Scan
+      document.getElementById('btnRestartScan')?.addEventListener('click', () => {
+        document.getElementById('claimFormWrap').style.display = 'block';
+        document.getElementById('digitalTicketWrap').style.display = 'none';
+        showScreen('scan');
+      });
+
+      // Initial screen
+      showScreen('scan');
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
