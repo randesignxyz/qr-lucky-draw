@@ -1481,7 +1481,455 @@ svg.lucide {
   color: var(--destructive);
 }
 
-html>body{padding:0}</style>
+html>body{padding:0}
+/* --- Claim Screen: One-line title, Bottle Photo Upload, Depot Map --- */
+#vital-flow main[data-step="info"] h1,
+#vital-flow .claim-page-title {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  font-size: 25px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  margin: 4px 0 10px !important;
+  color: #0c4a9e !important;
+  letter-spacing: -0.4px !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+}
+html[lang="km"] #vital-flow main[data-step="info"] h1,
+html[lang="km"] #vital-flow .claim-page-title {
+  font-size: 22px !important;
+  font-family: 'Kantumruy Pro', 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+}
+#vital-flow .bottle-photo-field {
+  margin: 16px 0 12px;
+  text-align: left;
+}
+#vital-flow .bottle-photo-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+#vital-flow .bottle-photo-label-req {
+  font-size: 11px;
+  color: #0c4a9e;
+  font-weight: 700;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+#vital-flow .bottle-photo-zone {
+  border: 2px dashed #93c5fd;
+  background: #f8fbff;
+  border-radius: 18px;
+  padding: 16px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .2s cubic-bezier(.4, 0, .2, 1);
+  position: relative;
+  overflow: hidden;
+}
+#vital-flow .bottle-photo-zone:hover {
+  border-color: #38bdf8;
+  background: #f0f7ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.15);
+}
+#vital-flow .bottle-photo-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#vital-flow .bottle-photo-icon-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0c4a9e;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(11, 56, 124, 0.12);
+  margin-bottom: 8px;
+  border: 1px solid #dbeafe;
+}
+#vital-flow .bottle-photo-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0c4a9e;
+  margin-bottom: 3px;
+}
+#vital-flow .bottle-photo-sub {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.35;
+  max-width: 280px;
+}
+#vital-flow .bottle-photo-preview {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 14px;
+  padding: 10px 12px;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(11, 56, 124, 0.08);
+}
+#vital-flow .bottle-photo-preview.is-active {
+  display: flex;
+}
+#vital-flow .bottle-photo-preview img {
+  width: 58px;
+  height: 58px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid #38bdf8;
+  flex-shrink: 0;
+}
+#vital-flow .bottle-photo-preview-info {
+  flex: 1;
+  min-width: 0;
+}
+#vital-flow .bottle-photo-preview-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#vital-flow .bottle-photo-preview-sub {
+  font-size: 11px;
+  color: #059669;
+  font-weight: 600;
+  margin-top: 2px;
+}
+#vital-flow .bottle-photo-change-btn {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0c4a9e;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  padding: 5px 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all .15s;
+}
+#vital-flow .bottle-photo-change-btn:hover {
+  background: #dbeafe;
+}
+#vital-flow .btn-sample-photo {
+  margin-top: 8px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  background: #ffffff;
+  color: #0c4a9e;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all .15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+#vital-flow .btn-sample-photo:hover {
+  background: #eff6ff;
+  border-color: #38bdf8;
+  transform: translateY(-1px);
+}
+
+/* Depot Section */
+#vital-flow .depot-section {
+  margin: 20px 0 14px;
+  padding-top: 16px;
+  border-top: 1.5px dashed #cbd5e1;
+  text-align: left;
+}
+#vital-flow .depot-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+#vital-flow .depot-section-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0c4a9e;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: -0.2px;
+}
+#vital-flow .depot-badge-open {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #059669;
+  background: #d1fae5;
+  border: 1px solid #a7f3d0;
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.2px;
+}
+#vital-flow .depot-info-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 13px 14px;
+  box-shadow: 0 4px 14px rgba(11, 56, 124, 0.05);
+  margin-bottom: 10px;
+}
+#vital-flow .depot-name {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+#vital-flow .depot-address {
+  font-size: 11.5px;
+  color: #475569;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+#vital-flow .depot-hours {
+  font-size: 11px;
+  color: #0c4a9e;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#vital-flow .depot-map-banner {
+  position: relative;
+  height: 125px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1.5px solid #bfdbfe;
+  box-shadow: 0 4px 14px rgba(11, 56, 124, 0.1);
+  transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #f1f5f9;
+}
+#vital-flow .depot-map-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(11, 56, 124, 0.2);
+  border-color: #38bdf8;
+}
+#vital-flow .depot-map-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#vital-flow .depot-map-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(11, 56, 124, 0.68) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 12px;
+  color: #ffffff;
+}
+#vital-flow .depot-map-pin-pill {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  color: #0c4a9e;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+#vital-flow .depot-map-cta-pill {
+  align-self: center;
+  background: #0c4a9e;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.4);
+  letter-spacing: 0.2px;
+}
+
+/* Depot Modal */
+#vital-flow .depot-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 99999;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+  animation: fadeInModal .22s ease-out;
+}
+#vital-flow .depot-modal-backdrop.is-open {
+  display: flex !important;
+}
+#vital-flow .depot-modal-sheet {
+  background: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.3);
+  animation: slideUpSheet .28s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+#vital-flow .depot-modal-header {
+  padding: 14px 18px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+}
+#vital-flow .depot-modal-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #0c4a9e;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#vital-flow .depot-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all .15s;
+}
+#vital-flow .depot-modal-close:hover {
+  background: #fee2e2;
+  color: #ef4444;
+  border-color: #fca5a5;
+}
+#vital-flow .depot-modal-body {
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+#vital-flow .depot-map-iframe-wrap {
+  width: 100%;
+  height: 250px;
+  background: #e2e8f0;
+  position: relative;
+}
+#vital-flow .depot-map-iframe-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+#vital-flow .depot-modal-desc {
+  padding: 12px 18px;
+  background: #f8fafc;
+  border-top: 1px solid #f1f5f9;
+}
+#vital-flow .depot-modal-desc h4 {
+  margin: 0 0 3px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+#vital-flow .depot-modal-desc p {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+#vital-flow .depot-modal-footer {
+  padding: 12px 18px 16px;
+  background: #ffffff;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+#vital-flow .depot-btn-nav {
+  flex: 1;
+  height: 44px;
+  background: #0c4a9e;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .2s;
+  box-shadow: 0 3px 10px rgba(12, 74, 158, 0.25);
+}
+#vital-flow .depot-btn-nav:hover {
+  background: #08387a;
+}
+#vital-flow .depot-btn-call {
+  height: 44px;
+  padding: 0 16px;
+  background: #f1f5f9;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .2s;
+}
+#vital-flow .depot-btn-call:hover {
+  background: #e2e8f0;
+}
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUpSheet {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+</style>
 </head>
 <body>
 <script>
@@ -2376,16 +2824,30 @@ const v1Translations = {
       small: 'Each code has one result.'
     },
     info: {
-      title: 'Let’s save<br>your prize.',
-      desc: 'Enter your details so we can contact you about your reward.',
+      title: 'Let’s save your prize.',
+      desc: 'Enter your details, attach your bottle cap QR photo, and choose your redemption depot.',
       labelName: 'Full name',
       phName: 'Enter your full name',
       labelPhone: 'Phone number',
       phPhone: 'Enter your phone number',
-      notice: 'Your details will be used to manage your prize claim.',
-      btnSubmit: 'Submit claim',
+      labelPhoto: 'Photo of Bottle & Cap QR',
+      photoTitle: 'Tap to Take or Upload Photo',
+      photoSub: 'Clear photo showing your bottle and the winning QR inside the cap',
+      photoUploaded: 'Bottle & Cap QR Photo attached',
+      photoChange: 'Change',
+      depotTitle: 'Official Redemption Depot',
+      depotStatus: 'Open Now',
+      depotName: 'Vital Central Depot & Head Office',
+      depotAddress: 'St. 598 & NR 5, Russey Keo, Phnom Penh',
+      depotHours: 'Mon – Sat: 8:00 AM – 5:30 PM · Tel: 023 888 888',
+      depotTapMap: 'Tap to View Depot on Map',
+      depotModalTitle: 'Vital Central Depot Location',
+      depotNavBtn: 'Get Directions in Google Maps',
+      depotCallBtn: 'Call Depot',
+      notice: 'Your details and bottle verification will be used to manage your prize claim.',
+      btnSubmit: 'Submit Claim & Save Prize',
       demo: 'Demo only. Details are not sent or saved.',
-      errValidation: 'Enter your name and a phone number with 8–15 digits.'
+      errValidation: 'Please enter your name, phone number, and verify bottle photo.'
     },
     done: {
       title: 'Claim received!',
@@ -2446,16 +2908,30 @@ const v1Translations = {
       small: 'កូដនីមួយៗមានលទ្ធផលតែមួយ។'
     },
     info: {
-      title: 'រក្សាទុករង្វាន់<br>របស់អ្នក',
-      desc: 'សូមបញ្ចូលព័ត៌មានទំនាក់ទំនង ដើម្បីក្រុមការងារវីតាល់អាចទាក់ទងប្រគល់រង្វាន់។',
+      title: 'រក្សាទុករង្វាន់របស់អ្នក',
+      desc: 'សូមបញ្ចូលព័ត៌មានទំនាក់ទំនង ភ្ជាប់រូបថតដបទឹក និងជ្រើសរើសដេប៉ូទទួលរង្វាន់។',
       labelName: 'ឈ្មោះពេញ',
       phName: 'បញ្ចូលឈ្មោះពេញរបស់អ្នក',
       labelPhone: 'លេខទូរស័ព្ទ',
       phPhone: 'បញ្ចូលលេខទូរស័ព្ទរបស់អ្នក',
-      notice: 'ព័ត៌មានរបស់អ្នកនឹងត្រូវប្រើប្រាស់ដើម្បីគ្រប់គ្រងការទាមទាររង្វាន់។',
+      labelPhoto: 'រូបថតដបទឹក និងកូដ QR លើគម្រប',
+      photoTitle: 'ចុចដើម្បីថតរូប ឬបញ្ចូលរូបថត',
+      photoSub: 'រូបថតច្បាស់បង្ហាញដបទឹក និងកូដ QR លើគម្របដប',
+      photoUploaded: 'បានភ្ជាប់រូបថតដបទឹក និងកូដ QR រួចរាល់',
+      photoChange: 'ប្តូររូប',
+      depotTitle: 'ទីតាំងដេប៉ូទទួលរង្វាន់ផ្លូវការ',
+      depotStatus: 'កំពុងបើកដំណើរការ',
+      depotName: 'ដេប៉ូកណ្តាលវីតាល់ (រាជធានីភ្នំពេញ)',
+      depotAddress: 'ផ្លូវ ៥៩៨ និងផ្លូវជាតិលេខ ៥ សង្កាត់ច្រាំងចំរេះ ខណ្ឌឫស្សីកែវ ភ្នំពេញ',
+      depotHours: 'ចន្ទ – សៅរ៍៖ ៨:០០ ព្រឹក – ៥:៣០ ល្ងាច · ទូរស័ព្ទ៖ 023 888 888',
+      depotTapMap: 'ចុចដើម្បីមើលទីតាំងលើផែនទី',
+      depotModalTitle: 'ទីតាំងដេប៉ូវីតាល់ទទួលរង្វាន់',
+      depotNavBtn: 'មើលទិសដៅលើ Google Maps',
+      depotCallBtn: 'ទូរស័ព្ទទៅដេប៉ូ',
+      notice: 'ព័ត៌មាន និងការផ្ទៀងផ្ទាត់ដបទឹកនឹងត្រូវប្រើដើម្បីគ្រប់គ្រងការទាមទាររង្វាន់។',
       btnSubmit: 'ដាក់ស្នើទាមទាររង្វាន់',
       demo: 'សម្រាប់ការសាកល្បងប៉ុណ្ណោះ។ ព័ត៌មានមិនត្រូវបានបញ្ជូន ឬរក្សាទុកឡើយ។',
-      errValidation: 'សូមបញ្ចូលឈ្មោះ និងលេខទូរស័ព្ទដែលមានពី ៨ ដល់ ១៥ ខ្ទង់។'
+      errValidation: 'សូមបញ្ចូលឈ្មោះ លេខទូរស័ព្ទ និងភ្ជាប់រូបថតដបទឹក។'
     },
     done: {
       title: 'បានទទួលការទាមទាររង្វាន់!',
@@ -2679,7 +3155,7 @@ function launchFireworks(canvas) {
 function render(screen,isBack=false){
   clearTimeout(timer);
   if(activeFireworksCleanup) { activeFireworksCleanup(); activeFireworksCleanup = null; }
-  current=screen;main.dataset.step=screen;updateBackButton(screen);
+  current=screen;main.dataset.step=screen;updateBackButton(screen);if(main)main.scrollTop=0;
   const phoneArticle = root.querySelector('.phone');
   if(phoneArticle) phoneArticle.dataset.activeScreen = screen;
   root.querySelectorAll('.review button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.screen===screen)));
@@ -2718,7 +3194,144 @@ function render(screen,isBack=false){
     content=`<canvas class="win-canvas" id="win-fireworks"></canvas><button type="button" class="win-float-back cursor-interaction" id="win-back-btn" title="${t.win.backToWheel}" aria-label="${t.win.backToWheel}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button><div class="win-header"><div class="win-title-wrap"><div class="win-confetti-wrap" aria-hidden="true"><span class="confetti-chip chip-1"></span><span class="confetti-chip chip-2"></span><span class="confetti-chip chip-3"></span><span class="confetti-chip chip-4"></span><span class="confetti-chip chip-5"></span><span class="confetti-chip chip-6"></span><span class="confetti-chip chip-7"></span><span class="confetti-chip chip-8"></span><span class="confetti-chip chip-9"></span><span class="confetti-chip chip-10"></span></div><div class="win-sticker-wrap"><h1 class="win-title-script"><span class="win-title-stroke" aria-hidden="true">${t.win.titleStroke}</span><span class="win-title-fill">${t.win.titleFill}</span></h1></div></div></div><div class="win-stage"><div class="god-rays"></div><div class="win-gift-wrap" id="win-gift-wrap"><div class="gift-box-lid"><div class="gift-lid-bow"></div></div><div class="gift-box-base"><div class="gift-ribbon-v"></div></div></div><div class="win-prize-frame" id="win-prize-frame"><div class="win-prize-fullscreen" id="win-prize-card"><div class="win-prize-media"><span class="win-badge-pill">${p.badge}</span><img src="${p.img}" alt="${p.name}" onerror="this.onerror=null;this.src='prize-foldable.png';"><div class="win-prize-gradient-scrim"></div></div><div class="win-prize-meta"><span class="win-reward-label">${t.win.officialReward}</span><div class="win-prize-title">${p.name}</div><div class="win-prize-sub">${p.sub}</div></div></div></div></div><div class="win-actions"><button type="button" class="win-claim-btn cursor-interaction" data-screen="info"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg><span>${t.win.claimBtn}</span></button></div>`;
   }
   if(screen==='lose')content=`<div class="center"><div class="emblem">${icon('droplet')}</div><h1>${t.lose.title}</h1><p>${t.lose.desc}</p><div class="reward"><h2>${t.lose.refreshTitle}</h2><p>${t.lose.refreshDesc}</p></div>${btn(t.lose.btnAnother,'scan')}<p class="small">${t.lose.small}</p></div>`;
-  if(screen==='info')content=`<h1>${t.info.title}</h1><p>${t.info.desc}</p><div class="reward" style="display:flex;align-items:center;gap:14px;text-align:left;padding:16px"><img src="${p.img}" alt="${p.name}" style="width:68px;height:68px;object-fit:cover;border-radius:14px;border:2px solid #38bdf8;flex-shrink:0" onerror="this.onerror=null;this.src='prize-foldable.png';"><div><small style="color:var(--muted);font-size:10px;letter-spacing:1.2px;display:block">${p.badge}</small><h2 style="font-size:17px;margin:2px 0">${p.name}</h2><span style="font-size:12px;color:var(--muted)">${p.sub}</span></div></div><form data-form="info"><label for="winner-name">${t.info.labelName}</label><input id="winner-name" name="name" autocomplete="name" placeholder="${t.info.phName}" required maxlength="80"><label for="winner-phone">${t.info.labelPhone}</label><input id="winner-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="${t.info.phPhone}" required><div class="err" role="alert"></div><p class="notice">${t.info.notice}</p><button class="primary cursor-interaction">${t.info.btnSubmit}</button><p class="small">${t.info.demo}</p></form>`;
+  if(screen==='info'){
+    content=`<h1 class="claim-page-title">${t.info.title}</h1>
+<p>${t.info.desc}</p>
+<div class="reward" style="display:flex;align-items:center;gap:14px;text-align:left;padding:14px 16px;margin:12px 0 16px">
+  <img src="${p.img}" alt="${p.name}" style="width:64px;height:64px;object-fit:cover;border-radius:14px;border:2px solid #38bdf8;flex-shrink:0" onerror="this.onerror=null;this.src='prize-foldable.png';">
+  <div>
+    <small style="color:var(--muted);font-size:10px;letter-spacing:1.2px;display:block">${p.badge}</small>
+    <h2 style="font-size:16px;margin:2px 0;font-weight:700">${p.name}</h2>
+    <span style="font-size:12px;color:var(--muted)">${p.sub}</span>
+  </div>
+</div>
+<form data-form="info">
+  <label for="winner-name">${t.info.labelName}</label>
+  <input id="winner-name" name="name" autocomplete="name" placeholder="${t.info.phName}" value="Sokha Chan" required maxlength="80">
+  
+  <label for="winner-phone">${t.info.labelPhone}</label>
+  <input id="winner-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="${t.info.phPhone}" value="012 889 977" required>
+
+  <div class="bottle-photo-field">
+    <div class="bottle-photo-label">
+      <span>${t.info.labelPhoto}</span>
+      <span class="bottle-photo-label-req">Required</span>
+    </div>
+    <div class="bottle-photo-zone" id="bottlePhotoDropZone" role="button" tabindex="0">
+      <input type="file" id="bottlePhotoInput" name="bottle_photo" accept="image/*" capture="environment" style="display:none">
+      <div class="bottle-photo-empty" id="bottlePhotoEmpty">
+        <div class="bottle-photo-icon-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+            <circle cx="12" cy="13" r="3"/>
+            <line x1="19" y1="10" x2="19" y2="10.01"/>
+          </svg>
+        </div>
+        <span class="bottle-photo-title">${t.info.photoTitle}</span>
+        <span class="bottle-photo-sub">${t.info.photoSub}</span>
+        <button type="button" class="btn-sample-photo cursor-interaction" id="btnUseSamplePhoto">⚡ Use Sample Bottle Cap</button>
+      </div>
+      <div class="bottle-photo-preview is-active" id="bottlePhotoPreview">
+        <img id="bottlePhotoImg" src="prize-cap.jpg" alt="Uploaded bottle cap QR">
+        <div class="bottle-photo-preview-info">
+          <div class="bottle-photo-preview-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>${t.info.photoUploaded}</span>
+          </div>
+          <div class="bottle-photo-preview-sub">QR: VT7K 8M2P · Ready to verify</div>
+        </div>
+        <button type="button" class="bottle-photo-change-btn cursor-interaction" id="btnChangeBottlePhoto">${t.info.photoChange}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="depot-section">
+    <div class="depot-section-header">
+      <div class="depot-section-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>${t.info.depotTitle}</span>
+      </div>
+      <span class="depot-badge-open">${t.info.depotStatus}</span>
+    </div>
+    
+    <div class="depot-info-card">
+      <div class="depot-name">${t.info.depotName}</div>
+      <div class="depot-address">${t.info.depotAddress}</div>
+      <div class="depot-hours">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>${t.info.depotHours}</span>
+      </div>
+    </div>
+
+    <div class="depot-map-banner cursor-interaction" id="btnOpenDepotMap" role="button" tabindex="0" title="${t.info.depotTapMap}">
+      <svg class="depot-map-bg" viewBox="0 0 380 125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <rect width="380" height="125" fill="#f1f5f9"/>
+        <path d="M 0,38 Q 90,52 180,42 T 380,48" fill="none" stroke="#bae6fd" stroke-width="24"/>
+        <path d="M 50,0 L 70,125" stroke="#ffffff" stroke-width="12"/>
+        <path d="M 170,0 L 150,125" stroke="#ffffff" stroke-width="14"/>
+        <path d="M 280,0 L 290,125" stroke="#ffffff" stroke-width="10"/>
+        <path d="M 0,82 L 380,72" stroke="#ffffff" stroke-width="16"/>
+        <path d="M 0,22 L 380,18" stroke="#ffffff" stroke-width="8"/>
+        <path d="M 0,82 L 380,72" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,4"/>
+        <path d="M 170,0 L 150,125" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4"/>
+        <circle cx="160" cy="76" r="22" fill="rgba(12,74,158,0.18)"/>
+        <circle cx="160" cy="76" r="13" fill="rgba(12,74,158,0.3)"/>
+        <circle cx="160" cy="76" r="7.5" fill="#0c4a9e" stroke="#ffffff" stroke-width="2.5"/>
+        <text x="175" y="72" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#0c4a9e">Vital Central Depot</text>
+        <text x="175" y="85" font-family="'Outfit', sans-serif" font-size="9" font-weight="600" fill="#64748b">St. 598 &amp; NR 5</text>
+      </svg>
+      <div class="depot-map-overlay">
+        <div class="depot-map-pin-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#0c4a9e"><circle cx="12" cy="12" r="10"/></svg>
+          <span>Vital Depot · Sen Sok</span>
+        </div>
+        <div class="depot-map-cta-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          <span>${t.info.depotTapMap}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="err" role="alert"></div>
+  <p class="notice">${t.info.notice}</p>
+  <button class="primary cursor-interaction">${t.info.btnSubmit}</button>
+  <p class="small">${t.info.demo}</p>
+</form>
+
+<!-- Interactive Depot Map Modal -->
+<div class="depot-modal-backdrop" id="depotModalBackdrop" role="dialog" aria-modal="true">
+  <div class="depot-modal-sheet">
+    <div class="depot-modal-header">
+      <h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>${t.info.depotModalTitle}</span>
+      </h3>
+      <button type="button" class="depot-modal-close cursor-interaction" id="btnCloseDepotModal" aria-label="Close map">&times;</button>
+    </div>
+    <div class="depot-modal-body">
+      <div class="depot-map-iframe-wrap">
+        <iframe title="Vital Depot Map" src="https://www.openstreetmap.org/export/embed.html?bbox=104.885%2C11.595%2C104.935%2C11.625&amp;layer=mapnik&amp;marker=11.609%2C104.912"></iframe>
+      </div>
+      <div class="depot-modal-desc">
+        <h4>${t.info.depotName}</h4>
+        <p>${t.info.depotAddress}</p>
+        <p style="margin-top:4px;color:#0c4a9e;font-weight:600">${t.info.depotHours}</p>
+      </div>
+    </div>
+    <div class="depot-modal-footer">
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=11.609,104.912+(Vital+Premium+Water+Central+Depot)" target="_blank" rel="noopener noreferrer" class="depot-btn-nav cursor-interaction">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        <span>${t.info.depotNavBtn}</span>
+      </a>
+      <a href="tel:023888888" class="depot-btn-call cursor-interaction">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>${t.info.depotCallBtn}</span>
+      </a>
+    </div>
+  </div>
+</div>`;
+  }
   if(screen==='done')content=`<div class="center"><div class="emblem">${icon('circle-check')}</div><h1>${t.done.title}</h1><p>${t.done.desc}</p><div class="reward" style="padding:18px"><img src="${p.img}" alt="${p.name}" style="width:100%;max-height:180px;object-fit:cover;border-radius:14px;margin-bottom:12px;border:1.5px solid #38bdf8" onerror="this.onerror=null;this.src='prize-foldable.png';"><small>${t.done.yourPrize}</small><h2>${p.name}</h2><p>${t.done.sampleRef} ${p.ref}</p></div><p>${p.handover}</p>${btn(t.done.btnAnother,'scan')}<p class="small">${t.done.previewNotice}</p></div>`;
   main.innerHTML=content;if(globalThis.lucide)lucide.createIcons();
 
@@ -2781,7 +3394,7 @@ function render(screen,isBack=false){
   }
 }
 
-function go(screen,isBack=false){if(!isBack&&screen!==current){historyStack.push(current);}render(screen,isBack);window.openai?.setWidgetState?.({modelContent:{brand:'Vital',flow:'Web scan, spin, result, winner details, confirmation',screen,branding:'Modern Vital blue with subtle red accents'},privateContent:{screen}})?.catch(()=>{});}
+function go(screen,isBack=false){if(!isBack&&screen!==current){historyStack.push(current);}render(screen,isBack);if(main)main.scrollTop=0;window.openai?.setWidgetState?.({modelContent:{brand:'Vital',flow:'Web scan, spin, result, winner details, confirmation',screen,branding:'Modern Vital blue with subtle red accents'},privateContent:{screen}})?.catch(()=>{});}
 function goBack(){let target=historyStack.pop();while(target===current&&historyStack.length>0){target=historyStack.pop();}if(!target||target===current){target=prevScreenMap[current]||'scan';}if(target&&target!==current){go(target,true);}}
 
 root.addEventListener('click',e=>{
@@ -2844,6 +3457,25 @@ root.addEventListener('click',e=>{
 
   const nav=e.target.closest('button[data-screen], a[data-screen]');
   if(nav){const to=nav.dataset.screen;if(to===prevScreenMap[current]||(historyStack.length>0&&historyStack[historyStack.length-1]===to)){go(to,true);}else{go(to);}return;}
+});
+
+
+root.addEventListener('change', e => {
+  if (e.target && e.target.id === 'bottlePhotoInput') {
+    const file = e.target.files && e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const preview = main.querySelector('#bottlePhotoPreview');
+        const empty = main.querySelector('#bottlePhotoEmpty');
+        const img = main.querySelector('#bottlePhotoImg');
+        if (img) img.src = ev.target.result;
+        if (preview) preview.classList.add('is-active');
+        if (empty) empty.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 });
 
 root.addEventListener('submit',e=>{

@@ -1482,6 +1482,378 @@ html[lang="km"] .figma-win-sub {
   pointer-events: none;
   z-index: 40;
 }
+
+/* --- V2 Claim Screen: One-line title, Bottle Photo Upload, Depot Map --- */
+#screen-claim .title-lg {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  color: var(--text-main) !important;
+  margin: 0 0 8px 0 !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+}
+.bottle-photo-field {
+  margin: 14px 0 10px;
+  text-align: left;
+}
+.bottle-photo-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+.bottle-photo-label-req {
+  font-size: 10.5px;
+  color: var(--vital-blue);
+  font-weight: 700;
+  background: var(--vital-blue-light);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+.bottle-photo-zone {
+  border: 2px dashed #93c5fd;
+  background: #f8fbff;
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .2s;
+}
+.bottle-photo-zone:hover {
+  border-color: #38bdf8;
+  background: #f0f7ff;
+}
+.bottle-photo-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bottle-photo-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0c4a9e;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(11, 56, 124, 0.1);
+  margin-bottom: 6px;
+}
+.bottle-photo-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0c4a9e;
+  margin-bottom: 2px;
+}
+.bottle-photo-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.bottle-photo-preview {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 8px 10px;
+  text-align: left;
+}
+.bottle-photo-preview.is-active {
+  display: flex;
+}
+.bottle-photo-preview img {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1.5px solid #38bdf8;
+}
+.bottle-photo-preview-info {
+  flex: 1;
+}
+.bottle-photo-preview-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.bottle-photo-preview-sub {
+  font-size: 10.5px;
+  color: #059669;
+  font-weight: 600;
+}
+.bottle-photo-change-btn {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0c4a9e;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.btn-sample-photo {
+  margin-top: 6px;
+  padding: 3px 10px;
+  font-size: 10.5px;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  background: #ffffff;
+  color: #0c4a9e;
+  cursor: pointer;
+}
+
+/* Depot Section in V2 */
+.depot-section {
+  margin: 18px 0 10px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-light);
+  text-align: left;
+}
+.depot-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.depot-section-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--vital-blue);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.depot-badge-open {
+  font-size: 10px;
+  font-weight: 700;
+  color: #059669;
+  background: #d1fae5;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+.depot-info-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+.depot-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+.depot-address {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+.depot-hours {
+  font-size: 10.5px;
+  color: var(--vital-blue);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.depot-map-banner {
+  position: relative;
+  height: 115px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #bfdbfe;
+  box-shadow: 0 2px 8px rgba(11, 56, 124, 0.08);
+  transition: all .2s;
+  background: #f1f5f9;
+}
+.depot-map-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(11, 56, 124, 0.16);
+}
+.depot-map-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.depot-map-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(11, 56, 124, 0.68) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 10px;
+  color: #ffffff;
+}
+.depot-map-pin-pill {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0c4a9e;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.depot-map-cta-pill {
+  align-self: center;
+  background: #0c4a9e;
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.depot-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 99999;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+.depot-modal-backdrop.is-open {
+  display: flex !important;
+}
+.depot-modal-sheet {
+  background: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.3);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+.depot-modal-header {
+  padding: 14px 18px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+}
+.depot-modal-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #0c4a9e;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.depot-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+}
+.depot-modal-body {
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+.depot-map-iframe-wrap {
+  width: 100%;
+  height: 250px;
+  background: #e2e8f0;
+}
+.depot-map-iframe-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.depot-modal-desc {
+  padding: 12px 18px;
+  background: #f8fafc;
+  border-top: 1px solid #f1f5f9;
+}
+.depot-modal-desc h4 {
+  margin: 0 0 3px;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+.depot-modal-desc p {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+.depot-modal-footer {
+  padding: 12px 18px 16px;
+  background: #ffffff;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+.depot-btn-nav {
+  flex: 1;
+  height: 44px;
+  background: #0c4a9e;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.depot-btn-call {
+  height: 44px;
+  padding: 0 16px;
+  background: #f1f5f9;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -1878,6 +2250,38 @@ html[lang="km"] .figma-win-sub {
                 <input type="tel" class="form-input" id="claimPhone" placeholder="012 345 678" value="012 889 977" required>
               </div>
 
+              <div class="bottle-photo-field">
+                <div class="bottle-photo-label">
+                  <span id="txtLabelPhoto">Photo of Bottle &amp; Cap QR</span>
+                  <span class="bottle-photo-label-req">Required</span>
+                </div>
+                <div class="bottle-photo-zone" id="v2BottlePhotoDropZone" role="button" tabindex="0">
+                  <input type="file" id="v2BottlePhotoInput" name="bottle_photo" accept="image/*" capture="environment" style="display:none">
+                  <div class="bottle-photo-empty" id="v2BottlePhotoEmpty">
+                    <div class="bottle-photo-icon-circle">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                        <line x1="19" y1="10" x2="19" y2="10.01"/>
+                      </svg>
+                    </div>
+                    <span class="bottle-photo-title" id="txtPhotoTitle">Tap to Take or Upload Photo</span>
+                    <span class="bottle-photo-sub" id="txtPhotoSub">Clear photo showing your bottle and cap QR code</span>
+                    <button type="button" class="btn-sample-photo" id="v2BtnUseSamplePhoto">⚡ Use Sample Bottle Cap</button>
+                  </div>
+                  <div class="bottle-photo-preview is-active" id="v2BottlePhotoPreview">
+                    <img id="v2BottlePhotoImg" src="prize-cap.jpg" alt="Uploaded bottle cap QR">
+                    <div class="bottle-photo-preview-info">
+                      <div class="bottle-photo-preview-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                        <span id="txtPhotoUploaded">Bottle &amp; Cap QR Photo attached</span>
+                      </div>
+                      <div class="bottle-photo-preview-sub">QR: VT7K 8M2P · Ready to verify</div>
+                    </div>
+                    <button type="button" class="bottle-photo-change-btn" id="v2BtnChangeBottlePhoto">Change</button>
+                  </div>
+                </div>
+              </div>
               <div class="form-field">
                 <label for="claimLocation" id="txtLabelLocation">City / Province</label>
                 <select class="form-input" id="claimLocation">
@@ -1889,6 +2293,51 @@ html[lang="km"] .figma-win-sub {
                 </select>
               </div>
 
+              <div class="depot-section">
+                <div class="depot-section-header">
+                  <div class="depot-section-title">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span id="txtDepotTitle">Official Redemption Depot</span>
+                  </div>
+                  <span class="depot-badge-open" id="txtDepotStatus">Open Now</span>
+                </div>
+                
+                <div class="depot-info-card">
+                  <div class="depot-name" id="txtDepotName">Vital Central Depot &amp; Head Office</div>
+                  <div class="depot-address" id="txtDepotAddress">St. 598 &amp; NR 5, Russey Keo, Phnom Penh</div>
+                  <div class="depot-hours">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span id="txtDepotHours">Mon – Sat: 8:00 AM – 5:30 PM · Tel: 023 888 888</span>
+                  </div>
+                </div>
+
+                <div class="depot-map-banner" id="v2BtnOpenDepotMap" role="button" tabindex="0">
+                  <svg class="depot-map-bg" viewBox="0 0 380 115" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <rect width="380" height="115" fill="#f1f5f9"/>
+                    <path d="M 0,35 Q 90,48 180,38 T 380,44" fill="none" stroke="#bae6fd" stroke-width="22"/>
+                    <path d="M 50,0 L 70,115" stroke="#ffffff" stroke-width="12"/>
+                    <path d="M 170,0 L 150,115" stroke="#ffffff" stroke-width="14"/>
+                    <path d="M 280,0 L 290,115" stroke="#ffffff" stroke-width="10"/>
+                    <path d="M 0,76 L 380,68" stroke="#ffffff" stroke-width="16"/>
+                    <path d="M 0,20 L 380,16" stroke="#ffffff" stroke-width="8"/>
+                    <circle cx="160" cy="72" r="20" fill="rgba(12,74,158,0.18)"/>
+                    <circle cx="160" cy="72" r="12" fill="rgba(12,74,158,0.3)"/>
+                    <circle cx="160" cy="72" r="7" fill="#0c4a9e" stroke="#ffffff" stroke-width="2.5"/>
+                    <text x="175" y="68" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#0c4a9e">Vital Central Depot</text>
+                    <text x="175" y="80" font-family="'Outfit', sans-serif" font-size="9" font-weight="600" fill="#64748b">St. 598 &amp; NR 5</text>
+                  </svg>
+                  <div class="depot-map-overlay">
+                    <div class="depot-map-pin-pill">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="#0c4a9e"><circle cx="12" cy="12" r="10"/></svg>
+                      <span>Vital Depot · Sen Sok</span>
+                    </div>
+                    <div class="depot-map-cta-pill">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                      <span id="txtDepotTapMap">Tap to View Depot on Map</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <button type="submit" class="btn-primary" style="margin-top: 8px;">
                 <i data-lucide="check" style="width: 16px; height: 16px;"></i>
                 <span id="txtConfirmBtn">Confirm &amp; Generate Pass</span>
@@ -2309,6 +2758,7 @@ html[lang="km"] .figma-win-sub {
       });
       if (screens[name]) {
         screens[name].classList.add('active');
+        if (screens[name].scrollTop !== undefined) screens[name].scrollTop = 0;
       }
 
       // Update Jumper Buttons
