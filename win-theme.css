@@ -1,0 +1,25 @@
+#vital-flow .win-theme-toggle {
+  display: inline-block;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+#vital-flow .win-theme-toggle:focus-visible { outline: 2px solid #38bdf8; outline-offset: 8px; border-radius: 8px; }
+#vital-flow main[data-step="win"].win-theme-white { background: #fff !important; }
+#vital-flow .win-theme-white .win-header .win-subtitle { color: #334b67; }
+#vital-flow .win-theme-white .god-rays { opacity: .15; }
+#vital-flow .win-theme-white .win-title-stroke {
+  color: #fff;
+  -webkit-text-stroke-color: #fff !important;
+  filter: drop-shadow(0 2px 2px #114e9f33);
+}
+#vital-flow .win-theme-white .win-prize-fullscreen,
+#vital-flow .win-theme-white .win-prize-meta { background: #fff; }
+#vital-flow .win-theme-white .win-prize-title { color: #173252; }
+#vital-flow .win-theme-white .win-reward-label { color: #114e9f; }
+#vital-flow .win-theme-white .win-prize-sub { color: #61748b; }
+#vital-flow .win-theme-white .win-prize-gradient-scrim { background: linear-gradient(to top, #fff, #ffffff99 50%, transparent); }

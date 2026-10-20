@@ -1855,11 +1855,14 @@ html[lang="km"] .figma-win-sub {
   text-decoration: none;
 }
 </style>
+<link rel="stylesheet" href="app-bar.css?v=20261019-9">
+<link rel="stylesheet" href="claim.css">
+<link rel="stylesheet" href="typography.css">
 </head>
 <body>
 
   <!-- ─── Top Global Switcher ──────────────────────────────── -->
-  <header class="version-bar">
+  <header class="version-bar" hidden style="display:none">
     <div class="version-brand">
       <div class="version-brand-icon"><i data-lucide="droplet" style="width: 14px; height: 14px;"></i></div>
       <span>Vital Scan &amp; Win</span>
@@ -2242,12 +2245,12 @@ html[lang="km"] .figma-win-sub {
             <form class="claim-card" id="claimForm">
               <div class="form-field">
                 <label for="claimName" id="txtLabelName">Full Name</label>
-                <input type="text" class="form-input" id="claimName" placeholder="Enter full name" value="Sokha Chan" required>
+                <input type="text" class="form-input" id="claimName" autocomplete="name" maxlength="80" placeholder="Enter full name" value="Sokha Chan" required>
               </div>
 
               <div class="form-field">
                 <label for="claimPhone" id="txtLabelPhone">Phone Number</label>
-                <input type="tel" class="form-input" id="claimPhone" placeholder="012 345 678" value="012 889 977" required>
+                <input type="tel" class="form-input" id="claimPhone" autocomplete="tel" inputmode="tel" placeholder="012 345 678" value="012 889 977" required>
               </div>
 
               <div class="bottle-photo-field">
