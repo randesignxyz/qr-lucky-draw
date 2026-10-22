@@ -23,3 +23,13 @@
 #vital-flow .win-theme-white .win-reward-label { color: #00B6F1; }
 #vital-flow .win-theme-white .win-prize-sub { color: #61748b; }
 #vital-flow .win-theme-white .win-prize-gradient-scrim { background: linear-gradient(to top, #fff, #ffffff99 50%, transparent); }
+
+/* Keep the prize card border and entrance, without the surrounding shadow. */
+#vital-flow main[data-step="win"] .win-prize-frame {
+  box-shadow: none !important;
+  animation: prizeErupt .75s cubic-bezier(0.18,0.89,0.32,1.28) .35s both, rotatePrizeBorder 4s linear infinite;
+}
+#vital-flow main[data-step="win"] .win-prize-frame::before { content: none; }
+#vital-flow main[data-step="win"] .win-prize-fullscreen,
+#vital-flow main[data-step="win"] .win-prize-media,
+#vital-flow main[data-step="win"] .win-prize-media img { box-shadow: none; }
