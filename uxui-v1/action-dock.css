@@ -1,0 +1,30 @@
+#vital-flow .screen-action-dock {
+  position: relative;
+  z-index: 40;
+  flex: 0 0 auto;
+  padding: 12px 18px;
+  background: #f3f7fc;
+  border-top: 1px solid #e2e8f0;
+}
+#vital-flow .screen-action-dock > button { min-height: 48px; margin: 0; }
+#vital-flow .screen-action-dock > button:disabled { background: #d5dee9; color: #748398; box-shadow: none; cursor: not-allowed; }
+#vital-flow .screen-action-dock .win-actions { margin: 0 auto; animation: none; }
+#vital-flow .screen-action-dock[data-screen="win"] { background: #06172d; margin-top: auto; }
+#vital-flow .phone:has(.win-theme-white) .screen-action-dock[data-screen="win"] { background: #fff; }
+#vital-flow .phone main[data-step="win"] { bottom: 112px !important; height: auto !important; min-height: 0 !important; }
+#vital-flow .screen-action-dock[data-screen="scan"] { background: transparent; border: 0; padding-top: 16px; }
+#vital-flow .phone:has(main[data-step="scan"]) { background: url('../wheel-assets/scan-sample.jpg') center / cover no-repeat; }
+#vital-flow .phone main[data-step="scan"] { background: transparent; }
+#vital-flow .phone:has(main[data-step="scan"]) .iphone-home-indicator { background: transparent; box-shadow: none; }
+#vital-flow .screen-action-dock[data-screen="scan"] .scan-badge { background: #ffffffdf; color: #173252; border: 0; box-shadow: none; }
+#vital-flow .screen-action-dock .scan-v2-bottom { gap: 14px; }
+#vital-flow .screen-action-dock .confirmation-actions > button { min-height: 48px; }
+#vital-flow button.primary,
+#vital-flow button.secondary,
+#vital-flow .win-claim-btn,
+#vital-flow .claim-location-map,
+#vital-flow .depot-btn-nav,
+#vital-flow .depot-btn-call,
+#vital-flow .bottle-photo-change-btn {
+  border-radius: 999px !important;
+}

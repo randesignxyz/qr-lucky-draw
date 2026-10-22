@@ -1,0 +1,22 @@
+#vital-flow .claim-form .claim-terms-check input[type="checkbox"],
+#vital-flow .spin-terms-check input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  min-height: 16px !important;
+  flex: 0 0 16px;
+  padding: 0 !important;
+  border: 1px solid #aebdce;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: none;
+  cursor: pointer;
+}
+#vital-flow .claim-form .claim-terms-check input[type="checkbox"]:checked,
+#vital-flow .spin-terms-check input[type="checkbox"]:checked {
+  border-color: #487bb6;
+  background: #f1f7ff center / 12px 12px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3 8 3 3 7-7' fill='none' stroke='%23114e9f' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+#vital-flow input[type="checkbox"]:focus-visible { outline: 2px solid #92bce9; outline-offset: 3px; }

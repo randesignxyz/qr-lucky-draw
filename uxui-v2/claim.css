@@ -1,0 +1,514 @@
+/* Claim pages share a calm, readable form hierarchy. */
+#vital-flow .phone > .depot-modal-backdrop { position: absolute; }
+#vital-flow .phone > .depot-modal-backdrop .depot-modal-sheet { max-height: 85%; }
+#vital-flow main[data-step="info"],
+.app-main:has(#screen-claim.active) {
+  background: #f3fafc;
+  color: #174352;
+  padding: 24px 18px 32px;
+}
+#vital-flow .claim-page-title,
+#claimFormWrap .title-lg { font-size: 28px; font-weight: 750; letter-spacing: -.7px; margin: 0 0 8px !important; }
+#vital-flow main[data-step="info"] h1,
+#vital-flow main[data-step="info"] h2 {
+  color: #000;
+}
+#vital-flow main[data-step="info"] .claim-page-title { line-height: 1.35; margin-bottom: 4px !important; }
+#vital-flow main[data-step="info"] > p,
+#claimFormWrap > .desc-text { color: #61748b; font-size: 14px; line-height: 1.65; margin-top: 0 !important; margin-bottom: 16px; }
+#vital-flow main[data-step="info"] > .reward {
+  background: #e9faff !important;
+  border: 1px solid #d1f1fb;
+  border-radius: 18px;
+  box-shadow: none;
+  margin-bottom: 24px !important;
+}
+.claim-section,
+#claimForm {
+  background: #fff;
+  border: 1px solid #e0eef2;
+  border-radius: 20px;
+  padding: 18px;
+  margin: 0 0 16px;
+  box-shadow: 0 4px 16px #155a7005;
+}
+#vital-flow .claim-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.claim-section-heading > span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: #eafaff;
+  color: #00B6F1;
+  font-size: 11px;
+}
+#vital-flow .claim-form label,
+#claimForm label { color: #334b67; font-size: 13px; font-weight: 650; margin: 16px 0 8px; }
+#vital-flow .claim-form input:not([type="file"]),
+#claimForm .form-input {
+  min-height: 52px;
+  background: #f8fcfd;
+  color: #174352;
+  border: 1px solid #cfe3e9;
+  border-radius: 12px;
+  font-size: 16px;
+  box-shadow: none;
+}
+#vital-flow .claim-form input:focus-visible,
+#claimForm .form-input:focus-visible {
+  outline: 3px solid #b9eeff;
+  outline-offset: 2px;
+  border-color: #00B6F1;
+  background: #fff;
+}
+#vital-flow .claim-form .bottle-photo-field { margin: 0; }
+#vital-flow .claim-pickup-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  margin: 0 0 20px;
+  border-radius: 12px;
+  background: #e7f7fc;
+  color: #236980;
+}
+#vital-flow .claim-pickup-notice > svg { width: 20px; height: 20px; flex: 0 0 20px; margin-top: 2px; }
+#vital-flow .claim-pickup-notice strong { font-size: 13px; }
+#vital-flow .claim-pickup-notice p { margin: 5px 0 0; font-size: 12px; line-height: 1.6; color: #516b88; }
+#vital-flow .claim-location-section { margin: 0 0 16px; padding-top: 0; border-top: 0; }
+#vital-flow .claim-won-prize { margin: 0 0 16px; }
+#vital-flow .claim-won-prize h2,
+#vital-flow .claim-location-section h2 { margin: 0 0 12px; font-size: 16px; font-weight: 700; line-height: 1.5; letter-spacing: 0; }
+#vital-flow .claim-won-prize-item { display: flex; align-items: center; gap: 14px; }
+#vital-flow .claim-won-prize-item img { display: block; width: 72px; height: 72px; flex: 0 0 72px; object-fit: contain; }
+#vital-flow .claim-won-prize-item strong { font-size: 14px; font-weight: 600; color: #171717; line-height: 1.5; }
+#vital-flow .claim-location-row { display: flex; gap: 10px; align-items: center; }
+#vital-flow .claim-location-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #e7f7fc; color: #00B6F1; flex-shrink: 0; }
+#vital-flow .claim-location-icon svg { width: 21px; height: 21px; }
+#vital-flow .claim-location-row strong { font-size: 14px; font-weight: 600; color: #171717; line-height: 1.5; }
+#vital-flow .claim-location-row p { margin: 4px 0 0; font-size: 13px; color: #61748b; line-height: 1.6; }
+#vital-flow .claim-form label:not(.claim-terms-check),
+#vital-flow .claim-form .bottle-photo-label {
+  color: #171717;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 16px 0 20px;
+}
+#vital-flow .claim-form .bottle-photo-label { margin-top: 0; }
+#vital-flow .claim-form .bottle-photo-label-req {
+  color: #61748b;
+  font-size: 12px;
+  font-weight: 400;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+#vital-flow .claim-location-map { min-height: 44px; margin-top: 12px; border: 1px solid #cbebf5; background: #e9faff; color: #00B6F1; font-size: 13px; }
+#vital-flow .claim-location-map svg { width: 18px; height: 18px; }
+#vital-flow .claim-form .bottle-photo-zone {
+  width: fit-content;
+  min-width: 44px;
+  padding: 9px;
+  box-sizing: border-box;
+}
+#vital-flow .claim-form .bottle-photo-icon-circle {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#vital-flow .claim-form .bottle-photo-icon-circle svg { width: 22px; height: 22px; }
+#vital-flow .claim-form .bottle-photo-empty .bottle-photo-title,
+#vital-flow .claim-form .bottle-photo-empty .bottle-photo-sub,
+#vital-flow .claim-form .bottle-photo-empty .btn-sample-photo { display: none; }
+#vital-flow .claim-form .bottle-photo-preview img { width: 36px; height: 36px; }
+#vital-flow .claim-form .bottle-photo-zone,
+#claimForm .bottle-photo-zone { border-radius: 14px; background: #f5fdff; border: 1.5px dashed #aedceb; }
+#vital-flow .claim-collection .depot-section { margin: 0; border: 0; padding: 0; box-shadow: none; background: transparent; }
+#vital-flow .claim-collection { display: none !important; }
+#vital-flow .claim-verification { display: block !important; }
+#vital-flow .claim-form > .claim-section:first-child > .claim-section-heading,
+#vital-flow .claim-verification > .claim-section-heading {
+  display: none !important;
+}
+#vital-flow .claim-form > .claim-section:first-child,
+#vital-flow .claim-verification {
+  padding: 0;
+  margin: 0 0 16px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#vital-flow .claim-form > .claim-section:first-child label:first-of-type { margin-top: 0; }
+#vital-flow .claim-form label[for="winner-name"],
+#vital-flow .claim-form label[for="winner-phone"] { margin-bottom: 8px; }
+#vital-flow .claim-form > .claim-section:first-child input { background: #fff; }
+#vital-flow .claim-form .depot-address,
+#vital-flow .claim-form .depot-hours { line-height: 1.65; }
+#vital-flow .claim-form .notice { background: #eaf8fc; border: 0; border-radius: 12px; color: #456180; font-size: 12px; line-height: 1.6; padding: 14px; }
+#vital-flow .claim-form .claim-terms-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #334b67;
+  font-size: 12.5px;
+  font-weight: 550;
+  line-height: 1.55;
+  cursor: pointer;
+}
+#vital-flow .claim-submit-area .err:empty { display: none; }
+#vital-flow .claim-bottle-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #e9faff;
+  color: #236980;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#vital-flow .claim-bottle-notice svg { width: 18px; height: 18px; flex: 0 0 18px; margin-top: 1px; }
+#vital-flow .claim-form .claim-terms-check input[type="checkbox"] {
+  appearance: auto;
+  width: 18px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  margin: 1px 0 0 !important;
+  padding: 0 !important;
+  accent-color: #00B6F1;
+  flex: 0 0 18px;
+  cursor: pointer;
+}
+#vital-flow .claim-submit-area > .primary,
+#claimForm > .btn-primary { min-height: 56px; border-radius: 14px; background: #00B6F1; color: #fff; font-weight: 700; box-shadow: 0 6px 16px #00B6F124; }
+#vital-flow .claim-submit-area .small { color: #64748b; line-height: 1.6; }
+#vital-flow .claim-submit-area > .primary:disabled {
+  background: #d5dee9;
+  color: #748398;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+  opacity: 1;
+}
+#vital-flow .claim-prize-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  margin: 12px 0 16px;
+}
+#vital-flow .claim-prize-summary {
+  display: flex !important;
+  align-items: center;
+  gap: 0 !important;
+  width: 100%;
+  min-height: 94px;
+  height: auto !important;
+  padding: 12px !important;
+  box-sizing: border-box;
+  overflow: visible !important;
+  background: #fff !important;
+  border: 1px solid #dcecf1 !important;
+  box-shadow: 0 4px 14px #155a7008 !important;
+}
+#vital-flow .claim-prize-summary::before {
+  display: none !important;
+}
+#vital-flow .claim-prize-summary .claim-prize-main {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#vital-flow .claim-prize-summary .claim-prize-main > img {
+  width: 58px !important;
+  height: 58px !important;
+  flex: 0 0 58px;
+  display: block;
+}
+#vital-flow .claim-prize-summary .claim-prize-info small,
+#vital-flow .claim-prize-summary .claim-prize-info h2,
+#vital-flow .claim-prize-summary .claim-prize-info span {
+  position: static !important;
+  transform: none !important;
+}
+#vital-flow .claim-prize-summary .claim-prize-info h2 {
+  margin: 0 !important;
+  line-height: 1.2;
+}
+#vital-flow .claim-prize-summary .claim-prize-info small,
+#vital-flow .claim-prize-summary .claim-prize-info > span {
+  display: none !important;
+}
+#vital-flow .claim-prize-summary .claim-prize-info {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+#vital-flow .claim-prize-row > .claim-depots-btn {
+  width: 100%;
+  min-width: 0;
+  min-height: 94px;
+  height: 100%;
+  padding: 8px 7px;
+  border: 1.5px solid #b9e2f0;
+  border-radius: 11px;
+  background: #edfbff !important;
+  color: #00B6F1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  line-height: 1.2;
+  font-size: 11px;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 0 5px 14px #00B6F11f;
+  box-sizing: border-box;
+}
+#vital-flow .claim-prize-row > .claim-depots-btn:hover {
+  transform: translateY(-2px);
+  background: #dcf6ff;
+  box-shadow: 0 8px 18px #00B6F12b;
+}
+#claimForm .form-field { margin-bottom: 20px; }
+#claimForm .depot-section { margin-top: 24px; border-radius: 16px; }
+.claim-form button:focus-visible,
+#claimForm button:focus-visible { outline: 3px solid #70dcff; outline-offset: 3px; }
+
+/* Result screens follow the same visual language as the claim screen. */
+#vital-flow .confirmation-claim-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  column-gap: 16px;
+  row-gap: 12px;
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+  text-align: left;
+}
+#vital-flow .confirmation-claim-details > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2px;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#vital-flow .confirmation-claim-details > div:nth-child(1) { grid-column: 1; grid-row: 1; }
+#vital-flow .confirmation-claim-details > div:nth-child(2) { grid-column: 1; grid-row: 2; }
+#vital-flow .confirmation-claim-details > div:nth-child(3) { grid-column: 2; grid-row: 1 / 3; align-items: center; justify-content: flex-start; }
+#vital-flow .confirmation-claim-details dt { display: flex; align-items: center; gap: 6px; color: #61748b; }
+#vital-flow .confirmation-claim-details dt svg { width: 16px; height: 16px; flex-shrink: 0; }
+#vital-flow .confirmation-claim-details dd { margin: 0; color: #171717; font-weight: 600; text-align: left; overflow-wrap: anywhere; max-width: 100%; }
+#vital-flow .confirmation-claim-details .bottle-qr-value { font-family: monospace; letter-spacing: .5px; }
+#vital-flow .confirmation-claim-details .confirmation-bottle-qr {
+  display: block;
+  width: 100px;
+  height: 100px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+}
+#vital-flow main[data-step="lose"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#vital-flow .no-prize-character {
+  display: block;
+  width: 160px;
+  height: 300px;
+  max-width: 55%;
+  object-fit: contain;
+  margin: 4px auto 24px;
+}
+#vital-flow main[data-step="lose"],
+#vital-flow main[data-step="done"] {
+  background: #f3fafc !important;
+  color: #174352;
+  padding: 24px 18px 32px !important;
+}
+#vital-flow main[data-step="lose"] > .center,
+#vital-flow main[data-step="done"] > .center {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+#vital-flow main[data-step="lose"] .emblem,
+#vital-flow main[data-step="done"] .emblem {
+  width: 112px;
+  height: 104px;
+  margin: 0 auto 14px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #173d34;
+  box-shadow: none;
+  transform: none;
+}
+#vital-flow main[data-step="lose"] .emblem svg,
+#vital-flow main[data-step="done"] .emblem svg {
+  width: 112px;
+  height: 104px;
+  transform: none;
+  overflow: visible;
+}
+#vital-flow main[data-step="lose"] h1,
+#vital-flow main[data-step="done"] h1 {
+  margin: 0 0 8px;
+  color: #174352;
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -.7px;
+}
+#vital-flow main[data-step="lose"] > .center > p,
+#vital-flow main[data-step="done"] > .center > p {
+  color: #61748b;
+  font-size: 14px;
+  line-height: 1.65;
+}
+#vital-flow main[data-step="lose"] .reward,
+#vital-flow main[data-step="done"] .reward {
+  margin: 20px 0 !important;
+  padding: 18px !important;
+  border: 1px solid #d1f1fb;
+  border-radius: 18px;
+  background: #fff !important;
+  box-shadow: 0 4px 16px #155a7008;
+  overflow: visible;
+}
+#vital-flow main[data-step="lose"] .reward::before,
+#vital-flow main[data-step="done"] .reward::before {
+  display: none !important;
+}
+#vital-flow main[data-step="lose"] .reward h2,
+#vital-flow main[data-step="done"] .reward h2 {
+  margin: 6px 0;
+  color: #174352;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -.2px;
+}
+#vital-flow main[data-step="lose"] .primary,
+#vital-flow main[data-step="done"] .primary {
+  min-height: 56px;
+  border-radius: 14px;
+  background: #00B6F1;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 6px 16px #00B6F124;
+}
+#vital-flow main[data-step="done"] .save-prize-btn {
+  margin: 0 0 10px;
+  background: #00B6F1;
+  color: #fff;
+}
+#vital-flow main[data-step="done"] .save-prize-btn.is-saved {
+  background: #16845b;
+}
+#vital-flow .confirmation-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 10px;
+}
+#vital-flow .confirmation-actions > button {
+  width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 12px 10px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+#vital-flow .confirmation-actions > .secondary {
+  background: #e9faff;
+  color: #00B6F1;
+  border: 1px solid #cbebf5;
+  box-shadow: none;
+}
+#vital-flow .confirmation-actions > button { gap: 8px; }
+#vital-flow .confirmation-actions > button svg { width: 18px; height: 18px; flex: 0 0 18px; }
+
+/* Compact claim layout preserves readable labels and usable controls. */
+#vital-flow main[data-step="info"] { padding: 16px 18px 18px; }
+#vital-flow main[data-step="info"] .claim-page-title { font-size: 24px; line-height: 1.3; color: #000 !important; -webkit-text-fill-color: #000; }
+#vital-flow main[data-step="info"] > p { font-size: 13px; line-height: 1.5; margin-bottom: 12px; }
+#vital-flow .claim-won-prize { margin-bottom: 12px; }
+#vital-flow .claim-won-prize h2,
+#vital-flow .claim-location-section h2 { margin-bottom: 8px; font-size: 15px; }
+#vital-flow .claim-location-section { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 10px; align-items: center; margin-bottom: 14px; }
+#vital-flow .claim-location-section h2 { grid-column: 1 / -1; }
+#vital-flow .claim-location-row { min-width: 0; gap: 8px; }
+#vital-flow .claim-location-row p { font-size: 12px; }
+#vital-flow .claim-location-map { margin: 0; width: auto; min-height: 44px; padding: 10px 12px; flex-direction: row; gap: 6px; font-size: 12px; line-height: 1.3; white-space: nowrap; background: #00B6F1; color: #fff; border-color: #00B6F1; }
+#vital-flow .claim-form > .claim-section:first-child,
+#vital-flow .claim-verification { margin-bottom: 12px; }
+#vital-flow .claim-form .claim-verification { margin-bottom: 20px; }
+#vital-flow .claim-form label[for="winner-phone"] { margin-top: 12px; }
+#vital-flow .claim-form input[name="name"],
+#vital-flow .claim-form input[name="phone"] { min-height: 46px; padding: 10px 12px; }
+#vital-flow .claim-bottle-notice { padding: 12px; margin-bottom: 12px; font-size: 12px; background: #fff5db; color: #754600; border: 1px solid #f0cf83; border-left: 4px solid #de980e; }
+#vital-flow .claim-bottle-notice strong { display: block; margin-bottom: 4px; font-size: 13px; font-weight: 700; }
+#vital-flow .claim-bottle-notice span { display: block; line-height: 1.5; }
+#vital-flow .claim-bottle-notice svg { width: 20px; height: 20px; flex-basis: 20px; }
+#vital-flow .claim-form .claim-terms-check { margin-bottom: 12px; font-size: 12px; }
+#vital-flow .claim-submit-area > .primary { min-height: 48px; padding: 12px; }
+
+/* Compact confirmation keeps the ticket and actions together. */
+#vital-flow .confirmation-card-brand { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 12px; }
+#vital-flow .confirmation-card-brand img { width: 110px; height: auto; object-fit: contain; border: 0; border-radius: 0; padding: 0; }
+#vital-flow .confirmation-card-brand span { font-size: 13px; font-weight: 600; color: rgb(0 0 0 / 80%); white-space: nowrap; }
+#vital-flow main[data-step="done"] { padding: 14px 18px 16px !important; }
+#vital-flow main[data-step="done"] .emblem,
+#vital-flow main[data-step="done"] .emblem svg { width: 96px; height: 90px; }
+#vital-flow main[data-step="done"] .emblem { margin: 0 auto 6px; }
+#vital-flow main[data-step="done"] h1 { font-size: 25px; margin: 0 0 6px; }
+#vital-flow main[data-step="done"] > .center > p { margin: 0 0 12px; font-size: 13px; line-height: 1.5; }
+#vital-flow main[data-step="done"] .reward { margin: 12px 0 !important; padding: 12px !important; }
+#vital-flow main[data-step="done"] .reward > img {
+  height: clamp(270px, 30vh, 280px) !important;
+  margin-bottom: 6px !important;
+  object-fit: contain !important;
+  object-position: center;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+#vital-flow main[data-step="done"] .reward h2 { margin: 4px 0; font-size: 17px; }
+#vital-flow main[data-step="done"] .confirmation-claim-details { margin-top: 10px; padding-top: 10px; row-gap: 8px; }
+#vital-flow main[data-step="done"] .confirmation-bottle-qr { width: 88px; height: 88px; }
+#vital-flow main[data-step="done"] .confirmation-actions > button { min-height: 48px; padding: 10px 8px; }
+#vital-flow main[data-step="win"] .win-claim-btn {
+  min-height: 56px;
+  padding: 14px 18px;
+  border-radius: 14px;
+}

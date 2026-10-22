@@ -1,0 +1,29 @@
+#vital-flow .review.screen-jumper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 6px;
+  width: 100%;
+  max-width: 440px;
+  margin: 8px auto 12px;
+  padding: 4px 2px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+#vital-flow .review.screen-jumper button {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  background: #ffffffeb;
+  color: #64748b;
+  font: 600 11.5px 'Outfit', sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+#vital-flow .review.screen-jumper button:hover { color: #114e9f; border-color: #94b7e4; }
+#vital-flow .review.screen-jumper button[aria-pressed="true"] { background: #114e9f; border-color: #114e9f; color: #fff; }
+#vital-flow .review.screen-jumper button:focus-visible { outline: 3px solid #70b7ff; outline-offset: 1px; }

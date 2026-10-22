@@ -1,0 +1,69 @@
+/* UXUI V2: solid brand surfaces, without animated gradient fills. */
+#vital-flow .phone.phone { --blue: #00B6F1; }
+#vital-flow .phone.phone .brand,
+#vital-flow .phone.phone[data-active-screen] .brand,
+#vital-flow .phone.phone:has(main[data-step]) .iphone-status-bar {
+  background: #00B6F1 !important;
+  border-bottom-color: #00B6F1 !important;
+  box-shadow: none !important;
+}
+#vital-flow .phone.phone button.primary:not(:disabled),
+#vital-flow .phone.phone .claim-location-map,
+#vital-flow .phone.phone .scan-v2-cap {
+  background: #00B6F1 !important;
+  background-image: none !important;
+  color: #063344 !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+#vital-flow .phone.phone .spin-wheel-pointer::before {
+  background: #00B6F1 !important;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+#vital-flow .phone.phone .wheel-bezel { background: #fff !important; box-shadow: 0 0 0 2px #00B6F1 !important; }
+#vital-flow .phone.phone .scan-v2-laser { background: #00B6F1; box-shadow: none; }
+#vital-flow .review.screen-jumper button[aria-pressed="true"] { background: #00B6F1; border-color: #00B6F1; color: #063344; }
+
+/* V2 spin action matches the Claim Prize red gradient. */
+#vital-flow .phone.phone .figma-wheel-hub,
+#vital-flow .phone.phone .figma-wheel-hub:hover,
+#vital-flow .phone.phone .wheel-center-btn,
+#vital-flow .phone.phone .wheel-center-btn:hover {
+  background: linear-gradient(135deg, #e52d27 0%, #b31217 50%, #ff2a44 100%) !important;
+  border: 2px solid #fff;
+  box-shadow: none !important;
+  animation: none !important;
+  color: #fff !important;
+}
+#vital-flow .phone.phone .figma-wheel-hub .figma-hub-sub,
+#vital-flow .phone.phone .figma-wheel-hub .figma-hub-main { color: #fff; }
+
+/* Review contact details before completing a claim. */
+#vital-flow .claim-verify-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(360px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  background: #fff;
+  color: #173252;
+  box-shadow: 0 24px 64px #06172d33;
+  font-family: 'Outfit', 'Kantumruy Pro', sans-serif;
+}
+#vital-flow .claim-verify-dialog::backdrop { background: #06172d99; }
+#vital-flow .claim-verify-dialog h2 { margin: 0 0 10px; font-size: 23px; font-weight: 700; }
+#vital-flow .claim-verify-dialog p { margin: 0 0 20px; color: #546b85; font-size: 14px; line-height: 1.5; }
+#vital-flow .claim-verify-dialog dl { margin: 0 0 24px; padding: 4px 16px; background: #f0fbff; border-radius: 16px; }
+#vital-flow .claim-verify-dialog dl > div { padding: 12px 0; }
+#vital-flow .claim-verify-dialog dl > div + div { border-top: 1px solid #d8eaf0; }
+#vital-flow .claim-verify-dialog dt { color: #546b85; font-size: 12px; }
+#vital-flow .claim-verify-dialog dd { margin: 4px 0 0; font-size: 17px; font-weight: 700; overflow-wrap: anywhere; }
+#vital-flow .claim-verify-actions { display: flex; flex-direction: column; gap: 10px; }
+#vital-flow .claim-verify-actions button { min-height: 48px; padding: 12px 16px; border: 1px solid #d8e4f3; border-radius: 999px; background: #fff; color: #173252; font: 600 15px 'Outfit', 'Kantumruy Pro', sans-serif; cursor: pointer; }
+#vital-flow .claim-verify-actions [data-verify-confirm] { background: linear-gradient(135deg, #e52d27 0%, #b31217 50%, #ff2a44 100%); border-color: transparent; color: #fff; }
+#vital-flow .claim-verify-actions button:focus-visible { outline: 3px solid #00B6F1; outline-offset: 3px; }

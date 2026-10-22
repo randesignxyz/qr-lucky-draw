@@ -2,6 +2,13 @@
 
 Run `npm run dev` to start the local development server (or open index.html directly in a browser).
 
+## UXUI versions
+
+- `index.html` opens UXUI V2 with primary color `#00B6F1`.
+- `v1.html` preserves the current UXUI V1 design. Its styles are frozen in `uxui-v1/`.
+- `v2.html` is UXUI V2, with separate cyan styles in `uxui-v2/`.
+- Use the version links above the prototype to compare both designs. Both versions retain the same interactive flow.
+
 ## Customize
 
 - Brand colors: search for --blue and --red in the CSS.

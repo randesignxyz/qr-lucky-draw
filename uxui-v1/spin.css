@@ -1,0 +1,208 @@
+#vital-flow main[data-step="spin"] {
+  background: #fff !important;
+  overflow-y: auto !important;
+  justify-content: flex-start !important;
+  font-family: 'Outfit', 'Kantumruy Pro', sans-serif;
+}
+#vital-flow .spin-top-section {
+  background: #f6f9fe !important;
+  padding: 18px 0 14px !important;
+  border-bottom: 1px solid #e5edf6 !important;
+  box-shadow: none !important;
+  flex-shrink: 0;
+}
+#vital-flow .spin-top-badge { color: #114e9f; font-size: 10px; margin-bottom: 12px; }
+#vital-flow .prize-carousel-viewport { height: 266px !important; padding: 8px 0 12px !important; }
+#vital-flow .prize-carousel-card {
+  width: 252px !important;
+  height: 240px !important;
+  padding: 16px !important;
+  flex-direction: column;
+  align-items: stretch !important;
+  justify-content: space-between !important;
+  border: 0 !important;
+  border-radius: 24px !important;
+  background: var(--prize-color) !important;
+  box-shadow: 0 8px 20px #15325216 !important;
+  opacity: .6 !important;
+}
+#vital-flow .prize-carousel-card.active,
+#vital-flow .prize-carousel-card.hero-prize.active {
+  background: var(--prize-color) !important;
+  border: 0 !important;
+  box-shadow: 0 10px 24px #15325229 !important;
+  transform: scale(1) !important;
+  opacity: 1 !important;
+}
+.spin-card-badge { align-self: flex-start; border: 1px solid #ffffff55; background: #ffffff24; border-radius: 20px; padding: 5px 9px; color: #fff; font-size: 10px; font-weight: 650; }
+#vital-flow .prize-img-box { height: 148px !important; background: transparent !important; border: 0 !important; overflow: hidden !important; }
+#vital-flow .prize-img-box img { object-fit: contain !important; border-radius: 12px; }
+.spin-card-name { font-size: 17px; color: #fff; text-align: left; line-height: 1.3; }
+#vital-flow .spin-bottom-section { flex: 1 0 auto !important; padding: 20px 18px 24px !important; gap: 20px !important; }
+#vital-flow .spin-headings h2 { color: #173252 !important; text-shadow: none; font-size: 24px !important; }
+#vital-flow .spin-instruction { color: #718198; font-size: 12px; margin: 6px 0 4px; line-height: 1.5; }
+#vital-flow .wheel-stage { width: min(100%, 350px) !important; height: auto !important; aspect-ratio: 1; }
+#vital-flow .wheel-bezel { width: 100% !important; height: 100% !important; padding: 4px !important; background: #fff !important; box-shadow: 0 0 0 1px #c8d8e9, 0 12px 28px #114e9f16 !important; }
+#vital-flow .wheel-plate { box-shadow: none; }
+#vital-flow .wheel-arrow { filter: drop-shadow(0 3px 4px #114e9f30) !important; }
+#vital-flow .wheel-center-btn { width: 76px; height: 76px; background: #fff !important; border: 2px solid #a9bfd8 !important; box-shadow: 0 4px 14px #114e9f20 !important; animation: none; }
+#vital-flow .wheel-center-btn span { color: #114e9f; font-size: 15px; letter-spacing: .5px; margin: 0; }
+#vital-flow .wheel-center-btn:focus-visible { outline: 3px solid #70b7ff; outline-offset: 4px; }
+#vital-flow .spin-footnote { margin: 0; color: #8190a3; text-align: center; font-size: 10px; line-height: 1.5; }
+#vital-flow .phone.phone[data-active-screen="spin"] .iphone-home-indicator { background: #fff !important; }
+#vital-flow .phone.phone[data-active-screen="spin"] .iphone-home-indicator span { background: #8393a8 !important; }
+
+/* Reference layout: full artwork cards above an uninterrupted flower wheel. */
+#vital-flow .spin-top-section { background: #fff !important; padding: 20px 0 0 !important; border: 0 !important; }
+#vital-flow .spin-top-badge,
+#vital-flow .spin-headings,
+#vital-flow .spin-footnote { display: none !important; }
+#vital-flow .prize-carousel-viewport { height: 300px !important; padding: 20px 0 !important; }
+#vital-flow .prize-carousel-track {
+  gap: 14px !important;
+  align-items: center !important;
+}
+#vital-flow .prize-carousel-card {
+  flex: 0 0 270px !important;
+  width: 270px !important;
+  min-width: 270px !important;
+  max-width: 270px !important;
+  height: 270px !important;
+  min-height: 270px !important;
+  max-height: 270px !important;
+  padding: 14px 16px !important;
+  border-radius: 23px !important;
+  opacity: .58 !important;
+  transform: scale(.86) !important;
+  filter: saturate(.68) brightness(.86);
+  backdrop-filter: none !important;
+  border: 2px solid transparent !important;
+  box-shadow: 0 8px 18px -7px #00000038 !important;
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), opacity .35s ease, filter .35s ease, box-shadow .35s ease !important;
+}
+#vital-flow .prize-carousel-card.active,
+#vital-flow .prize-carousel-card.hero-prize.active {
+  z-index: 4;
+  opacity: 1 !important;
+  transform: translateY(-4px) scale(1) !important;
+  filter: saturate(1.08) brightness(1.03);
+  background: var(--prize-color) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 0 3px #38bdf8, 0 18px 34px -8px #0b3f8266, 0 0 26px #38bdf84d !important;
+}
+#vital-flow .prize-carousel-card.hero-prize.active {
+  box-shadow: 0 0 0 3px #ff9a4a, 0 18px 34px -8px #9a3d1466, 0 0 26px #ff762b59 !important;
+}
+#vital-flow .prize-carousel-card.active::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  z-index: 3;
+  border: 1px solid #ffffff5c;
+  border-radius: 17px;
+  pointer-events: none;
+}
+#vital-flow .prize-carousel-card.active .prize-img-box img {
+  transform: scale(1.035);
+}
+#vital-flow .prize-carousel-card.active .spin-card-caption {
+  box-shadow: 0 7px 18px #00000024;
+}
+#vital-flow .prize-img-box {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+#vital-flow .prize-img-box img,
+#vital-flow .prize-img-box img[src] {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+#vital-flow .spin-card-badge { position: relative; z-index: 2; font-size: 10px; font-weight: 800; letter-spacing: .7px; text-transform: uppercase; }
+#vital-flow .spin-card-caption { position: relative; z-index: 2; padding: 9px 12px; border: 1px solid #ffffff33; background: #00000073; backdrop-filter: blur(12px); border-radius: 16px; text-align: center; }
+#vital-flow .spin-card-name { display: block; font-size: 14.5px; text-align: center; font-weight: 750; }
+#vital-flow .spin-card-sub { display: block; color: #ffffffd1; font-size: 10.5px; margin-top: 3px; line-height: 1.3; }
+#vital-flow .prize-carousel-card[data-item-idx="1"] .spin-card-caption { background: #ffffffd1; border-color: #00000014; }
+#vital-flow .prize-carousel-card[data-item-idx="1"] .spin-card-name { color: #171717; }
+#vital-flow .prize-carousel-card[data-item-idx="1"] .spin-card-sub { color: #525252; }
+#vital-flow .prize-carousel-card[data-item-idx="1"] .spin-card-badge { color: #262626; border-color: #00000022; background: #ffffffb8; }
+#vital-flow .prize-carousel-card .spin-card-badge,
+#vital-flow .prize-carousel-card .spin-card-caption {
+  display: none !important;
+}
+#vital-flow .spin-bottom-section {
+  width: 100% !important;
+  padding: 26px 0 0 !important;
+  gap: 0 !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+#vital-flow .spin-bottom-section .figma-wheel-wrapper {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.spin-brand-lockup { display: none !important; }
+#vital-flow .spin-terms-link {
+  margin: 18px 0 24px;
+  padding: 10px 14px;
+  border: 0;
+  background: transparent;
+  color: #114e9f;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+#vital-flow .spin-terms-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 24px;
+}
+#vital-flow .spin-terms-check .spin-terms-link { margin: 0; padding: 10px 0; }
+#vital-flow .spin-terms-copy { color: #334b67; font-size: 12px; line-height: 1.6; text-align: center; }
+#vital-flow .spin-terms-copy label { display: inline; margin: 0; font: inherit; cursor: pointer; }
+#vital-flow .spin-terms-copy .spin-terms-link { padding: 0; font: inherit; }
+#vital-flow .spin-terms-check input {
+  appearance: auto;
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  accent-color: #114e9f;
+  cursor: pointer;
+}
+#vital-flow .spin-terms-dialog {
+  width: min(360px, calc(100vw - 48px));
+  box-sizing: border-box;
+  padding: 24px;
+  border: 0;
+  border-radius: 20px;
+  background: #fff;
+  color: #173252;
+  box-shadow: 0 20px 60px #0004;
+}
+#vital-flow .spin-terms-dialog::backdrop { background: #0f172a99; }
+#vital-flow .spin-terms-dialog h2 { font-size: 20px; margin-top: 0; }
+#vital-flow .spin-terms-dialog p { font-size: 14px; line-height: 1.65; }
+#vital-flow .phone[data-active-screen="spin"] .spin-brand-lockup { display: none !important; }
+#vital-flow .phone[data-active-screen="spin"] .spin-brand-lockup strong { display: block; font: 800 22px 'Outfit', sans-serif; line-height: 1.1; }
+#vital-flow .phone[data-active-screen="spin"] .spin-brand-lockup small { display: block; color: #b8d4f6; font: 700 10px 'Outfit', sans-serif; letter-spacing: .6px; margin-top: 2px; }
+#vital-flow .phone[data-active-screen="spin"] .app-back-btn { display: none; }
+#vital-flow .phone[data-active-screen="spin"] .brand-logo-img {
+  display: block !important;
+  position: static !important;
+  margin: 0 auto 0 0 !important;
+  transform: none !important;
+}

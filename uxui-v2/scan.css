@@ -1,0 +1,58 @@
+#vital-flow main[data-step="scan"] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 28px 20px 30px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: url('../wheel-assets/scan-sample.jpg') center / cover no-repeat;
+}
+#vital-flow main[data-step="scan"]::before {
+  content: none;
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(#ffffff09 1px, transparent 1px), linear-gradient(90deg, #ffffff09 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+}
+#vital-flow .scan-v2-heading { position: absolute; top: 28px; left: 20px; right: 20px; text-align: center; }
+#vital-flow .scan-v2-heading h1 { margin: 4px 0; color: #fff; font-size: 26px; font-weight: 800; letter-spacing: -.4px; }
+#vital-flow .camera.scan-v2-reticle {
+  position: relative;
+  width: 240px;
+  height: 240px !important;
+  flex: 0 0 240px;
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+#vital-flow .scan-v2-reticle .frame { position: relative; width: 100% !important; height: 100% !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; backdrop-filter: none; transform: none; overflow: visible !important; }
+#vital-flow .scan-corner { position: absolute; width: 32px; height: 32px; border: solid #38c9f8; }
+#vital-flow .scan-corner.tl { top: 0; left: 0; border-width: 4px 0 0 4px; border-radius: 14px 0 0; }
+#vital-flow .scan-corner.tr { top: 0; right: 0; border-width: 4px 4px 0 0; border-radius: 0 14px 0 0; }
+#vital-flow .scan-corner.bl { bottom: 0; left: 0; border-width: 0 0 4px 4px; border-radius: 0 0 0 14px; }
+#vital-flow .scan-corner.br { bottom: 0; right: 0; border-width: 0 4px 4px 0; border-radius: 0 0 14px; }
+#vital-flow .scan-v2-cap { width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #25baeb, #00B6F1); border: 2.5px dashed #ffffff80; display: grid; place-items: center; color: #fff; box-shadow: 0 12px 32px #0009; }
+#vital-flow .scan-v2-cap { display: none; }
+#vital-flow .camera.scan-v2-reticle::before,
+#vital-flow .camera.scan-v2-reticle::after { content: none; }
+#vital-flow .scan-v2-cap svg { width: 42px; height: 42px; }
+#vital-flow .scan-v2-laser { position: absolute; z-index: 2; left: 8px; right: 8px; height: 3px; background: linear-gradient(90deg, transparent, #38c9f8, #fff, #38c9f8, transparent); box-shadow: 0 0 18px 3px #38c9f8ee; animation: v1CameraLaser 2.2s ease-in-out infinite alternate; }
+@keyframes v1CameraLaser { from { top: 12px; } to { top: 225px; } }
+#vital-flow .scan-v2-bottom { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+#vital-flow .scan-v2-bottom .scan-badge { position: static; transform: none; margin: 0; padding: 9px 18px; border: 1px solid #ffffff29; background: #0f232ad9; color: #f1f7f9; border-radius: 999px; display: flex; align-items: center; gap: 8px; font-size: 12.5px; }
+#vital-flow .scan-v2-controls { display: flex; align-items: center; justify-content: center; gap: 28px; }
+#vital-flow .scan-v2-control { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #ffffff2e; border-radius: 50%; background: #ffffff1f; color: #fff; cursor: pointer; }
+#vital-flow .scan-v2-control svg { width: 18px; height: 18px; }
+#vital-flow .scan-v2-control.is-on { background: #16a3d1; }
+#vital-flow .scan-v2-shutter { width: 66px; height: 66px; padding: 5px; border: 3.5px solid #ffffffd9; border-radius: 50%; background: transparent; cursor: pointer; }
+#vital-flow .scan-v2-shutter span { display: block; width: 100%; height: 100%; border-radius: 50%; background: #fff; }
+#vital-flow .scan-v2-reticle .detected .scan-corner { border-color: #4ade80; }
+#vital-flow .scan-v2-reticle:focus-visible, #vital-flow .scan-v2-controls button:focus-visible { outline: 3px solid #38c9f8; outline-offset: 5px; }
+@media (prefers-reduced-motion: reduce) { #vital-flow .scan-v2-laser { animation: none; top: 50%; } }

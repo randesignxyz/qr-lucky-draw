@@ -1,0 +1,15 @@
+/* Khmer typography must also reach components with their own font rules. */
+html[lang="km"] #vital-flow,
+html[lang="km"] #vital-flow *,
+html[lang="km"] .device-screen,
+html[lang="km"] .device-screen *,
+[lang="km"],
+[lang="km"] * {
+  font-family: 'Kantumruy Pro', sans-serif !important;
+  letter-spacing: normal !important;
+}
+/* The language switch contains Khmer even while the interface is English. */
+#vital-flow .app-lang-btn #txtV1Lang,
+.lang-toggle-btn #langText {
+  font-family: 'Kantumruy Pro', 'Outfit', sans-serif !important;
+}

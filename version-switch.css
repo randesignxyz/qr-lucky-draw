@@ -1,0 +1,36 @@
+#vital-flow .version-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  max-width: 440px;
+  margin: 12px auto 8px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  font-family: 'Outfit', sans-serif;
+}
+#vital-flow .version-switch-label { font-size: 13px; font-weight: 600; color: #475569; }
+#vital-flow .version-switch-options { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: #f1f5f9; }
+#vital-flow .version-switch-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+}
+#vital-flow .version-switch-option:hover { background: #e0f7ff; color: #07516b; }
+#vital-flow .version-switch-option[aria-current="page"] { background: #00B6F1; color: #062f40; box-shadow: 0 2px 6px #00b6f126; }
+#vital-flow .version-switch-option:focus-visible { outline: 3px solid #007fa8; outline-offset: 2px; }
+@media (max-width: 360px) {
+  #vital-flow .version-switch { gap: 6px; padding: 8px; }
+  #vital-flow .version-switch-option { padding: 0 12px; }
+}

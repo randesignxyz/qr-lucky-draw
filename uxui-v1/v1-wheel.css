@@ -1,0 +1,316 @@
+#vital-flow .figma-wheel-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  max-width: 90vw;
+  max-height: 90vw;
+  margin: 0 auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+#vital-flow .figma-wheel-disc {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  transition: transform 4.8s cubic-bezier(0.12, 0.95, 0.22, 1);
+}
+#vital-flow .spin-wheel-pointer {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 36px;
+  height: 44px;
+  transform: translateX(-50%);
+  z-index: 20;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 5px rgba(75, 20, 18, .34));
+}
+#vital-flow .spin-wheel-pointer svg {
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+#vital-flow .spin-wheel-pointer::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 48'%3E%3Cpath d='M20 46C15.5 39.2 5 30.2 5 19A15 15 0 0 1 35 19c0 11.2-10.5 20.2-15 27Z' fill='%231265ad' stroke='white' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M20 37c-3.2-4.7-8-9.7-8-15.8A8 8 0 0 1 28 21c0 6.2-4.8 11.2-8 16Z' fill='%2332a8df'/%3E%3C/svg%3E");
+}
+#vital-flow .spin-wheel-pointer path {
+  fill: #ef3340;
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+#vital-flow .spin-wheel-pointer circle {
+  fill: #ffcf4a;
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+/* Individual Slot Petals */
+#vital-flow .figma-slot {
+  position: absolute;
+  pointer-events: none;
+}
+#vital-flow .figma-slot img.slot-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Figma exact insets */
+#vital-flow .slot-01 { inset: 0 34.05% 57.89% 34.05%; }
+#vital-flow .slot-02 { inset: 4.23% 8.24% 55.07% 53.6%; }
+#vital-flow .slot-03 { inset: 26.5% 0 41.97% 57.71%; }
+#vital-flow .slot-04 { inset: 51.89% 1.51% 13.39% 56.27%; }
+#vital-flow .slot-05 { inset: 57.16% 19.54% 0.16% 50%; }
+#vital-flow .slot-06 { inset: 57.16% 50% 0.16% 19.54%; }
+#vital-flow .slot-07 { inset: 51.89% 56.27% 13.39% 1.51%; }
+#vital-flow .slot-08 { inset: 26.5% 57.71% 41.97% 0; }
+#vital-flow .slot-09 { inset: 4.23% 53.6% 55.07% 8.24%; }
+
+/* Slot Items (Badge Thumb + Name) */
+#vital-flow .figma-slot-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5px;
+  pointer-events: none;
+  z-index: 5;
+  text-align: center;
+  white-space: nowrap;
+}
+
+#vital-flow .slot-item-thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2.5px 7px rgba(0, 0, 0, 0.22);
+  border: 1.5px solid #ffffff;
+  padding: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#vital-flow .slot-item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+#vital-flow .slot-item-thumb img.thumb-photo {
+  object-fit: cover;
+}
+
+#vital-flow .figma-slot-label {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #1e293b;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+  line-height: 1.1;
+  letter-spacing: -0.2px;
+}
+#vital-flow .figma-slot-label.hero-label {
+  font-size: 11.5px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+}
+
+/* Item coordinates inside the responsive wheel */
+#vital-flow .item-01 { left: 50%; top: 16%; }
+#vital-flow .item-02 { left: 70%; top: 25%; }
+#vital-flow .item-03 { left: 80.6%; top: 45%; }
+#vital-flow .item-04 { left: 76.9%; top: 66%; }
+#vital-flow .item-05 { left: 60.6%; top: 79%; }
+#vital-flow .item-06 { left: 39.4%; top: 79%; }
+#vital-flow .item-07 { left: 23.1%; top: 66%; }
+#vital-flow .item-08 { left: 19.4%; top: 45%; }
+#vital-flow .item-09 { left: 30.0%; top: 25%; }
+
+/* Center Hub Button */
+#vital-flow .figma-wheel-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2.2px solid #999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  outline: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+#vital-flow .figma-wheel-hub:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+}
+#vital-flow .figma-wheel-hub:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+#vital-flow .figma-hub-sub {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 650;
+  color: #383838;
+  line-height: 1.1;
+}
+#vital-flow .figma-hub-main {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: #383838;
+  line-height: 1.1;
+  letter-spacing: 0.3px;
+}
+
+
+#vital-flow .figma-wheel-wrapper.wheel-stage {
+  display: block !important;
+  width: 400px !important;
+  height: 400px !important;
+  max-width: 90vw !important;
+  max-height: 90vw !important;
+  margin: 0 auto 6px !important;
+  --font-sans: 'Outfit', 'Kantumruy Pro', sans-serif;
+  --font-heading: 'Outfit', 'Kantumruy Pro', sans-serif;
+}
+#vital-flow .figma-wheel-disc {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 3.8s cubic-bezier(0.12, 0.95, 0.22, 1);
+}
+#vital-flow .figma-wheel-hub { background: #fff !important; color: #383838; animation: none; }
+#vital-flow .figma-wheel-hub:focus-visible { outline: 3px solid #70b7ff; outline-offset: 4px; }
+#vital-flow .figma-wheel-hub:disabled { cursor: wait; }
+#vital-flow .clean-prize-wheel { display: block; width: 100%; height: 100%; overflow: visible; }
+#vital-flow .figma-wheel-wrapper { filter: drop-shadow(0 2px 3px #17325212); }
+#vital-flow .figma-wheel-hub {
+  background: linear-gradient(125deg, #082f6b 0%, #1265ad 28%, #32a8df 52%, #155fc0 74%, #082f6b 100%) !important;
+  background-size: 300% 300% !important;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #114e9f, 0 6px 16px #0b3f8240;
+  animation: spinHubGradient 8s ease-in-out infinite, spinHubGlow 3.2s ease-in-out infinite;
+}
+#vital-flow .figma-wheel-hub .figma-hub-sub,
+#vital-flow .figma-wheel-hub .figma-hub-main { color: #fff; }
+#vital-flow .figma-wheel-hub .figma-hub-main { font-weight: 800; }
+#vital-flow .wheel-prize-petal {
+  fill: #e8f1fb;
+  stroke: #fff;
+  stroke-width: 4;
+  filter: drop-shadow(0 2px 2px rgba(17,78,159,.12));
+}
+#vital-flow .wheel-prize-component:nth-of-type(even) .wheel-prize-petal { fill: #d4e4f5; }
+#vital-flow .wheel-prize-label {
+  fill: #183754;
+  font-family: 'Outfit', 'Kantumruy Pro', sans-serif;
+  font-weight: 750;
+}
+#vital-flow .wheel-prize-media rect {
+  fill: #fff;
+  stroke: #8fb4da;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 4px 6px rgba(17,78,159,.28));
+}
+#vital-flow .wheel-prize-media image { pointer-events: none; }
+@keyframes spinHubGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes spinHubGlow {
+  0%, 100% { box-shadow: 0 0 0 2px #114e9f, 0 6px 16px #0b3f8240; }
+  50% { box-shadow: 0 0 0 3px #45bff0, 0 8px 24px #168bd166, 0 0 18px #32a8df55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #vital-flow .figma-wheel-disc { transition-duration: .1s; }
+  #vital-flow .figma-wheel-hub { animation: none; }
+}
+
+/* Reference wheel: nine pale blue petals with transparent prize artwork. */
+#vital-flow .wheel-prize-component .wheel-prize-petal {
+  fill: #cee0f2;
+  stroke: #fff;
+  stroke-width: 3;
+  filter: none;
+}
+#vital-flow .wheel-prize-component .wheel-prize-label {
+  fill: #101820;
+  font-weight: 400;
+}
+#vital-flow .figma-wheel-hub {
+  width: 96px;
+  height: 96px;
+  background: linear-gradient(115deg, #ff403a 0%, #c74780 20%, #078cff 30%, #078cff 70%, #c74780 80%, #ff403a 100%) !important;
+  background-size: 300% 300% !important;
+  border: 3px solid #fff;
+  box-shadow: none;
+  animation: spinHubGradient 2s ease-in-out infinite;
+}
+#vital-flow .figma-wheel-hub .figma-hub-sub { font-size: 14px; font-weight: 500; }
+#vital-flow .figma-wheel-hub .figma-hub-main { font-size: 24px; font-weight: 650; }
+#vital-flow .spin-wheel-pointer { top: 6px; width: 26px; height: 25px; filter: none; }
+#vital-flow .spin-wheel-pointer::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='g' x2='0' y2='1'%3E%3Cstop stop-color='%23ef4651'/%3E%3Cstop offset='1' stop-color='%23098cff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M7 2h26q7 0 3 7L25 34q-5 8-10 0L4 9Q0 2 7 2Z' fill='url(%23g)' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
+}
+@media (prefers-reduced-motion: reduce) {
+  #vital-flow .figma-wheel-hub { animation: none; }
+}
+
+/* Smooth moving fill with an independently rotating gradient stroke. */
+#vital-flow .figma-wheel-hub::before {
+  content: none;
+}
+@property --spin-border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+#vital-flow .figma-wheel-hub {
+  border: 1.5px solid transparent;
+  box-shadow: -10px 0 24px 3px #ef465159, 10px 0 26px 3px #098cff66, 0 7px 24px #8962c638;
+  background:
+    linear-gradient(180deg, #ef4651 0%, #098cff 100%) padding-box,
+    conic-gradient(from var(--spin-border-angle), #0a78e8, #71d9ff, #fff, #ef668b, #0a78e8) border-box !important;
+  background-size: 200% 200%, 100% 100% !important;
+  animation: smoothSpinFill 6s ease-in-out infinite, spinBorderOrbit 10s linear infinite;
+}
+#vital-flow .figma-wheel-hub:hover {
+  box-shadow: -10px 0 28px 4px #ef465166, 10px 0 30px 4px #098cff73, 0 7px 26px #8962c640;
+}
+@keyframes smoothSpinFill {
+  0%, 100% { background-position: 0% 50%, 50% 50%; }
+  50% { background-position: 100% 50%, 50% 50%; }
+}
+@keyframes spinBorderOrbit { to { --spin-border-angle: 360deg; } }
+@media (prefers-reduced-motion: reduce) {
+  #vital-flow .figma-wheel-hub { animation: none; }
+}
